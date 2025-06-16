@@ -1,0 +1,172 @@
+{# rsvp/templates/rsvp/rsvp_form.html #}
+{% extends "base.html" %} {# Assuming you have a base template #}
+{% load static %} {# To load static JavaScript files #}
+
+{% block title %}RSVP for the Wedding{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h2>RSVP for the Wedding</h2>
+
+    {# Display Django Messages (success/error/info) #}
+    {% if messages %}
+        <ul class="messages list-unstyled"> {# Using list-unstyled to remove bullet points #}
+            {% for message in messages %}
+                <li class="alert alert-{% if message.tags == 'error' %}danger{% elif message.tags == 'success' %}success{% else %}info{% endif %}" role="alert">
+                    {{ message }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+
+        {# Main RSVP Form Fields #}
+        <div class="card p-4 mb-4 shadow-sm">
+            <h4 class="card-title">Your RSVP Details</h4>
+            {# Using as_p for quick paragraph rendering. You'll style this more later. #}
+            {% for field in rsvp_form %}
+                <div class="form-group mb-3">
+                    {{ field.label_tag }}
+                    {{ field }}
+                    {% if field.help_text %}<small class="form-text text-muted">{{ field.help_text }}</small>{% endif %}
+                    {% for error in field.errors %}
+                        <div class="text-danger small">{{ error }}</div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+            {% if rsvp_form.non_field_errors %}
+                <div class="text-danger small mb-3">
+                    {% for error in rsvp_form.non_field_errors %}{{ error }}{% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        {# Guest Formset Section #}
+        <div class="card p-4 shadow-sm">
+            <h4 class="card-title">Your Party Details (Guests)</h4>
+
+            {# Django's management form is essential for formsets #}
+            {# It contains hidden inputs like TOTAL_FORMS, INITIAL_FORMS, MAX_NUM_FORMS #}
+            {{ guest_formset.management_form }}
+
+            <div id="guest-formset-container">
+                {% for form in guest_formset %}
+                    <div class="guest-form-row mb-4 p-3 border rounded" id="form-{{ forloop.counter0 }}">
+                        <h5>Guest #<span class="guest-number">{{ forloop.counter }}</span></h5>
+                        {% for field in form %}
+                            <div class="form-group mb-2">
+                                {{ field.label_tag }}
+                                {{ field }}
+                                {% if field.help_text %}<small class="form-text text-muted">{{ field.help_text }}</small>{% endif %}
+                                {% for error in field.errors %}
+                                    <div class="text-danger small">{{ error }}</div>
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
+                        {% if form.non_field_errors %}
+                            <div class="text-danger small mb-2">
+                                {% for error in form.non_field_errors %}{{ error }}{% endfor %}
+                            </div>
+                        {% endif %}
+                        {# Django's DELETE checkbox for removing existing guests #}
+                        {% if guest_formset.can_delete %}
+                            <div class="form-check mt-2">
+                                {{ form.DELETE }}
+                                <label class="form-check-label" for="{{ form.DELETE.id_for_label }}">Remove this Guest</label>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+
+            <button type="button" id="add-guest-button" class="btn btn-primary mt-3">Add Another Guest</button>
+        </div>
+
+        <button type="submit" class="btn btn-success btn-lg mt-4">Submit RSVP</button>
+    </form>
+</div>
+
+{# JavaScript for dynamic formsets #}
+{% block scripts %}
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        const addGuestButton = document.getElementById('add-guest-button');
+        const formsetContainer = document.getElementById('guest-formset-container');
+        const totalFormsInput = document.querySelector('input[name="guests-TOTAL_FORMS"]'); // Matches prefix 'guests'
+
+        let formIdx = parseInt(totalFormsInput.value); // Get the initial count of forms
+
+        addGuestButton.addEventListener('click', function() {
+            // Get the last visible form row to clone, or create a template if no forms exist
+            let lastFormRow = formsetContainer.querySelector('.guest-form-row:last-of-type');
+            if (!lastFormRow && formIdx === 0) {
+                // Create a basic template if no forms are rendered initially (e.g., extra=0)
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = `
+                    <div class="guest-form-row mb-4 p-3 border rounded">
+                        <h5>Guest #<span class="guest-number"></span></h5>
+                        <div><label for="id_guests-__prefix__-name">Guest Name:</label><input type="text" name="guests-__prefix__-name" id="id_guests-__prefix__-name"></div>
+                        <div><label for="id_guests-__prefix__-age">Guest Age:</label><input type="number" name="guests-__prefix__-age" id="id_guests-__prefix__-age"></div>
+                        <div><label for="id_guests-__prefix__-dietary_restrictions">Dietary Restrictions:</label><textarea name="guests-__prefix__-dietary_restrictions" id="id_guests-__prefix__-dietary_restrictions" rows="2"></textarea></div>
+                        <div><label for="id_guests-__prefix__-favorite_song">Favorite Song:</label><input type="text" name="guests-__prefix__-favorite_song" id="id_guests-__prefix__-favorite_song"></div>
+                        <div class="form-check mt-2" style="display: none;"><input type="checkbox" name="guests-__prefix__-DELETE" id="id_guests-__prefix__-DELETE"><label for="id_guests-__prefix__-DELETE">Remove this Guest</label></div>
+                    </div>
+                `;
+                lastFormRow = tempDiv.firstElementChild; // Get the div element from the tempDiv innerHTML
+            } else if (!lastFormRow) { // If there are no forms but formIdx is not 0 (e.g., all deleted)
+                // This case should ideally not happen if initial forms are always rendered.
+                // For robustness, could retrieve a hidden empty form or a template.
+                console.warn("No guest form found to clone, and formIdx is not 0. This might indicate an issue with initial form rendering or all forms being deleted.");
+                return; // Exit if no base form to clone
+            }
+
+
+            const newForm = lastFormRow.cloneNode(true); // Deep clone
+
+            // Replace '__prefix__' with the new formIdx in names and IDs
+            // Or if cloning a real form, replace the current formIdx with the new one
+            const regex = /guests-(\d+|__prefix__)-/g;
+            newForm.id = newForm.id.replace(regex, `guests-${formIdx}-`); // Update row ID if cloning
+            newForm.querySelectorAll('[id^="id_guests-"], [name^="guests-"], [for^="id_guests-"]').forEach(element => {
+                if (element.id) element.id = element.id.replace(regex, `guests-${formIdx}-`);
+                if (element.name) element.name = element.name.replace(regex, `guests-${formIdx}-`);
+                if (element.htmlFor) element.htmlFor = element.htmlFor.replace(regex, `guests-${formIdx}-`);
+
+                // Clear values for new forms
+                if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA' || element.tagName === 'SELECT') {
+                    if (element.type !== 'checkbox' && element.type !== 'radio') {
+                        element.value = '';
+                    } else {
+                        element.checked = false; // Uncheck DELETE for new forms
+                    }
+                }
+            });
+
+            // Update guest number display
+            const guestNumberSpan = newForm.querySelector('.guest-number');
+            if (guestNumberSpan) {
+                guestNumberSpan.textContent = formIdx + 1;
+            }
+
+            // Ensure the 'Remove this Guest' checkbox is visible for new forms
+            const deleteCheckboxContainer = newForm.querySelector('.form-check');
+            if (deleteCheckboxContainer) {
+                deleteCheckboxContainer.style.display = 'block';
+                const deleteCheckbox = deleteCheckboxContainer.querySelector('input[type="checkbox"]');
+                if (deleteCheckbox) {
+                    deleteCheckbox.checked = false; // Ensure it's unchecked by default
+                }
+            }
+
+
+            formsetContainer.appendChild(newForm);
+
+            // Update the TOTAL_FORMS count in the management form
+            formIdx++;
+            totalFormsInput.value = formIdx;
+        });
+    });
+</script>
+{% endblock scripts %}

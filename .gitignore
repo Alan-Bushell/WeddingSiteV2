@@ -1,0 +1,32 @@
+# Django specific ignores
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+db.sqlite3
+/media/
+/static_root/ # If you collect static files here
+
+# Virtual environment
+.venv/
+env/
+venv/
+*/venv/
+
+# Operating System
+.DS_Store
+.env
+
+# IDEs
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Python specific
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+.python-version
+.pytest_cache/

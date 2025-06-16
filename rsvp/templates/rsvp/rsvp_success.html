@@ -1,0 +1,12 @@
+{# rsvp/templates/rsvp/rsvp_success.html #}
+{% extends "base.html" %}
+
+{% block title %}RSVP Confirmed{% endblock %}
+
+{% block content %}
+<div class="container my-5 text-center">
+    <h2>Thank You for Your RSVP!</h2>
+    <p>Your response has been recorded. We can't wait to celebrate with you!</p>
+    <p><a href="{% url 'home' %}" class="btn btn-primary">Return to Home</a></p>
+</div>
+{% endblock %}
