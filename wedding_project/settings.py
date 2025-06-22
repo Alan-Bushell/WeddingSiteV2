@@ -49,6 +49,9 @@ INSTALLED_APPS = [
     # Third-party apps
     'ckeditor',
     'ckeditor_uploader',
+    # Crispy Forms
+    'crispy_forms',
+    'crispy_bootstrap5', # Make sure this matches your Bootstrap version
 ]
 
 MIDDLEWARE = [
@@ -125,6 +128,12 @@ USE_TZ = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# URL to redirect to after successful login (e.g., back to home)
+LOGIN_REDIRECT_URL = 'home'
+
+# URL to redirect to after successful logout (e.g., back to home or a login page)
+LOGOUT_REDIRECT_URL = 'home'
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
@@ -163,3 +172,7 @@ CKEDITOR_CONFIGS = {
         'removePlugins': 'stylesheetparser', # Often recommended for clean HTML
     },
 }
+
+# Crispy Forms settings
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"

@@ -6,7 +6,7 @@ from . import views # Import your custom views from accounts/views.py
 urlpatterns = [
     # Django's built-in authentication URLs
     path('login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
-    path('logout/', auth_views.LogoutView.as_view(next_page='login'), name='logout'), # Redirects to login page after logout
+    path('logout/', auth_views.LogoutView.as_view(next_page='home'), name='logout'), # Redirects to login page after logout
 
     # Password Change URLs (for logged-in users)
     # These views handle the logic, you just need to provide the templates.
