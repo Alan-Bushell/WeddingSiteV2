@@ -12,7 +12,7 @@ class CustomUserCreationForm(UserCreationForm):
         model = CustomUser
         fields = UserCreationForm.Meta.fields + ('phone_number',) # Add custom fields here
 
-class UserProfileForm(UserChangeForm):
+class UserProfileForm(UserChangeForm): # Your existing form
     """
     A form for updating existing CustomUser instances.
     Note: password fields are excluded as they are handled separately.
@@ -21,6 +21,15 @@ class UserProfileForm(UserChangeForm):
 
     class Meta:
         model = CustomUser
-        fields = ('username', 'email', 'phone_number',) # Fields you want to allow editing
+        # Adjust fields: include first_name, last_name, and phone_number
+        # Consider if you want 'username' to be directly editable by the user.
+        # Often, username is not editable on a profile, while first/last/email are.
+        fields = ('first_name', 'last_name', 'email', 'phone_number',) # <--- MODIFIED FIELDS HERE
         # You might want to remove 'username' or 'email' if you don't want users changing them
         # For this example, we include them.
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Apply Bootstrap form-control class to all fields
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'form-control'

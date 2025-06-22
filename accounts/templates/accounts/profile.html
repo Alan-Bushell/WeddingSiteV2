@@ -1,0 +1,82 @@
+{# accounts/templates/accounts/profile.html #}
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}My Profile{% endblock %}
+
+{% block content %}
+<div class="container text-center py-5">
+    <h1 class="my-4">My Profile</h1>
+    <p class="lead mb-4">Manage your account information and view your RSVP status.</p>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-sm p-4 mb-4">
+                <h3 class="card-title text-start mb-3">Update Profile Details</h3>
+                <form method="post">
+                    {% csrf_token %}
+                    {% include 'partials/_messages.html' %} {# Display success/error messages #}
+                    {{ form.as_p }} {# Render form fields as paragraphs #}
+                    <button type="submit" class="btn btn-primary mt-3">Update Profile</button>
+                </form>
+                <hr class="my-4">
+                <h3 class="card-title text-start mb-3">Password Management</h3>
+                <p class="card-text text-start">
+                    You can change your password here:
+                </p>
+                <div class="text-start">
+                    <a href="{% url 'password_change' %}" class="btn btn-outline-secondary btn-sm">Change Password</a>
+                </div>
+            </div>
+
+            {# --- UPDATED RSVP DISPLAY --- #}
+            {% if user_rsvp %}
+            <div class="card shadow-sm p-4 mb-4 bg-light">
+                <h3 class="card-title text-start mb-3">Your RSVP Status</h3>
+                <p class="card-text text-start">
+                    <strong>Attending:</strong>
+                    {% if user_rsvp.is_attending %}
+                        <span class="badge bg-success">Yes</span>
+                    {% else %}
+                        <span class="badge bg-danger">No</span>
+                    {% endif %}<br>
+                    <strong>Number in Party:</strong> {{ user_rsvp.number_of_guests }}<br>
+                    {% if user_rsvp.notes %}
+                        <strong>Your Notes:</strong> {{ user_rsvp.notes }}<br>
+                    {% endif %}
+                </p>
+
+                {% if guests_in_party %}
+                    <h5 class="card-title text-start mt-4 mb-2">Guests in Your Party:</h5>
+                    <ul class="list-group list-group-flush">
+                        {% for guest in guests_in_party %}
+                            <li class="list-group-item text-start">
+                                <strong>Name:</strong> {{ guest.name }}<br>
+                                {% if guest.age %}<strong>Age:</strong> {{ guest.age }}<br>{% endif %}
+                                {% if guest.dietary_restrictions %}<strong>Dietary:</strong> {{ guest.dietary_restrictions }}<br>{% endif %}
+                                {% if guest.favorite_song %}<strong>Song:</strong> {{ guest.favorite_song }}{% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="card-text text-start small mt-3">No additional guests listed in your RSVP.</p>
+                {% endif %}
+
+
+                <p class="card-text text-start small text-muted mt-3">
+                    To change your RSVP or guest details, please re-submit the <a href="{% url 'rsvp' %}">RSVP form</a>.
+                </p>
+            </div>
+            {% else %}
+            <div class="card shadow-sm p-4 mb-4">
+                <h3 class="card-title text-start mb-3">Your RSVP Status</h3>
+                <p class="card-text text-start">
+                    No RSVP found for your account. Please use the <a href="{% url 'rsvp' %}">RSVP form</a> to confirm your attendance.
+                </p>
+            </div>
+            {% endif %}
+            {# --- END UPDATED RSVP DISPLAY --- #}
+        </div>
+    </div>
+</div>
+{% endblock %}
