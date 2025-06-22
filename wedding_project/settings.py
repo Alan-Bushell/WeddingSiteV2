@@ -46,6 +46,9 @@ INSTALLED_APPS = [
     'rsvp',
     'gallery',
     'articles',
+    # Third-party apps
+    'ckeditor',
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
@@ -120,13 +123,43 @@ USE_I18N = True
 
 USE_TZ = True
 
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
+
 STATIC_URL = 'static/'
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
+# This is where Django will look for your custom static files during development.
+# It tells Django to also look in a folder named 'static' at the root of your project.
+STATICFILES_DIRS = [
+    BASE_DIR / 'static', # Looks for 'static' folder in your project root
+]
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# This is the directory where Django will collect all static files for deployment (production).
+# You'll run 'python manage.py collectstatic' later, and files will go here.
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+
+# Media files (user-uploaded content, like your gallery images)
+# These are separate from static files.
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media' # This is where uploaded files will be stored
+
+
+# CKEditor Configuration
+CKEDITOR_UPLOAD_PATH = "uploads/" # Where images uploaded via CKEditor will be stored in MEDIA_ROOT
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'height': 300,
+        'width': '100%',
+        # Add more plugins as needed. 'image' is default, 'codesnippet' is popular.
+        # 'extraPlugins': 'codesnippet',
+        'extraPlugins': 'uploadimage', # For image uploads
+        'filebrowserUploadUrl': "/ckeditor/upload/", # URL for file uploads
+        'filebrowserBrowseUrl': "/ckeditor/browse/", # URL for file Browse
+        'removePlugins': 'stylesheetparser', # Often recommended for clean HTML
+    },
+}

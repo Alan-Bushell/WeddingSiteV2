@@ -1,0 +1,37 @@
+{# articles/templates/articles/article_list.html #}
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Our Articles{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h1 class="my-4 text-center">Our Articles</h1>
+    <p class="lead text-center mb-5">Stories, details, and updates about our journey.</p>
+
+    <div class="row">
+        {% if articles %}
+            {% for article in articles %}
+            <div class="col-md-6 mb-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ article.title }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            By {{ article.author.username|default:"Unknown" }} on {{ article.published_date|date:"F d, Y" }}
+                        </h6>
+                        {# IMPORTANT: Use |safe to render HTML content from Summernote #}
+                        <p class="card-text">{{ article.content|safe|truncatechars:200 }}</p>
+                        <a href="{% url 'article_detail' slug=article.slug %}" class="btn btn-primary btn-sm">Read More</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="col-12 text-center">
+                <p class="text-muted">No articles published yet. Check back soon!</p>
+                <a href="{% url 'admin:articles_article_add' %}" class="btn btn-primary mt-3">Add Articles (Admin)</a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

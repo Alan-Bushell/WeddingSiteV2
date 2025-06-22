@@ -1,0 +1,86 @@
+/* C:\Users\abush\OneDrive\Documents\W26\static\css\style.css */
+
+/* Global body styling */
+body {
+    font-family: 'Open Sans', sans-serif; /* A common, clean font */
+    background-color: #f4f2ef; /* A very light, warm off-white */
+    color: #333; /* Soft black text */
+    line-height: 1.6;
+}
+
+/* Navbar styling */
+.navbar {
+    background-color: #7a52a3 !important; /* A nice shade of plum/purple */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar-brand, .navbar-nav .nav-link {
+    color: #ffffff !important; /* White text for contrast */
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.navbar-brand:hover, .navbar-nav .nav-link:hover {
+    color: #e0e0e0 !important; /* Lighter white on hover */
+}
+
+/* General container/card styling */
+.container {
+    padding-top: 30px; /* Add some space from the navbar */
+    padding-bottom: 30px;
+}
+
+.card {
+    border: none; /* Remove default Bootstrap card border */
+    border-radius: 15px; /* Softer rounded corners */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15); /* More prominent shadow */
+}
+
+.card-title {
+    color: #7a52a3; /* Use the brand color for titles */
+    font-weight: 700;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #7a52a3;
+    border-color: #7a52a3;
+}
+.btn-primary:hover {
+    background-color: #623d8c; /* Darker plum on hover */
+    border-color: #623d8c;
+}
+
+.btn-success {
+    background-color: #5cb85c; /* Default green, you can change this */
+    border-color: #5cb85c;
+}
+.btn-success:hover {
+    background-color: #4cae4c;
+    border-color: #4cae4c;
+}
+
+/* Form specific styles */
+.form-group label {
+    font-weight: 500;
+    margin-bottom: .5rem;
+}
+
+.form-control {
+    border-radius: 8px; /* Slightly rounded input fields */
+}
+
+/* Specific to RSVP form dynamic guest fields */
+.guest-form-row {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.guest-form-row h5 {
+    color: #7a52a3;
+    margin-bottom: 15px;
+}

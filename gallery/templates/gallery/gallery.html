@@ -1,38 +1,38 @@
 {# gallery/templates/gallery/gallery.html #}
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Our Photo Gallery{% endblock %}
 
 {% block content %}
-<div class="container text-center">
+<div class="container text-center py-5">
     <h1 class="my-4">Our Photo Gallery</h1>
-    <p class="lead">This is where our beautiful wedding photos will go!</p>
+    <p class="lead mb-5">Relive our special moments through these cherished photos!</p>
+
     <div class="row">
-        {# Example placeholder for a photo #}
-        <div class="col-md-4 mb-4">
-            <div class="card shadow-sm">
-                <img src="https://via.placeholder.com/300x200?text=Placeholder+Image+1" class="card-img-top" alt="Placeholder Wedding Photo">
-                <div class="card-body">
-                    <p class="card-text">A beautiful moment.</p>
+        {% if images %} {# Check if there are any images to display #}
+            {% for image in images %}
+            <div class="col-lg-4 col-md-6 mb-4"> {# Responsive columns for grid layout #}
+                <div class="card shadow-sm h-100"> {# h-100 ensures cards in a row have equal height #}
+                    {# The .url attribute of an ImageField gives the URL to the uploaded file #}
+                    <img src="{{ image.image.url }}" class="card-img-top" alt="{{ image.title|default:'Gallery Image' }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ image.title|default:"Untitled Photo" }}</h5>
+                        <p class="card-text">{{ image.description|default:"" }}</p> {# Don't show "No description" if blank #}
+                    </div>
+                    <div class="card-footer text-muted small">
+                        Uploaded: {{ image.uploaded_at|date:"M d, Y" }}
+                        {% if image.is_featured %}<span class="badge bg-info ms-2">Featured</span>{% endif %}
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4 mb-4">
-            <div class="card shadow-sm">
-                <img src="https://via.placeholder.com/300x200?text=Placeholder+Image+2" class="card-img-top" alt="Placeholder Wedding Photo">
-                <div class="card-body">
-                    <p class="card-text">Smiles all around.</p>
-                </div>
+            {% endfor %}
+        {% else %}
+            <div class="col-12">
+                <p class="text-muted">No images have been uploaded yet. Check back soon!</p>
+                <a href="{% url 'admin:gallery_galleryimage_add' %}" class="btn btn-primary mt-3">Add Images (Admin)</a>
             </div>
-        </div>
-        <div class="col-md-4 mb-4">
-            <div class="card shadow-sm">
-                <img src="https://via.placeholder.com/300x200?text=Placeholder+Image+3" class="card-img-top" alt="Placeholder Wedding Photo">
-                <div class="card-body">
-                    <p class="card-text">The happy couple.</p>
-                </div>
-            </div>
-        </div>
+        {% endif %}
     </div>
     <p class="mt-4">More photos coming soon!</p>
 </div>

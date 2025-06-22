@@ -1,13 +1,13 @@
 # gallery/views.py
 from django.shortcuts import render
+from .models import GalleryImage # Import your new model
 
 def gallery_view(request):
     """
-    Renders the gallery page.
+    Renders the gallery page with all uploaded images.
     """
-    # For now, we'll just pass an empty context.
-    # Later, you'd fetch actual image data here.
+    images = GalleryImage.objects.all() # Fetch all images from the database, ordered by 'uploaded_at' due to Meta class
     context = {
-        'images': [] # Placeholder for image data
+        'images': images # Pass the list of images to the template
     }
     return render(request, 'gallery/gallery.html', context)
