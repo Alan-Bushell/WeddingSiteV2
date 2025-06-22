@@ -1,0 +1,39 @@
+{# gallery/templates/gallery/gallery.html #}
+{% extends "base.html" %}
+
+{% block title %}Our Photo Gallery{% endblock %}
+
+{% block content %}
+<div class="container text-center">
+    <h1 class="my-4">Our Photo Gallery</h1>
+    <p class="lead">This is where our beautiful wedding photos will go!</p>
+    <div class="row">
+        {# Example placeholder for a photo #}
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+                <img src="https://via.placeholder.com/300x200?text=Placeholder+Image+1" class="card-img-top" alt="Placeholder Wedding Photo">
+                <div class="card-body">
+                    <p class="card-text">A beautiful moment.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+                <img src="https://via.placeholder.com/300x200?text=Placeholder+Image+2" class="card-img-top" alt="Placeholder Wedding Photo">
+                <div class="card-body">
+                    <p class="card-text">Smiles all around.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+                <img src="https://via.placeholder.com/300x200?text=Placeholder+Image+3" class="card-img-top" alt="Placeholder Wedding Photo">
+                <div class="card-body">
+                    <p class="card-text">The happy couple.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p class="mt-4">More photos coming soon!</p>
+</div>
+{% endblock %}

@@ -5,7 +5,10 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')), 
-    path('rsvp/', include('rsvp.urls')), 
+    path('rsvp/', include('rsvp.urls')),
+    path('gallery/', include('gallery.urls')),
+    path('articles/', include('articles.urls')),
+    path('', include('core.urls')),
 ]
 
 from django.conf import settings

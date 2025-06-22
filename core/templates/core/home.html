@@ -1,0 +1,16 @@
+{# core/templates/core/home.html #}
+{% extends "base.html" %}
+
+{% block title %}Welcome to Our Wedding!{% endblock %}
+
+{% block content %}
+<div class="jumbotron text-center">
+    <h1 class="display-4">Welcome to Our Wedding Website!</h1>
+    <p class="lead">We're so excited to celebrate with you.</p>
+    <hr class="my-4">
+    <p>Please explore the site to RSVP, learn more about us, and find event details.</p>
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" href="{% url 'rsvp_submission' %}" role="button">RSVP Now</a>
+    </p>
+</div>
+{% endblock %}
