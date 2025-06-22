@@ -1,0 +1,155 @@
+/* Basic CSS for the home page sections */
+.hero-section {
+    position: relative;
+    height: 600px; /* Adjust height as needed */
+    /* Corrected path for hero background image */
+    background-image: url("../images/hero-background.jpg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white; /* For text on the hero */
+    overflow: hidden; /* To handle blur on edges */
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Dark overlay for text readability */
+    backdrop-filter: blur(5px); /* Gentle blur effect like design2 */
+    -webkit-backdrop-filter: blur(5px); /* For Safari compatibility */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-card {
+    background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent white */
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    color: #333; /* Darker text for readability on white card */
+    position: relative; /* Ensure z-index works */
+    z-index: 10; /* Bring card to front of overlay */
+}
+
+.hero-card h1 {
+    font-size: 2.5rem;
+    color: #007bff; /* A prominent blue from design2.png */
+    margin-bottom: 15px;
+}
+
+.hero-card p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+.hero-buttons .btn {
+    margin: 0 10px;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn-wedding-primary {
+    background-color: #ff9800; /* Orange from design2.png */
+    border-color: #ff9800;
+    color: white;
+}
+.btn-wedding-primary:hover {
+    background-color: #e68900;
+    border-color: #e68900;
+    color: white;
+}
+
+.btn-wedding-secondary {
+    background-color: #007bff; /* Blue from design2.png */
+    border-color: #007bff;
+    color: white;
+}
+.btn-wedding-secondary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+    color: white;
+}
+
+/* Section Styling */
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 2.2rem;
+    color: #333;
+}
+
+/* Gallery/Article Card Styling */
+.card.gallery-card, .card.article-card {
+    border: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+.card.gallery-card img, .card.article-card img {
+    width: 100%;
+    height: 200px; /* Fixed height for consistency */
+    object-fit: cover;
+}
+.card.article-card .card-body {
+    padding: 20px;
+}
+.card.article-card .card-title {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+.card.article-card .card-text {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+/* Map Section */
+.map-container {
+    height: 450px; /* Adjust map height */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.journey-section {
+    background-size: cover;
+    background-position: center;
+    padding: 80px 0;
+    text-align: center;
+    color: white;
+    margin-top: 50px;
+    position: relative;
+    overflow: hidden;
+    /* Corrected path for journey background image */
+    background-image: url("../images/journey-background.jpg");
+}
+.journey-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Dark overlay */
+    backdrop-filter: blur(3px); /* Gentle blur */
+    -webkit-backdrop-filter: blur(3px);
+}
+.journey-section h2, .journey-section p {
+    position: relative;
+    z-index: 2; /* Bring text above pseudo-element overlay */
+}

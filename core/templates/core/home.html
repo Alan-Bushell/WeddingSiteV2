@@ -1,16 +1,137 @@
-{# core/templates/core/home.html #}
+{# wedding_project/core/templates/core/home.html #}
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Welcome to Our Wedding!{% endblock %}
 
+{% block head_extra %}
+    <link rel="stylesheet" href="{% static 'core/css/home.css' %}"> {# PASTE THE LINE HERE #}
+{% endblock head_extra %}
+
 {% block content %}
-<div class="jumbotron text-center">
-    <h1 class="display-4">Welcome to Our Wedding Website!</h1>
-    <p class="lead">We're so excited to celebrate with you.</p>
-    <hr class="my-4">
-    <p>Please explore the site to RSVP, learn more about us, and find event details.</p>
-    <p class="lead">
-        <a class="btn btn-primary btn-lg" href="{% url 'rsvp' %}" role="button">RSVP Now</a>
-    </p>
-</div>
-{% endblock %}
+
+
+{# Hero Section - Combining Design 2 Style #}
+<section class="hero-section">
+    <div class="hero-overlay">
+        <div class="hero-card">
+            <h1>We're Getting Married!</h1>
+            <p class="lead">Join us to celebrate our special day on {{ wedding_date }}!</p>
+            <div class="hero-buttons">
+                <a href="{% url 'rsvp' %}" class="btn btn-lg btn-wedding-primary">
+                    <i class="fas fa-heart"></i> RSVP Now
+                </a>
+                <a href="#" class="btn btn-lg btn-wedding-secondary">
+                    <i class="fas fa-calendar-alt"></i> Wedding Details
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{# Top Gallery Section - From Struct 1 #}
+<section class="container py-5">
+    <h2 class="section-title">Our Favorite Moments</h2>
+    <div class="row">
+        {% for photo in gallery_photos_top %}
+            <div class="col-md-3 col-sm-6 mb-4">
+                <div class="card gallery-card">
+                    {# Placeholder image if Photo model not ready or no image #}
+                    <img src="{% static 'core/images/placeholder.jpg' %}" class="card-img-top" alt="Placeholder Image">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Beautiful Moment</h5>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            {# Display placeholders if no photos are fetched yet (when Photo model is ready) #}
+            <div class="col-md-3 col-sm-6 mb-4"><div class="card gallery-card"><img src="{% static 'core/images/placeholder.jpg' %}" class="card-img-top" alt="Placeholder Image"><div class="card-body"><h5 class="card-title text-center">Image 1</h5></div></div></div>
+            <div class="col-md-3 col-sm-6 mb-4"><div class="card gallery-card"><img src="{% static 'core/images/placeholder.jpg' %}" class="card-img-top" alt="Placeholder Image"><div class="card-body"><h5 class="card-title text-center">Image 2</h5></div></div></div>
+            <div class="col-md-3 col-sm-6 mb-4"><div class="card gallery-card"><img src="{% static 'core/images/placeholder.jpg' %}" class="card-img-top" alt="Placeholder Image"><div class="card-body"><h5 class="card-title text-center">Image 3</h5></div></div></div>
+            <div class="col-md-3 col-sm-6 mb-4"><div class="card gallery-card"><img src="{% static 'core/images/placeholder.jpg' %}" class="card-img-top" alt="Placeholder Image"><div class="card-body"><h5 class="card-title text-center">Image 4</h5></div></div></div>
+        {% endfor %}
+    </div>
+</section>
+
+{# "Our Journey Together" Section - From Design 2 #}
+<section class="journey-section">
+    <div class="container">
+        <h2 class="mb-4">Our Journey Together</h2>
+        <p class="lead">Every step, every laugh, every memory leads us here. We can't wait for our next chapter!</p>
+    </div>
+</section>
+
+{# Bottom Gallery Section / Featured Images - From Struct 1 (repurposed for more photos) #}
+<section class="container py-5">
+    <h2 class="section-title">More Precious Memories</h2>
+    <div class="row">
+        {% for photo in gallery_photos_bottom %}
+            <div class="col-md-3 col-sm-6 mb-4">
+                <div class="card gallery-card">
+                    {# Placeholder image if Photo model not ready or no image #}
+                    <img src="{% static 'core/images/placeholder.jpg' %}" class="card-img-top" alt="Placeholder Image">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Another Great Moment</h5>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            {# Display placeholders if no photos are fetched yet #}
+            <div class="col-md-3 col-sm-6 mb-4"><div class="card gallery-card"><img src="{% static 'core/images/placeholder.jpg' %}" class="card-img-top" alt="Placeholder Image"><div class="card-body"><h5 class="card-title text-center">Image 5</h5></div></div></div>
+            <div class="col-md-3 col-sm-6 mb-4"><div class="card gallery-card"><img src="{% static 'core/images/placeholder.jpg' %}" class="card-img-top" alt="Placeholder Image"><div class="card-body"><h5 class="card-title text-center">Image 6</h5></div></div></div>
+            <div class="col-md-3 col-sm-6 mb-4"><div class="card gallery-card"><img src="{% static 'core/images/placeholder.jpg' %}" class="card-img-top" alt="Placeholder Image"><div class="card-body"><h5 class="card-title text-center">Image 7</h5></div></div></div>
+            <div class="col-md-3 col-sm-6 mb-4"><div class="card gallery-card"><img src="{% static 'core/images/placeholder.jpg' %}" class="card-img-top" alt="Placeholder Image"><div class="card-body"><h5 class="card-title text-center">Image 8</h5></div></div></div>
+        {% endfor %}
+    </div>
+</section>
+
+{# Latest Articles Section - From Struct 1 #}
+<section class="container py-5">
+    <h2 class="section-title">Latest Updates & Stories</h2>
+    <div class="row">
+        {% for article in latest_articles %}
+            <div class="col-md-4 mb-4">
+                <div class="card article-card">
+                    {# Placeholder image if Article model not ready or no image #}
+                    <img src="{% static 'core/images/article-placeholder.jpg' %}" class="card-img-top" alt="Article Image">
+                    <div class="card-body">
+                        <h5 class="card-title">Article Title Placeholder</h5>
+                        <p class="card-text">Short summary of the article content goes here.</p>
+                        <a href="#" class="btn btn-sm btn-outline-primary">Read More »</a> {# Link will be added later #}
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            {# Display placeholders if no articles are fetched yet #}
+            <div class="col-md-4 mb-4"><div class="card article-card"><img src="{% static 'core/images/article-placeholder.jpg' %}" class="card-img-top" alt="Article Image"><div class="card-body"><h5 class="card-title">Article Title 1</h5><p class="card-text">This is a short summary of the first placeholder article.</p><a href="#" class="btn btn-sm btn-outline-primary">Read More »</a></div></div></div>
+            <div class="col-md-4 mb-4"><div class="card article-card"><img src="{% static 'core/images/article-placeholder.jpg' %}" class="card-img-top" alt="Article Image"><div class="card-body"><h5 class="card-title">Article Title 2</h5><p class="card-text">This is a short summary of the second placeholder article.</p><a href="#" class="btn btn-sm btn-outline-primary">Read More »</a></div></div></div>
+            <div class="col-md-4 mb-4"><div class="card article-card"><img src="{% static 'core/images/article-placeholder.jpg' %}" class="card-img-top" alt="Article Image"><div class="card-body"><h5 class="card-title">Article Title 3</h5><p class="card-text">This is a short summary of the third placeholder article.</p><a href="#" class="btn btn-sm btn-outline-primary">Read More »</a></div></div></div>
+        {% endfor %}
+    </div>
+</section>
+
+{# Wedding Location / Map Section - From Struct 1 & Design 2 #}
+<section class="container py-5">
+    <h2 class="section-title">Wedding Location</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card p-4 mb-4 shadow-sm">
+                <h4 class="card-title text-center mb-3">Find Us Here!</h4>
+                <p class="text-center lead">Join us at:</p>
+                <p class="text-center fw-bold">{{ wedding_location }}</p>
+
+                <div class="map-container mb-4">
+                    <iframe
+                        src="{{ map_embed_url }}"
+                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+                <p class="text-center">
+                    <a href="https://www.google.com/maps/search/?api=1&query={{ wedding_location|urlencode }}" target="_blank" class="btn btn-outline-secondary">Get Directions</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
