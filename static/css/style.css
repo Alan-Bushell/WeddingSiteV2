@@ -10,7 +10,7 @@ body {
 
 /* Navbar styling */
 .navbar {
-    background-color: #7a52a3 !important; /* A nice shade of plum/purple */
+    background-color: rgb(187, 69, 167) !important; /* A nice shade of pink */
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
@@ -43,12 +43,12 @@ body {
 
 /* Buttons */
 .btn-primary {
-    background-color: #7a52a3;
-    border-color: #7a52a3;
+    background-color: rgb(187, 69, 167);
+    border-color: rgb(187, 69, 167);
 }
 .btn-primary:hover {
-    background-color: #623d8c; /* Darker plum on hover */
-    border-color: #623d8c;
+    background-color: rgb(187, 69, 167); /* Darker plum on hover */
+    border-color: rgb(187, 69, 167);
 }
 
 .btn-success {
@@ -81,6 +81,6 @@ body {
 }
 
 .guest-form-row h5 {
-    color: #7a52a3;
+    color: rgb(187, 69, 167);
     margin-bottom: 15px;
 }

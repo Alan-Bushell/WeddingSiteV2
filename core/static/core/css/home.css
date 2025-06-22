@@ -2,7 +2,6 @@
 .hero-section {
     position: relative;
     height: 600px; /* Adjust height as needed */
-    /* Corrected path for hero background image */
     background-image: url("../images/hero-background.jpg");
     background-size: cover;
     background-position: center;
@@ -30,95 +29,112 @@
 
 .hero-card {
     background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent white */
-    border-radius: 15px;
-    padding: 40px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    max-width: 600px;
+    border-radius: 20px; /* Slightly more rounded */
+    padding: 50px; /* More padding for a softer look */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25); /* More pronounced, softer shadow */
+    max-width: 650px; /* Slightly wider card */
     color: #333; /* Darker text for readability on white card */
-    position: relative; /* Ensure z-index works */
-    z-index: 10; /* Bring card to front of overlay */
+    position: relative;
+    z-index: 10;
 }
 
 .hero-card h1 {
-    font-size: 2.5rem;
-    color: #007bff; /* A prominent blue from design2.png */
-    margin-bottom: 15px;
+    font-family: 'Dancing Script', cursive; /* Elegant, wedding-friendly font */
+    font-size: 3.5rem; /* Larger for more impact */
+    color: #13a6ea;
+    margin-bottom: 20px;
+    line-height: 1.2;
 }
 
 .hero-card p {
-    font-size: 1.1rem;
-    margin-bottom: 30px;
+    font-family: 'Montserrat', sans-serif; /* Clean, modern body font */
+    font-size: 1.25rem; /* Slightly larger lead text */
+    margin-bottom: 40px;
+    color: #555;
 }
 
 .hero-buttons .btn {
-    margin: 0 10px;
-    padding: 12px 30px;
-    border-radius: 30px;
+    margin: 0 15px; /* More spacing between buttons */
+    padding: 15px 40px; /* Larger buttons */
+    border-radius: 35px; /* More rounded pill shape */
     font-weight: bold;
     transition: all 0.3s ease;
+    font-size: 1.1rem; /* Slightly larger text on buttons */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* Subtle button shadow */
 }
 
 .btn-wedding-primary {
-    background-color: #ff9800; /* Orange from design2.png */
-    border-color: #ff9800;
+    background-color: #ec0fb5; /* Warm Orange from design2.png - keep it vibrant! */
+    border-color: #ec0fb5;
     color: white;
 }
 .btn-wedding-primary:hover {
     background-color: #e68900;
     border-color: #e68900;
-    color: white;
+    transform: translateY(-2px); /* Subtle lift effect */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
 
 .btn-wedding-secondary {
-    background-color: #007bff; /* Blue from design2.png */
-    border-color: #007bff;
+    background-color: #12cfd2; /* A fresh, vibrant teal */
+    border-color: #12cfd2;
     color: white;
 }
 .btn-wedding-secondary:hover {
-    background-color: #0056b3;
-    border-color: #0056b3;
-    color: white;
+    background-color: #1aa67d;
+    border-color: #1aa67d;
+    transform: translateY(-2px); /* Subtle lift effect */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* Section Styling */
 .section-title {
     text-align: center;
     margin-bottom: 50px;
-    font-size: 2.2rem;
+    font-size: 2.8rem; /* Slightly larger section titles */
+    font-family: 'Montserrat', sans-serif; /* Consistent with body text */
     color: #333;
+    font-weight: 700; /* Bolder */
 }
 
 /* Gallery/Article Card Styling */
 .card.gallery-card, .card.article-card {
     border: none;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1); /* Softer, larger shadow */
+    border-radius: 15px; /* More rounded cards */
     overflow: hidden;
     margin-bottom: 30px;
+    transition: transform 0.2s ease-in-out; /* Add hover effect */
+}
+.card.gallery-card:hover, .card.article-card:hover {
+    transform: translateY(-5px); /* Lift on hover */
 }
 .card.gallery-card img, .card.article-card img {
     width: 100%;
-    height: 200px; /* Fixed height for consistency */
+    height: 220px; /* Slightly taller images */
     object-fit: cover;
 }
 .card.article-card .card-body {
-    padding: 20px;
+    padding: 25px; /* More padding */
 }
 .card.article-card .card-title {
-    font-size: 1.4rem;
-    margin-bottom: 10px;
+    font-size: 1.6rem; /* Larger article titles */
+    margin-bottom: 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    color: #e85a4f; /* Match hero H1 color for consistency */
 }
 .card.article-card .card-text {
-    font-size: 0.95rem;
-    color: #555;
+    font-size: 1rem; /* Standard readable size */
+    color: #666;
 }
 
 /* Map Section */
 .map-container {
-    height: 450px; /* Adjust map height */
-    border-radius: 10px;
+    height: 500px; /* Slightly taller map */
+    border-radius: 15px; /* More rounded map container */
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1); /* Softer, larger shadow */
 }
 .map-container iframe {
     width: 100%;
@@ -129,13 +145,12 @@
 .journey-section {
     background-size: cover;
     background-position: center;
-    padding: 80px 0;
+    padding: 100px 0; /* More vertical padding */
     text-align: center;
     color: white;
     margin-top: 50px;
     position: relative;
     overflow: hidden;
-    /* Corrected path for journey background image */
     background-image: url("../images/journey-background.jpg");
 }
 .journey-section::before {
@@ -152,4 +167,14 @@
 .journey-section h2, .journey-section p {
     position: relative;
     z-index: 2; /* Bring text above pseudo-element overlay */
+    font-family: 'Dancing Script', cursive; /* Consistent with hero H1 */
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Subtle text shadow for readability */
+}
+.journey-section p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3rem;
+    color: #eee;
 }
