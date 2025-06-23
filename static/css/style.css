@@ -84,3 +84,43 @@ body {
     color: rgb(187, 69, 167);
     margin-bottom: 15px;
 }
+
+/* --- Custom Button Styles --- */
+
+.btn-wedding-primary {
+    background-color: #ee6b0e; 
+    color: #fff; /* White text */
+    border: 1px solid #ee6b0e;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    padding: 0.75rem 1.25rem; /* Make buttons a bit larger */
+    border-radius: 0.3rem; /* Slightly rounded corners */
+    font-weight: bold;
+}
+
+.btn-wedding-primary:hover {
+    background-color: #1db1ce; 
+    border-color: #1db1ce;
+    color: #fff;
+}
+
+.btn-wedding-secondary {
+    background-color: #f1b722; /* Example: Tan */
+    color: #333; /* Dark text */
+    border: 1px solid #D2B48C;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.3rem;
+    font-weight: bold;
+}
+
+.btn-wedding-secondary:hover {
+    background-color: #E0BF9A; 
+    border-color: #E0BF9A;
+    color: #333;
+}
+
+/* General Bootstrap override for focus outline if desired */
+.btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus,
+.btn:active.focus, .btn.active.focus {
+    box-shadow: 0 0 0 0.25rem rgba(139, 69, 19, 0.25); 
+}
