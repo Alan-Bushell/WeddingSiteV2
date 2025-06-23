@@ -226,6 +226,10 @@ body {
         display: inline-block; /* Ensures images stack horizontally */
         vertical-align: top; /* Aligns images correctly when inline-block */
     }
+
+    .carousel-item {
+        display: inline-block !important; /* Force visibility for mobile */
+    }
 }
 
 /* Further adjust for very small screens */
