@@ -17,41 +17,44 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="{% url 'home' %}">A&M Thailand 26</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'home' %}">A&M Thailand 26</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'rsvp' %}">RSVP</a> {# Changed to 'rsvp_form' as per recent updates #}
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'gallery' %}">Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'article_list' %}">Our Story</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'wedding_details' %}">Details</a>
+                </li>
+                {# --------------------------------- #}
+                {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'rsvp' %}">RSVP</a>
+                        <a class="nav-link" href="{% url 'profile' %}">Profile ({{ user.username }})</a>
+                    </li>
+                    <form action="{% url 'logout' %}" method="post" class="nav-item">
+                        {% csrf_token %}
+                        <button type="submit" class="nav-link">
+                            Logout
+                        </button>
+                    </form>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'gallery' %}">Gallery</a>
+                        <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'article_list' %}">Our Story</a>
-                    </li>
-                    {% if user.is_authenticated %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'profile' %}">Profile ({{ user.username }})</a>
-                        </li>
-                        <form action="{% url 'logout' %}" method="post" class="nav-item">
-                            {% csrf_token %}
-                            {# REMOVE INLINE STYLES FROM BUTTON - nav-link should handle it #}
-                            <button type="submit" class="nav-link">
-                                Logout
-                            </button>
-                        </form>
-                    {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'login' %}">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
-                        </li>
-                    {% endif %}
+                {% endif %}
                 </ul>
             </div>
         </div>

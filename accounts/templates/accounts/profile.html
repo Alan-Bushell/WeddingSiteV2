@@ -1,7 +1,7 @@
 {# accounts/templates/accounts/profile.html #}
 {% extends "base.html" %}
 {% load static %}
-{% load crispy_forms_tags %}
+{% load crispy_forms_tags %} {# Ensure this is loaded at the top #}
 
 {% block title %}My Profile{% endblock %}
 
@@ -17,7 +17,7 @@
                 <form method="post">
                     {% csrf_token %}
                     {% include 'partials/_messages.html' %} {# Display success/error messages #}
-                    {{ form.as_p }} {# Render form fields as paragraphs #}
+                    {{ form|crispy }} {# Changed from form.as_p to use crispy filter for Bootstrap styling #}
                     <button type="submit" class="btn btn-primary mt-3">Update Profile</button>
                 </form>
                 <hr class="my-4">
@@ -63,16 +63,15 @@
                     <p class="card-text text-start small mt-3">No additional guests listed in your RSVP.</p>
                 {% endif %}
 
-
                 <p class="card-text text-start small text-muted mt-3">
-                    To change your RSVP or guest details, please re-submit the <a href="{% url 'rsvp' %}">RSVP form</a>.
+                    To change your RSVP or guest details, please re-submit the <a href="{% url 'rsvp' %}">RSVP form</a>. {# Corrected URL name #}
                 </p>
             </div>
             {% else %}
             <div class="card shadow-sm p-4 mb-4">
                 <h3 class="card-title text-start mb-3">Your RSVP Status</h3>
                 <p class="card-text text-start">
-                    No RSVP found for your account. Please use the <a href="{% url 'rsvp' %}">RSVP form</a> to confirm your attendance.
+                    No RSVP found for your account. Please use the <a href="{% url 'rsvp' %}">RSVP form</a> to confirm your attendance. {# Corrected URL name #}
                 </p>
             </div>
             {% endif %}

@@ -31,3 +31,11 @@ def home_view(request):
         'map_embed_url': 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3066.2890155982077!2d98.40821513707338!3d7.807672204988176!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30502c170a4c1303%3A0xac18e439e9c17960!2sCape%20Panwa%20Hotel!5e1!3m2!1sen!2sie!4v1750613331257!5m2!1sen!2sie"',
     }
     return render(request, 'core/home.html', context)
+
+# Custom 404 (Page Not Found) View
+def custom_404(request, exception):
+    return render(request, '404.html', {}, status=404)
+
+# Custom 500 (Server Error) View
+def custom_500(request):
+    return render(request, '500.html', {}, status=500)

@@ -1,0 +1,123 @@
+{# core/templates/core/wedding_details.html #}
+{% extends "base.html" %} {# Ensures it uses your base layout with navbar/footer #}
+{% load static %} {# To use static files if you have custom images/styles #}
+
+{% block title %}Wedding Details{% endblock %} {# Sets the page title in the browser tab #}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10 col-lg-8">
+            <h1 class="text-center mb-5 section-title">Our Wedding Details</h1>
+
+            <section class="card p-4 mb-4 shadow-sm">
+                <h2 class="card-title text-center mb-4 section-subtitle">The Big Day</h2>
+                <div class="row text-center">
+                    <div class="col-md-6 mb-3">
+                        <h4>When:</h4>
+                        <p class="lead"><i class="bi bi-calendar-heart me-2"></i>Saturday, October 26, 2024</p>
+                        <p>Ceremony: 4:00 PM<br>Reception to follow</p>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <h4>Where:</h4>
+                        <p class="lead"><i class="bi bi-geo-alt-fill me-2"></i>The Grand Ballroom<br>123 Celebration Lane, Cityville, State 12345</p>
+                        <a href="https://maps.app.goo.gl/YOUR_Maps_LINK_HERE" target="_blank" class="btn btn-sm btn-outline-secondary mt-2">
+                            <i class="bi bi-map me-1"></i>View on Map
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card p-4 mb-4 shadow-sm">
+                <h2 class="card-title text-center mb-4 section-subtitle">Schedule of Events</h2>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <i class="bi bi-clock me-2"></i><strong>3:30 PM:</strong> Guest Arrival & Seating
+                    </li>
+                    <li class="list-group-item">
+                        <i class="bi bi-heart-fill me-2"></i><strong>4:00 PM:</strong> Ceremony Begins
+                    </li>
+                    <li class="list-group-item">
+                        <i class="bi bi-cup-straw me-2"></i><strong>4:45 PM:</strong> Cocktail Hour & Hors d'oeuvres
+                    </li>
+                    <li class="list-group-item">
+                        <i class="bi bi-music-note-beamed me-2"></i><strong>6:00 PM:</strong> Reception & Dinner
+                    </li>
+                    <li class="list-group-item">
+                        <i class="bi bi-moon-fill me-2"></i><strong>10:00 PM:</strong> Farewell
+                    </li>
+                </ul>
+            </section>
+
+            <section class="card p-4 mb-4 shadow-sm">
+                <h2 class="card-title text-center mb-4 section-subtitle">Attire & Gifts</h2>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <h4>Dress Code:</h4>
+                        <p class="mb-0">Semi-Formal / Cocktail Attire</p>
+                        <small class="text-muted">We'd love to see you in your best!</small>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <h4>Gifts:</h4>
+                        <p class="mb-0">Your presence is our present!</p>
+                        <p class="mb-0">However, if you'd like to honor us with a gift, a contribution to our honeymoon fund would be greatly appreciated.</p>
+                        <a href="https://your-gift-registry-link-here.com" target="_blank" class="btn btn-sm btn-outline-info mt-2">
+                            <i class="bi bi-gift-fill me-1"></i>View Registry (Link Here)
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card p-4 mb-4 shadow-sm">
+                <h2 class="card-title text-center mb-4 section-subtitle">Accommodation & Travel</h2>
+                <p>We've reserved a block of rooms at the nearby "Grand Hotel" for your convenience. Please book by **[Date]** to receive the special rate.</p>
+                <p class="mb-0"><i class="bi bi-hotel me-2"></i><strong>Grand Hotel:</strong> (555) 123-4567 | <a href="https://www.grandhotel.com" target="_blank">grandhotel.com</a></p>
+                <p class="mt-3">Shuttle service will be provided from the Grand Hotel to the venue before the ceremony and back after the reception.</p>
+            </section>
+
+            <section class="card p-4 shadow-sm">
+                <h2 class="card-title text-center mb-4 section-subtitle">Frequently Asked Questions</h2>
+                <div class="accordion" id="faqAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                Can I bring a plus-one?
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Our invitations are addressed to specific guests. If your invitation did not include a plus-one, we kindly ask that you celebrate with us personally.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Is there parking available at the venue?
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Yes, complimentary valet parking is available at The Grand Ballroom.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                What if I have dietary restrictions?
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Please indicate any dietary restrictions when you RSVP, and we will do our best to accommodate them.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}

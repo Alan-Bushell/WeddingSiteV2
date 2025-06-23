@@ -1,0 +1,25 @@
+{# wedding_project/templates/500.html #}
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Server Error{% endblock %}
+
+{% block content %}
+<div class="container text-center py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-sm p-5 my-5">
+                <h1 class="display-1 text-danger">500</h1>
+                <h2 class="section-title mb-4">Something Went Wrong</h2>
+                <p class="lead mb-4">
+                    We're experiencing some technical difficulties. Our team has been notified and is working to fix the issue.
+                </p>
+                <p class="text-muted">
+                    Please try again in a little while, or visit our homepage.
+                </p>
+                <a href="{% url 'home' %}" class="btn btn-wedding-primary mt-4">Go to Homepage</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
