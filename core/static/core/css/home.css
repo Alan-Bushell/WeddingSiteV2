@@ -1,16 +1,17 @@
 /* Basic CSS for the home page sections */
 .hero-section {
     position: relative;
-    height: 600px; /* Adjust height as needed */
-    background-image: url("../images/hero-background.jpg");
-    background-size: cover;
-    background-position: center;
+    width: 100%;
+    height: 100vh; /* Changed to 100vh for full viewport height */
+    overflow: hidden; /* To handle blur on edges and carousel content */
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    color: white; /* For text on the hero */
-    overflow: hidden; /* To handle blur on edges */
+    background-image: url("../img/hero-background.jpg"); /* Retained your image path */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* For parallax effect */
+    /* text-align and color are now handled by hero-card */
 }
 
 .hero-overlay {
@@ -22,9 +23,20 @@
     background-color: rgba(0, 0, 0, 0.4); /* Dark overlay for text readability */
     backdrop-filter: blur(5px); /* Gentle blur effect like design2 */
     -webkit-backdrop-filter: blur(5px); /* For Safari compatibility */
-    display: flex;
+    display: flex; /* Flexbox to center content */
     align-items: center;
     justify-content: center;
+    padding: 20px; /* Added padding for overall content spacing */
+}
+
+/* --- NEW: Wrapper for Carousels and CTA Card --- */
+.hero-content-wrapper {
+    display: flex; /* Flexbox to align carousels and CTA */
+    align-items: center; /* Vertically align items */
+    justify-content: center; /* Horizontally center items */
+    width: 100%;
+    max-width: 1400px; /* Max width for the whole content area */
+    margin: auto; /* Center the wrapper */
 }
 
 .hero-card {
@@ -32,10 +44,14 @@
     border-radius: 20px; /* Slightly more rounded */
     padding: 50px; /* More padding for a softer look */
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25); /* More pronounced, softer shadow */
-    max-width: 650px; /* Slightly wider card */
+    /* max-width: 650px; - Kept for general max, but 'width' below is for flex layout */
+    width: 550px; /* Fixed width for the card in flex layout */
     color: #333; /* Darker text for readability on white card */
     position: relative;
     z-index: 10;
+    margin: 0 30px; /* Space between card and carousels */
+    flex-shrink: 0; /* Prevent card from shrinking too much in flexbox */
+    text-align: center; /* Ensure text alignment is centered */
 }
 
 .hero-card h1 {
@@ -53,8 +69,14 @@
     color: #555;
 }
 
+.hero-buttons {
+    display: flex; /* Enable flexbox for buttons to use gap */
+    justify-content: center; /* Center buttons */
+    gap: 20px; /* Space between buttons */
+}
+
 .hero-buttons .btn {
-    margin: 0 15px; /* More spacing between buttons */
+    /* margin: 0 15px; - Replaced by gap on .hero-buttons */
     padding: 15px 40px; /* Larger buttons */
     border-radius: 35px; /* More rounded pill shape */
     font-weight: bold;
@@ -87,7 +109,148 @@
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Section Styling */
+/* --- NEW: Desktop/Tablet Carousel Styling (Vertical) --- */
+.hero-carousel {
+    width: 180px; /* Width of each carousel */
+    height: 500px; /* Height of the visible carousel area */
+    overflow: hidden; /* Hide images outside the view */
+    position: relative;
+    flex-shrink: 0; /* Prevent carousels from shrinking */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.3); /* Slightly transparent background for carousels */
+}
+
+.carousel-inner {
+    position: relative; /* All carousel images positioned relative to this */
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-inner img {
+    width: 100%;
+    height: 100%; /* Fill the container */
+    object-fit: cover; /* Important: Ensures image covers the area without distortion */
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out; /* Animation properties */
+}
+
+.carousel-inner img.active {
+    opacity: 1; /* Active image is visible */
+    transform: translate(0, 0); /* Active image is in its default position */
+    z-index: 2; /* Ensure active image is on top */
+}
+
+/* Vertical Slide-in/Slide-out Animations (for Desktop) */
+.carousel-inner img.slide-in-up {
+    transform: translateY(100%); /* Start off-screen below */
+}
+.carousel-inner img.slide-out-up {
+    transform: translateY(-100%); /* Slide out upwards */
+}
+.carousel-inner img.slide-in-down {
+    transform: translateY(-100%); /* Start off-screen above */
+}
+.carousel-inner img.slide-out-down {
+    transform: translateY(100%); /* Slide out downwards */
+}
+
+/* --- NEW: Responsive Design: Mobile-First Approach (adjust for smaller screens) --- */
+@media (max-width: 768px) {
+    .hero-overlay {
+        padding: 10px;
+    }
+    .hero-content-wrapper {
+        flex-direction: column; /* Stack carousels and CTA vertically */
+        justify-content: flex-start; /* Align to top when stacked */
+    }
+
+    .hero-card {
+        order: 2; /* Place card in the middle when stacked */
+        width: 95%; /* Take more width on mobile */
+        max-width: 400px;
+        margin: 20px 0; /* Space above and below */
+        padding: 30px 20px;
+    }
+    .hero-card h1 {
+        font-size: 2.5rem;
+    }
+    .hero-card .lead {
+        font-size: 1.1rem;
+    }
+    .hero-buttons {
+        flex-direction: column; /* Stack buttons vertically */
+        gap: 15px;
+    }
+
+    /* Mobile Carousel Styling (Horizontal) */
+    .hero-carousel {
+        order: initial; /* Reset order to flow naturally (left then right/top then bottom) */
+        width: 100%; /* Full width on mobile */
+        height: 180px; /* Shorter height for horizontal carousels */
+        margin: 15px 0; /* Space above and below */
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .hero-carousel-left { order: 1; } /* Left carousel goes on top */
+    .hero-carousel-right { order: 3; } /* Right carousel goes on bottom */
+
+    .carousel-inner {
+        width: 100%;
+        height: 100%;
+        /* No change to position: relative */
+    }
+    .carousel-inner img {
+        width: 100%; /* Image fills container width */
+        height: 100%; /* Image fills container height */
+        object-fit: cover;
+        position: absolute; /* Keep absolute for stacking and fade */
+        top: 0;
+        left: 0;
+    }
+
+    /* Horizontal Slide-in/Slide-out Animations (for Mobile) */
+    .carousel-inner img.slide-in-up,
+    .carousel-inner img.slide-out-up,
+    .carousel-inner img.slide-in-down,
+    .carousel-inner img.slide-out-down {
+        /* Disable vertical transforms on mobile */
+        transform: translateY(0);
+    }
+
+    .carousel-inner img.slide-in-left {
+        transform: translateX(100%); /* Start off-screen right */
+    }
+    .carousel-inner img.slide-out-left {
+        transform: translateX(-100%); /* Slide out left */
+    }
+    .carousel-inner img.slide-in-right {
+        transform: translateX(-100%); /* Start off-screen left */
+    }
+    .carousel-inner img.slide-out-right {
+        transform: translateX(100%); /* Slide out right */
+    }
+}
+
+/* Further adjust for very small screens */
+@media (max-width: 480px) {
+    .hero-card h1 {
+        font-size: 2rem;
+    }
+    .hero-card .lead {
+        font-size: 1rem;
+    }
+    .hero-buttons .btn {
+        font-size: 0.9rem;
+        padding: 10px 20px;
+    }
+}
+
+/* Section Styling - YOUR EXISTING CODE BELOW */
 .section-title {
     text-align: center;
     margin-bottom: 50px;
@@ -151,7 +314,7 @@
     margin-top: 50px;
     position: relative;
     overflow: hidden;
-    background-image: url("../images/journey-background.jpg");
+    background-image: url("../img/journey-background.jpg");
 }
 .journey-section::before {
     content: '';
