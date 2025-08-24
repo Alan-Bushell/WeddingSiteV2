@@ -64,19 +64,17 @@
         {% for photo in gallery_photos_top %}
             <div class="col-md-3 col-sm-6 mb-4">
                 <div class="card gallery-card">
-                    {# Placeholder image if Photo model not ready or no image #}
-                    <img src="{% static 'core/img/placeholder.jpg' %}" class="card-img-top" alt="Placeholder Image">
+                    <img src="{{ photo.image.url }}" class="card-img-top" alt="{{ photo.title|default:'Featured Image' }}">
                     <div class="card-body">
-                        <h5 class="card-title text-center">Beautiful Moment</h5>
+                        <h5 class="card-title text-center">{{ photo.title|default:"Favorite Moment" }}</h5>
                     </div>
                 </div>
             </div>
         {% empty %}
-            {# Display placeholders if no photos are fetched yet (when Photo model is ready) #}
-            <div class="col-md-3 col-sm-6 mb-4"><div class="card gallery-card"><img src="{% static 'core/img/placeholder.jpg' %}" class="card-img-top" alt="Placeholder Image"><div class="card-body"><h5 class="card-title text-center">Image 1</h5></div></div></div>
-            <div class="col-md-3 col-sm-6 mb-4"><div class="card gallery-card"><img src="{% static 'core/img/placeholder.jpg' %}" class="card-img-top" alt="Placeholder Image"><div class="card-body"><h5 class="card-title text-center">Image 2</h5></div></div></div>
-            <div class="col-md-3 col-sm-6 mb-4"><div class="card gallery-card"><img src="{% static 'core/img/placeholder.jpg' %}" class="card-img-top" alt="Placeholder Image"><div class="card-body"><h5 class="card-title text-center">Image 3</h5></div></div></div>
-            <div class="col-md-3 col-sm-6 mb-4"><div class="card gallery-card"><img src="{% static 'core/img/placeholder.jpg' %}" class="card-img-top" alt="Placeholder Image"><div class="card-body"><h5 class="card-title text-center">Image 4</h5></div></div></div>
+            {# Fallback if there are no featured photos #}
+            <div class="col-12 text-center">
+                <p class="text-muted">No favorite moments have been featured yet!</p>
+            </div>
         {% endfor %}
     </div>
 </section>
@@ -96,19 +94,17 @@
         {% for photo in gallery_photos_bottom %}
             <div class="col-md-3 col-sm-6 mb-4">
                 <div class="card gallery-card">
-                    {# Placeholder image if Photo model not ready or no image #}
-                    <img src="{% static 'core/img/placeholder.jpg' %}" class="card-img-top" alt="Placeholder Image">
+                    <img src="{{ photo.image.url }}" class="card-img-top" alt="{{ photo.title|default:'Featured Image' }}">
                     <div class="card-body">
-                        <h5 class="card-title text-center">Another Great Moment</h5>
+                        <h5 class="card-title text-center">{{ photo.title|default:"Precious Memory" }}</h5>
                     </div>
                 </div>
             </div>
         {% empty %}
-            {# Display placeholders if no photos are fetched yet #}
-            <div class="col-md-3 col-sm-6 mb-4"><div class="card gallery-card"><img src="{% static 'core/img/placeholder.jpg' %}" class="card-img-top" alt="Placeholder Image"><div class="card-body"><h5 class="card-title text-center">Image 5</h5></div></div></div>
-            <div class="col-md-3 col-sm-6 mb-4"><div class="card gallery-card"><img src="{% static 'core/img/placeholder.jpg' %}" class="card-img-top" alt="Placeholder Image"><div class="card-body"><h5 class="card-title text-center">Image 6</h5></div></div></div>
-            <div class="col-md-3 col-sm-6 mb-4"><div class="card gallery-card"><img src="{% static 'core/img/placeholder.jpg' %}" class="card-img-top" alt="Placeholder Image"><div class="card-body"><h5 class="card-title text-center">Image 7</h5></div></div></div>
-            <div class="col-md-3 col-sm-6 mb-4"><div class="card gallery-card"><img src="{% static 'core/img/placeholder.jpg' %}" class="card-img-top" alt="Placeholder Image"><div class="card-body"><h5 class="card-title text-center">Image 8</h5></div></div></div>
+            {# Fallback if there are fewer than 5 featured photos #}
+            <div class="col-12 text-center">
+                <p class="text-muted">More memories coming soon!</p>
+            </div>
         {% endfor %}
     </div>
 </section>
@@ -119,22 +115,38 @@
     <div class="row">
         {% for article in latest_articles %}
             <div class="col-md-4 mb-4">
-                <div class="card article-card">
-                    {# Placeholder image if Article model not ready or no image #}
-                    <img src="{% static 'core/img/article-placeholder.jpg' %}" class="card-img-top" alt="Article Image">
-                    <div class="card-body">
-                        <h5 class="card-title">Article Title Placeholder</h5>
-                        <p class="card-text">Short summary of the article content goes here.</p>
-                        <a href="#" class="btn btn-sm btn-outline-primary">Read More »</a> {# Link will be added later #}
+                <div class="card article-card h-100 shadow-sm">
+                    {# Display the article's header image or a placeholder #}
+                    {% if article.header_image %}
+                    <img src="{{ article.header_image.url }}" class="card-img-top article-img" alt="{{ article.title }}">
+                    {% else %}
+                    <img src="{% static 'core/img/article-placeholder.jpg' %}" class="card-img-top article-img" alt="Article Placeholder">
+                    {% endif %}
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">{{ article.title }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            By {{ article.author.username|default:"Unknown" }} | {{ article.published_date|date:"F d, Y" }}
+                        </h6>
+                        <div class="flex-grow-1">
+                            <p class="card-text">{{ article.content|safe|striptags|truncatechars:140 }}</p>
+                        </div>
+                        <div class="mt-auto">
+                            <a href="{% url 'article_detail' slug=article.slug %}" class="btn btn-primary btn-sm">Read More</a>
+                        </div>
                     </div>
                 </div>
             </div>
         {% empty %}
-            {# Display placeholders if no articles are fetched yet #}
-            <div class="col-md-4 mb-4"><div class="card article-card"><img src="{% static 'core/img/article-placeholder.jpg' %}" class="card-img-top" alt="Article Image"><div class="card-body"><h5 class="card-title">Article Title 1</h5><p class="card-text">This is a short summary of the first placeholder article.</p><a href="#" class="btn btn-sm btn-outline-primary">Read More »</a></div></div></div>
-            <div class="col-md-4 mb-4"><div class="card article-card"><img src="{% static 'core/img/article-placeholder.jpg' %}" class="card-img-top" alt="Article Image"><div class="card-body"><h5 class="card-title">Article Title 2</h5><p class="card-text">This is a short summary of the second placeholder article.</p><a href="#" class="btn btn-sm btn-outline-primary">Read More »</a></div></div></div>
-            <div class="col-md-4 mb-4"><div class="card article-card"><img src="{% static 'core/img/article-placeholder.jpg' %}" class="card-img-top" alt="Article Image"><div class="card-body"><h5 class="card-title">Article Title 3</h5><p class="card-text">This is a short summary of the third placeholder article.</p><a href="#" class="btn btn-sm btn-outline-primary">Read More »</a></div></div></div>
+            {# This message will display if there are no articles in the database #}
+            <div class="col-12 text-center">
+                <p class="text-muted">No articles published yet. Check back soon!</p>
+            </div>
         {% endfor %}
+    </div>
+    
+    {# New link to view all articles #}
+    <div class="text-center mt-4">
+        <a href="{% url 'article_list' %}" class="btn btn-primary btn-lg">View All Articles</a>
     </div>
 </section>
 

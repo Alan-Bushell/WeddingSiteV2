@@ -137,6 +137,9 @@ LOGOUT_REDIRECT_URL = 'home'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+CKEDITOR_BASEPATH = '/static/ckeditor/ckeditor/'
+
 
 STATIC_URL = 'static/'
 
@@ -156,22 +159,6 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media' # This is where uploaded files will be stored
 
-
-# CKEditor Configuration
-CKEDITOR_UPLOAD_PATH = "uploads/" # Where images uploaded via CKEditor will be stored in MEDIA_ROOT
-CKEDITOR_CONFIGS = {
-    'default': {
-        'toolbar': 'full',
-        'height': 300,
-        'width': '100%',
-        # Add more plugins as needed. 'image' is default, 'codesnippet' is popular.
-        # 'extraPlugins': 'codesnippet',
-        'extraPlugins': 'uploadimage', # For image uploads
-        'filebrowserUploadUrl': "/ckeditor/upload/", # URL for file uploads
-        'filebrowserBrowseUrl': "/ckeditor/browse/", # URL for file Browse
-        'removePlugins': 'stylesheetparser', # Often recommended for clean HTML
-    },
-}
 
 # Crispy Forms settings
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"

@@ -12,9 +12,9 @@ urlpatterns = [
     path('rsvp/', include('rsvp.urls')),
     path('gallery/', include('gallery.urls')),
     path('articles/', include('articles.urls')),
-    path('ckeditor/', include('ckeditor_uploader.urls')),
     path('details/', TemplateView.as_view(template_name='core/wedding_details.html'), name='wedding_details'),
     path('', include('core.urls')),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
 ]
 
 

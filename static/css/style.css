@@ -124,3 +124,27 @@ body {
 .btn:active.focus, .btn.active.focus {
     box-shadow: 0 0 0 0.25rem rgba(139, 69, 19, 0.25); 
 }
+
+/* Ensures all images within the card have a consistent height and aspect ratio */
+.article-card .card-img-top {
+    height: 45%; /* Or your preferred height */
+    object-fit: cover;
+    width: 100%;
+}
+
+/* Optional: Improves readability of the text snippet */
+.article-card .card-body p {
+    /* This will allow text to display up to 3 lines before truncating */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Gallery-specific styles */
+.gallery-img {
+    width: 100%;
+    height: 300px; /* Adjust this height as needed for your desired aspect ratio */
+    object-fit: cover; /* This is key for uniform image sizes */
+}

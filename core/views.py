@@ -1,25 +1,28 @@
 # wedding_project/core/views.py
 from django.shortcuts import render
-# from articles.models import Article # Uncomment this line in a future step
-# from gallery.models import Photo   # Uncomment this line in a future step
+from articles.models import Article
+from gallery.models import GalleryImage # Import the GalleryImage model
 
 def home_view(request):
-    # --- Data for sections (will be populated from models later) ---
-    latest_articles = [] # Placeholder: Will fetch from Article model
-    gallery_photos_top = [] # Placeholder: Will fetch from Photo model
-    gallery_photos_bottom = [] # Placeholder: Will fetch from Photo model
+    # --- Data for sections ---
+    try:
+        # Retrieve the 3 most recent, published articles
+        latest_articles = Article.objects.filter(is_published=True).order_by('-published_date')[:3]
+    except Exception as e:
+        print(f"Error fetching latest articles: {e}")
+        latest_articles = []
+    
+    # Retrieve up to 8 images that are both public and featured
+    try:
+        featured_images = GalleryImage.objects.filter(is_public=True, is_featured=True)[:8]
+    except Exception as e:
+        print(f"Error fetching featured images: {e}")
+        featured_images = []
 
-    # Example: To fetch data when models are ready, you'd uncomment these:
-    # try:
-    #     latest_articles = Article.objects.order_by('-publish_date')[:3]
-    # except:
-    #     pass # Handle case where Article model/data doesn't exist yet
+    # Split the list into two halves to prevent duplication
+    gallery_photos_top = featured_images[:4]
+    gallery_photos_bottom = featured_images[4:]
 
-    # try:
-    #     gallery_photos_top = Photo.objects.all().order_by('?')[:4]
-    #     gallery_photos_bottom = Photo.objects.all().order_by('?')[:4]
-    # except:
-    #     pass # Handle case where Photo model/data doesn't exist yet
     # -------------------------------------------------------------
 
     context = {

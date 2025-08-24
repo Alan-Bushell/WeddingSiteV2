@@ -3,7 +3,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages # Import the messages framework
 from .models import RSVP, Guest
-from .forms import RSVPForm, GuestFormSet # Import forms
+from .forms import RSVPForm, GuestFormSet, GuestForm
+from django.forms import inlineformset_factory
 
 @login_required
 def rsvp_submission_view(request):
@@ -16,22 +17,31 @@ def rsvp_submission_view(request):
     except RSVP.DoesNotExist:
         pass # No existing RSVP, so rsvp_instance remains None
 
+    # Dynamically set extra
+    if rsvp_instance and rsvp_instance.guests.exists():
+        extra_forms = 0
+    else:
+        extra_forms = 2
+
+    GuestFormSetDynamic = inlineformset_factory(
+        RSVP,
+        Guest,
+        form=GuestForm,
+        can_delete=True,
+        extra=extra_forms,
+        max_num=10,
+        min_num=0,
+        validate_min=False
+    )
+
     if request.method == 'POST':
-        # Instantiate the main RSVP form with POST data
         rsvp_form = RSVPForm(request.POST, instance=rsvp_instance)
-        # Instantiate the Guest formset. If rsvp_instance exists, link it.
-        guest_formset = GuestFormSet(request.POST, request.FILES, instance=rsvp_instance, prefix='guests')
-
+        guest_formset = GuestFormSetDynamic(request.POST, instance=rsvp_instance, prefix='guests')
         if rsvp_form.is_valid() and guest_formset.is_valid():
-            # Save the RSVP instance first
-            current_rsvp = rsvp_form.save(commit=False)
-            current_rsvp.user = request.user # Link RSVP to the logged-in user
-            current_rsvp.save()
-
-            # Save the Guest formset
-            # This handles creating new guests, updating existing ones, and deleting marked ones.
-            guest_formset.instance = current_rsvp # Link the formset to the just-saved RSVP
+            rsvp = rsvp_form.save()
             guest_formset.save()
+            rsvp.number_of_guests = rsvp.guests.count()
+            rsvp.save()
 
             messages.success(request, 'Your RSVP has been submitted successfully! Thank you.')
             return redirect('rsvp_success') # Redirect to a success URL
@@ -42,7 +52,7 @@ def rsvp_submission_view(request):
     else:
         # GET request: Display empty forms or pre-populate if RSVP exists
         rsvp_form = RSVPForm(instance=rsvp_instance)
-        guest_formset = GuestFormSet(instance=rsvp_instance, prefix='guests') # Ensure prefix is consistent
+        guest_formset = GuestFormSetDynamic(instance=rsvp_instance, prefix='guests') # Ensure prefix is consistent
 
     context = {
         'rsvp_form': rsvp_form,

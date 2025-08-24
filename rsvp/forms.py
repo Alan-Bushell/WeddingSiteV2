@@ -55,9 +55,8 @@ GuestFormSet = inlineformset_factory(
     RSVP,
     Guest,
     form=GuestForm,
-    extra=0,    # Number of empty forms to display initially
-    can_delete=True, # Allow deleting existing guest forms
-    max_num=10, # Maximum number of guest forms allowed
-    min_num=0, # Allow submitting with 0 guests (if party size is 1 for example)
-    validate_min=False # Don't force min_num guests for formset validity
+    can_delete=True,
+    max_num=10,
+    min_num=0,
+    validate_min=False
 )

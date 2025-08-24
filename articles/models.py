@@ -7,7 +7,8 @@ from ckeditor.fields import RichTextField
 class Article(models.Model):
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True, help_text="A short label for the URL, contains only letters, numbers, underscores or hyphens.")
-    content = RichTextField() # <--- CHANGE THIS LINE
+    header_image = models.ImageField(upload_to='article_headers/', null=True, blank=True)
+    content = RichTextField()
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,

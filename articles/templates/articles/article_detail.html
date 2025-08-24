@@ -8,20 +8,24 @@
 <div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-lg-8">
-            <div class="card shadow-sm p-4">
-                <h1 class="card-title text-center mb-4">{{ article.title }}</h1>
-                <h6 class="card-subtitle text-muted text-center mb-4">
-                    By {{ article.author.username|default:"Unknown" }} | Published on {{ article.published_date|date:"F d, Y" }}
-                </h6>
-                {# IMPORTANT: Use |safe to render HTML content from Summernote #}
-                <div class="card-text">
-                    {{ article.content|safe }}
-                </div>
-                {% if article.updated_date != article.published_date %}
-                    <p class="text-muted text-end mt-4"><small>Last updated: {{ article.updated_date|date:"F d, Y" }}</small></p>
+            <div class="card shadow-sm">
+                {% if article.header_image %}
+                <img src="{{ article.header_image.url }}" class="card-img-top mb-3" alt="{{ article.title }}">
                 {% endif %}
-                <div class="mt-4 text-center">
-                    <a href="{% url 'article_list' %}" class="btn btn-secondary">Back to Articles</a>
+                <div class="card-body p-4">
+                    <h1 class="card-title text-center mb-4">{{ article.title }}</h1>
+                    <h6 class="card-subtitle text-muted text-center mb-4">
+                        By {{ article.author.username|default:"Unknown" }} | Published on {{ article.published_date|date:"F d, Y" }}
+                    </h6>
+                    <div class="card-text">
+                        {{ article.content|safe }}
+                    </div>
+                    {% if article.updated_date != article.published_date %}
+                        <p class="text-muted text-end mt-4"><small>Last updated: {{ article.updated_date|date:"F d, Y" }}</small></p>
+                    {% endif %}
+                    <div class="mt-4 text-center">
+                        <a href="{% url 'article_list' %}" class="btn btn-secondary">Back to Articles</a>
+                    </div>
                 </div>
             </div>
         </div>

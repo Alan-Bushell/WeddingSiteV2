@@ -7,22 +7,35 @@
 {% block content %}
 <div class="container text-center py-5">
     <h1 class="my-4">Our Photo Gallery</h1>
+    {% if user.is_authenticated %}
+    <a href="{% url 'upload_image' %}" class="btn btn-outline-success mb-4">
+        <i class="fas fa-camera me-2"></i> Upload Your Photos
+    </a>
+    {% endif %}
     <p class="lead mb-5">Relive our special moments through these cherished photos!</p>
 
+    {# Tag Filter Buttons #}
+    <div class="d-flex flex-wrap justify-content-center mb-4">
+        <a href="{% url 'gallery' %}" class="btn btn-outline-primary m-1 {% if not active_tag %}active{% endif %}">All Photos</a>
+        {% for tag in tags %}
+            <a href="{% url 'gallery_by_tag' tag_slug=tag.slug %}" class="btn btn-outline-primary m-1 {% if active_tag == tag.slug %}active{% endif %}">{{ tag.name }}</a>
+        {% endfor %}
+    </div>
+
     <div class="row">
-        {% if images %} {# Check if there are any images to display #}
+        {% if images %}
             {% for image in images %}
-            <div class="col-lg-4 col-md-6 mb-4"> {# Responsive columns for grid layout #}
-                <div class="card shadow-sm h-100"> {# h-100 ensures cards in a row have equal height #}
-                    {# The .url attribute of an ImageField gives the URL to the uploaded file #}
-                    <img src="{{ image.image.url }}" class="card-img-top" alt="{{ image.title|default:'Gallery Image' }}">
-                    <div class="card-body">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card shadow-sm h-100 gallery-card">
+                    <img src="{{ image.image.url }}" class="card-img-top gallery-img" alt="{{ image.title|default:'Gallery Image' }}">
+                    <div class="card-body d-flex flex-column">
                         <h5 class="card-title">{{ image.title|default:"Untitled Photo" }}</h5>
-                        <p class="card-text">{{ image.description|default:"" }}</p> {# Don't show "No description" if blank #}
-                    </div>
-                    <div class="card-footer text-muted small">
-                        Uploaded: {{ image.uploaded_at|date:"M d, Y" }}
-                        {% if image.is_featured %}<span class="badge bg-info ms-2">Featured</span>{% endif %}
+                        <p class="card-text flex-grow-1">{{ image.description|default:"" }}</p>
+                        <div class="mt-auto">
+                            {% for tag in image.tags.all %}
+                                <span class="badge bg-secondary me-1">{{ tag.name }}</span>
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -30,7 +43,9 @@
         {% else %}
             <div class="col-12">
                 <p class="text-muted">No images have been uploaded yet. Check back soon!</p>
-                <a href="{% url 'admin:gallery_galleryimage_add' %}" class="btn btn-primary mt-3">Add Images (Admin)</a>
+                {% if request.user.is_superuser %}
+                    <a href="{% url 'admin:gallery_galleryimage_add' %}" class="btn btn-primary mt-3">Add Images (Admin)</a>
+                {% endif %}
             </div>
         {% endif %}
     </div>
