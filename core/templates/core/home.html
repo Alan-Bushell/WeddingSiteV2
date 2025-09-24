@@ -1,180 +1,126 @@
-{# wedding_project/core/templates/core/home.html #}
+{# wedding_project/core/templates/core/home2.html #}
 {% extends "base.html" %}
 {% load static %}
 
 {% block title %}Welcome to Our Wedding!{% endblock %}
 
-{% block head_extra %}
-    <link rel="stylesheet" href="{% static 'core/css/home.css' %}"> {# PASTE THE LINE HERE #}
-{% endblock head_extra %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static '/css/style2.css' %}">
+{% endblock extra_css %}
 
 {% block content %}
-
-{# Hero Section - Responsive Vertical/Horizontal Carousels #}
-<section class="hero-section">
-    <div class="hero-overlay">
-        <div class="hero-content-wrapper"> {# This new wrapper holds carousels and CTA #}
-
-            {# Left Vertical/Horizontal Carousel #}
-            <div class="hero-carousel hero-carousel-left" data-carousel-direction-desktop="up" data-carousel-direction-mobile="left">
-                <div class="carousel-inner">
-                    <img src="{% static 'core/img/hero_carousel/left_1.jpg' %}" alt="Wedding Image 1" class="carousel-item">
-                    <img src="{% static 'core/img/hero_carousel/left_2.jpg' %}" alt="Wedding Image 2" class="carousel-item">
-                    <img src="{% static 'core/img/hero_carousel/left_3.jpg' %}" alt="Wedding Image 3" class="carousel-item">
-                    <img src="{% static 'core/img/hero_carousel/left_4.jpg' %}" alt="Wedding Image 4" class="carousel-item">
-                    <img src="{% static 'core/img/hero_carousel/left_5.jpg' %}" alt="Wedding Image 5" class="carousel-item">
-                    {# Add more 'left_' images here if you have them, for a smoother loop #}
-                </div>
-            </div>
-
-            {# Central CTA Card (Your existing hero-card) #}
-            <div class="hero-card">
-                <h1>We're Getting Married!</h1>
-                <p class="lead">Join us to celebrate our special day on {{ wedding_date }}!</p>
-                <div class="hero-buttons">
-                    <a href="{% url 'rsvp' %}" class="btn btn-lg btn-wedding-primary">
-                        <i class="fas fa-heart"></i> RSVP Now
-                    </a>
-                    <a href="{% url 'wedding_details' %}" class="btn btn-lg btn-wedding-secondary">
-                        <i class="fas fa-calendar-alt"></i> Wedding Details
-                    </a>
-                </div>
-            </div>
-
-            {# Right Vertical/Horizontal Carousel #}
-            <div class="hero-carousel hero-carousel-right" data-carousel-direction-desktop="down" data-carousel-direction-mobile="right">
-                <div class="carousel-inner">
-                    <img src="{% static 'core/img/hero_carousel/left_1.jpg' %}" alt="Wedding Image 1" class="carousel-item">
-                    <img src="{% static 'core/img/hero_carousel/left_2.jpg' %}" alt="Wedding Image 2" class="carousel-item">
-                    <img src="{% static 'core/img/hero_carousel/left_3.jpg' %}" alt="Wedding Image 3" class="carousel-item">
-                    <img src="{% static 'core/img/hero_carousel/left_4.jpg' %}" alt="Wedding Image 4" class="carousel-item">
-                    <img src="{% static 'core/img/hero_carousel/left_5.jpg' %}" alt="Wedding Image 5" class="carousel-item">
-                    {# Add more 'right_' images here if you have them, for a smoother loop #}
-                </div>
-            </div>
-
-        </div>
+    <!-- Part 1 hero overlay -->
+    <div class="hero-overlay-section">
+        <div class="hero-overlay-image"></div>
     </div>
-</section>
 
-{# Top Gallery Section - From Struct 1 #}
-<section class="container py-5">
-    <h2 class="section-title">Our Favorite Moments</h2>
-    <div class="row">
-        {% for photo in gallery_photos_top %}
-            <div class="col-md-3 col-sm-6 mb-4">
-                <div class="card gallery-card">
-                    <img src="{{ photo.image.url }}" class="card-img-top" alt="{{ photo.title|default:'Featured Image' }}">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">{{ photo.title|default:"Favorite Moment" }}</h5>
+    <!-- Part 2 calendar -->
+    <div class="calendar-section">
+        <div class="calendar-container">
+            <div class="calendar-header">
+                <h2 class="text-center">On..</h2>
+                <h3 class="text-center">October 2026</h3>
+            </div>
+            <div class="calendar-body">
+                <!-- Week 1 -->
+                <div class="calendar-row">
+                    <div class="calendar-week-header-row">
+                         <div class="calendar-week-header">19</div>
+                        <div class="calendar-week-header">20</div>
+                        <div class="calendar-week-header">21</div>
+                        <div class="calendar-week-header">22</div>
+                        <div class="calendar-week-header">23</div>
+                        <div class="calendar-week-header">24</div>
+                        <div class="calendar-week-header">25</div>
+                    </div>
+                    <div class="calendar-days-row">
+                        <div class="calendar-day"></div>
+                        <div class="calendar-day"></div>
+                        <div class="calendar-day"></div>
+                        <div class="calendar-day"></div>
+                        <div class="calendar-day"></div>
+                        <div class="calendar-day"></div>
+                        <div class="calendar-day"></div>
                     </div>
                 </div>
-            </div>
-        {% empty %}
-            {# Fallback if there are no featured photos #}
-            <div class="col-12 text-center">
-                <p class="text-muted">No favorite moments have been featured yet!</p>
-            </div>
-        {% endfor %}
-    </div>
-</section>
-
-{# "Our Journey Together" Section - From Design 2 #}
-<section class="journey-section">
-    <div class="container">
-        <h2 class="mb-4">Our Journey Together</h2>
-        <p class="lead">Every step, every laugh, every memory leads us here. We can't wait for our next chapter!</p>
-    </div>
-</section>
-
-{# Bottom Gallery Section / Featured img - From Struct 1 (repurposed for more photos) #}
-<section class="container py-5">
-    <h2 class="section-title">More Precious Memories</h2>
-    <div class="row">
-        {% for photo in gallery_photos_bottom %}
-            <div class="col-md-3 col-sm-6 mb-4">
-                <div class="card gallery-card">
-                    <img src="{{ photo.image.url }}" class="card-img-top" alt="{{ photo.title|default:'Featured Image' }}">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">{{ photo.title|default:"Precious Memory" }}</h5>
-                    </div>
-                </div>
-            </div>
-        {% empty %}
-            {# Fallback if there are fewer than 5 featured photos #}
-            <div class="col-12 text-center">
-                <p class="text-muted">More memories coming soon!</p>
-            </div>
-        {% endfor %}
-    </div>
-</section>
-
-{# Latest Articles Section - From Struct 1 #}
-<section class="container py-5">
-    <h2 class="section-title">Latest Updates & Stories</h2>
-    <div class="row">
-        {% for article in latest_articles %}
-            <div class="col-md-4 mb-4">
-                <div class="card article-card h-100 shadow-sm">
-                    {# Display the article's header image or a placeholder #}
-                    {% if article.header_image %}
-                    <img src="{{ article.header_image.url }}" class="card-img-top article-img" alt="{{ article.title }}">
-                    {% else %}
-                    <img src="{% static 'core/img/article-placeholder.jpg' %}" class="card-img-top article-img" alt="Article Placeholder">
-                    {% endif %}
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">{{ article.title }}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">
-                            By {{ article.author.username|default:"Unknown" }} | {{ article.published_date|date:"F d, Y" }}
-                        </h6>
-                        <div class="flex-grow-1">
-                            <p class="card-text">{{ article.content|safe|striptags|truncatechars:140 }}</p>
+                <!-- Week 2 -->
+                <div class="calendar-row">
+                    <div class="calendar-week-header-row">
+                        <div class="calendar-week-header">26</div>
+                        <div class="calendar-week-header">27</div>
+                        <div class="calendar-week-header">28</div>
+                        <div class="calendar-week-header">29</div>
+                        <div class="calendar-week-header">30</div>
+                        <div class="calendar-week-header calendar-heart">
+                            <span>31</span>
                         </div>
-                        <div class="mt-auto">
-                            <a href="{% url 'article_detail' slug=article.slug %}" class="btn btn-primary btn-sm">Read More</a>
+                        <div class="calendar-week-header">01</div>
+                    </div>
+                    <div class="calendar-days-row">
+                        <div class="calendar-day"></div>
+                        <div class="calendar-day"></div>
+                        <div class="calendar-day"></div>
+                        <div class="calendar-day"></div>
+                        <div class="calendar-day calendar-day-center">
+                            <div class="cal-font">
+                                <span class="cal-icon"><i class="fa-solid fa-anchor"></i></span>
+                                <span>For<br>a<br>Snorkel</span>
+                            </div>
+                        </div>
+                        <div class="calendar-day calendar-day-highlighted calendar-day-center">
+                            <div class="cal-font">
+                                <span class="cal-icon"><i class="fa-solid fa-heart"></i></span>
+                                <span>For<br>a<br>Wedding</span>
+                            </div>
+                        </div>
+                        <div class="calendar-day calendar-day-center">
+                            <div class="cal-font">
+                                <span class="cal-icon"><i class="fa-solid fa-martini-glass-citrus"></i></span>
+                                <span>For<br>a<br>Drink</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        {% empty %}
-            {# This message will display if there are no articles in the database #}
-            <div class="col-12 text-center">
-                <p class="text-muted">No articles published yet. Check back soon!</p>
+        </div>
+    </div>
+    <!-- Part 3 Top in / Hotels-->
+
+    <div class="hotel-in-section">
+        <h2 class="text-center">in</h2>
+        <div class="container-fluid hotel-in">
+            <div class="row row-1">
+                <div class="col-6">pics of hotel</div>
+                <div class="col-2">room details</div>
+                <div class="col-2">room details</div>
+                <div class="col-2">room details</div>
             </div>
-        {% endfor %}
-    </div>
-    
-    {# New link to view all articles #}
-    <div class="text-center mt-4">
-        <a href="{% url 'article_list' %}" class="btn btn-primary btn-lg">View All Articles</a>
-    </div>
-</section>
-
-{# Wedding Location / Map Section - From Struct 1 & Design 2 #}
-<section class="container py-5">
-    <h2 class="section-title">Wedding Location</h2>
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card p-4 mb-4 shadow-sm">
-                <h4 class="card-title text-center mb-3">Find Us Here!</h4>
-                <p class="text-center lead">Join us at:</p>
-                <p class="text-center fw-bold">{{ wedding_location }}</p>
-
-                <div class="map-container mb-4">
-                    <iframe
-                        src="{{ map_embed_url }}"
-                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
-                </div>
-                <p class="text-center">
-                    <a href="https://www.google.com/maps/search/?api=1&query={{ wedding_location|urlencode }}" target="_blank" class="btn btn-outline-secondary">Get Directions</a>
-                </p>
+            <div class="row row-2">
+                <div class="col-6">Cape panwa dates</div>
+                <div class="col-2">pic</div>
+                <div class="col-2">pic</div>
+                <div class="col-2">pic</div>
+            </div>
+            <div class="row row-3">
+                <div class="col-6">hotel details</div>
+                <div class="col-6">other hotel details</div>
             </div>
         </div>
     </div>
-</section>
+
+    <!-- Phuket Divider -->
+    <div class="phuket-divider-section">
+        <div class="container-fluid">
+            <div class="phuket-div-image">Phuket</div>
+        </div>
+    </div>
+
+    <!-- Part 3 Bottom before wedding-->
+
+
 
 {% endblock content %}
+
 {% block extra_js %}
     <script src="{% static 'core/js/hero_carousel.js' %}"></script>
 {% endblock extra_js %}

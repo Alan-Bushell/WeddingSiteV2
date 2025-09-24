@@ -1,0 +1,157 @@
+/* Style for Hero Overlay Section */
+
+.hero-overlay-section{
+    height: 90vh;
+    background-color: blue;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+}
+
+.hero-overlay-image{
+    height: 20%;
+    width: 70%;
+    position: absolute;
+    bottom: 15vh;
+    right: 10vw;
+    z-index: 1;
+    opacity: 0.7;
+    background-color: red;
+    border-radius: 10px;
+}
+
+/* Style for Calendar Section */
+
+.calendar-section{
+    height: 100vh;
+    background-color:antiquewhite;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+}
+
+.calendar-week-header-row,
+.calendar-days-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.calendar-week-header,
+.calendar-day {
+    flex: 1 1 0;
+    text-align: center;
+    padding: 0.5rem 0;
+    border: 1px solid #ddd;
+    background: #f8f9fa;
+}
+
+.calendar-week-header {
+    font-weight: bold;
+    background: #e9ecef;
+    border-bottom: none;
+}
+
+.calendar-days-row .calendar-day {
+    border-top: none;
+    height: 25vh;
+}
+
+.calendar-day-highlighted {
+    background: #bb45a7;
+    color: #fff;
+    font-size: 10px;
+}
+
+.calendar-day-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px; /* or whatever height you want for your calendar cells */
+    text-align: center;
+}
+
+.cal-font {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-size: 12px;
+    text-align: center;
+}
+
+.cal-icon {
+    margin-bottom: 0.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cal-font i {
+    font-size: 2em;
+    color: #bb45a7;
+}
+
+.calendar-day-highlighted .cal-font i {
+    color: #fff;
+}
+
+/* Part 3 top */
+
+.hotel-in-section {
+    background-color: lightgrey;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    box-sizing: border-box;
+}
+
+.hotel-in{
+    height: 80vh;
+}
+
+.row-1, .row-2, .row-3, .col-6, .col-2 {
+    border: solid 1px black;
+}
+
+.row-1 {
+    height: 30vh;
+}
+
+.row-2 {
+    height: 15vh
+}
+
+.row-3 {
+    height: 35vh;
+}
+
+/* Phulet Section */
+
+.phuket-divider-section {
+    height: 20vh;
+    background-color: rgb(109, 204, 207);
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+}
+
+.phuket-div-image {
+    height: 20vh;
+    font-size: 64px;
+    letter-spacing: 20px;
+    text-align: center;
+    align-content: center;
+}
