@@ -34,6 +34,10 @@ def home_view(request):
         'wedding_date': 'October 31, 2026', # Hardcoded for now
         'wedding_location': 'Cape Panwa Hotel, Phuket, Thailand', # Hardcoded for now
         'map_embed_url': 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3066.2890155982077!2d98.40821513707338!3d7.807672204988176!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30502c170a4c1303%3A0xac18e439e9c17960!2sCape%20Panwa%20Hotel!5e1!3m2!1sen!2sie!4v1750613331257!5m2!1sen!2sie"',
+        'week1_days': ["19", "20", "21", "22", "23", "24", "25"],
+        'week2_days': ["26", "27", "28", "29", "30"],
+        'calendar_days': [1, 2, 3, 4, 5, 6, 7],  # <-- This must be present!
+        'carousel_imgs': ["left_1.jpg", "left_2.jpg", "left_3.jpg", "left_4.jpg"],
     }
     return render(request, 'core/home.html', context)
 

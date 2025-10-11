@@ -10,12 +10,12 @@
 
 {% block content %}
     <!-- Part 1 hero overlay -->
-    <div class="hero-overlay-section">
+    <div class="hero-overlay-section full-width-section">
         <div class="hero-overlay-image"></div>
     </div>
 
     <!-- Part 2 calendar -->
-    <div class="calendar-section">
+    <div class="calendar-section full-width-section">
         <div class="calendar-container">
             <div class="calendar-header">
                 <h2 class="text-center">On..</h2>
@@ -25,35 +25,23 @@
                 <!-- Week 1 -->
                 <div class="calendar-row">
                     <div class="calendar-week-header-row">
-                         <div class="calendar-week-header">19</div>
-                        <div class="calendar-week-header">20</div>
-                        <div class="calendar-week-header">21</div>
-                        <div class="calendar-week-header">22</div>
-                        <div class="calendar-week-header">23</div>
-                        <div class="calendar-week-header">24</div>
-                        <div class="calendar-week-header">25</div>
+                        {% for day in week1_days %}
+                            <div class="calendar-week-header">{{ day }}</div>
+                        {% endfor %}
                     </div>
                     <div class="calendar-days-row">
+                        {% for _ in calendar_days %}
                         <div class="calendar-day"></div>
-                        <div class="calendar-day"></div>
-                        <div class="calendar-day"></div>
-                        <div class="calendar-day"></div>
-                        <div class="calendar-day"></div>
-                        <div class="calendar-day"></div>
-                        <div class="calendar-day"></div>
+                        {% endfor %}
                     </div>
                 </div>
                 <!-- Week 2 -->
                 <div class="calendar-row">
                     <div class="calendar-week-header-row">
-                        <div class="calendar-week-header">26</div>
-                        <div class="calendar-week-header">27</div>
-                        <div class="calendar-week-header">28</div>
-                        <div class="calendar-week-header">29</div>
-                        <div class="calendar-week-header">30</div>
-                        <div class="calendar-week-header calendar-heart">
-                            <span>31</span>
-                        </div>
+                        {% for day in week2_days %}
+                        <div class="calendar-week-header">{{ day }}</div>
+                        {% endfor %}
+                        <div class="calendar-week-header calendar-heart"><span>31</span></div>
                         <div class="calendar-week-header">01</div>
                     </div>
                     <div class="calendar-days-row">
@@ -84,68 +72,68 @@
             </div>
         </div>
     </div>
-    <!-- Part 3 Top in / Hotels-->
 
-    <div class="hotel-in-section">
+    <!-- Part 3 Top in / Hotels-->
+    <div class="hotel-in-section full-width-section">
         <h2 class="text-center">in</h2>
         <div class="container-fluid hotel-in">
-            <div class="row row-1">
-                <div class="col-6">pics of hotel</div>
-                <div class="col-2">room details</div>
-                <div class="col-2">room details</div>
-                <div class="col-2">room details</div>
+            <div class="row g-0 row-1">
+                <div class="col-6 before-box">pics of hotel</div>
+                <div class="col-2 before-box">room details</div>
+                <div class="col-2 before-box">room details</div>
+                <div class="col-2 before-box">room details</div>
             </div>
-            <div class="row row-2">
-                <div class="col-6">Cape panwa dates</div>
-                <div class="col-2">pic</div>
-                <div class="col-2">pic</div>
-                <div class="col-2">pic</div>
+            <div class="row g-0 row-2">
+                <div class="col-6 before-box">Cape panwa dates</div>
+                <div class="col-2 before-box">pic</div>
+                <div class="col-2 before-box">pic</div>
+                <div class="col-2 before-box">pic</div>
             </div>
-            <div class="row row-3">
-                <div class="col-6">hotel details</div>
-                <div class="col-6">other hotel details</div>
+            <div class="row g-0 row-3">
+                <div class="col-6 before-box">hotel details</div>
+                <div class="col-6 before-box">other hotel details</div>
             </div>
         </div>
     </div>
 
     <!-- Phuket Divider -->
-    <div class="phuket-divider-section">
+    <div class="phuket-divider-section full-width-section">
         <div class="container-fluid">
             <div class="phuket-div-image">Phuket</div>
         </div>
     </div>
 
     <!-- Part 3 Bottom before wedding-->
-    <div class="before-section">
+    <div class="before-section full-width-section">
         <h2 class="text-center">Before</h2>
         <div class="container-fluid before-section-container">
-            <div class="row g-0">
+            <div class="row g-0 before-row-equal">
                 <!-- Left side -->
                 <div class="col-6 cont-left">
-                    <div class="row">
-                        <div class="col-6 before-pic">Pic 1</div>
-                        <div class="col-6 before-pic">Pic 2</div>
+                    <div class="row g-0">
+                        <div class="col-6 before-box before-pic">Pic 1</div>
+                        <div class="col-6 before-box before-pic">Pic 2</div>
                     </div>
-                    <div class="row">
-                        <div class="col-12 before-bangtao">Bang Tao Beach</div>
+                    <div class="row g-0">
+                        <div class="col-12 before-box before-bangtao">Bang Tao Beach</div>
                     </div>
-                    <div class="row">
-                        <div class="col-6 before-pic">Pic 3</div>
-                        <div class="col-6 before-pic">Pic 4</div>
+                    <div class="row g-0">
+                        <div class="col-6 before-box before-pic">Pic 3</div>
+                        <div class="col-6 before-box before-pic">Pic 4</div>
                     </div>
                 </div>
                 <!-- Right side -->
                 <div class="col-6 cont-right">
-                    <div class="row">
-                        <div class="col-6 before-right-small">Sunwing Small</div>
-                        <div class="col-6 before-right-small">Right Pic Small</div>
+                    <div class="row g-0">
+                        <div class="col-6 before-box before-right-small">Sunwing Small</div>
+                        <div class="col-6 before-box before-right-small">Right Pic Small</div>
                     </div>
-                    <div class="row">
-                        <div class="col-12 before-right-tall">Info on beach and other hotels</div>
+                    <div class="row g-0">
+                        <div class="col-12 before-box before-right-tall">Info on beach and other hotels</div>
                     </div>
-                    <div class="row">
-                        <div class="col-6 before-right-small">Arinara</div>
-                        <div class="col-6 before-right-small">Pic</div>
+                    <div class="row g-0">
+                        <div class="col-6 before-box before-right-small">Arinara</div>
+                        <div class="col-6 before-box before-right-small">Pic</div>
                     </div>
                 </div>
             </div>
@@ -153,54 +141,45 @@
     </div>
 
     <!-- Page 4 top For Section-->
-     <div class="for-poster-section">
+    <div class="for-poster-section full-width-section">
         <h2 class="text-center">For</h2>
-        <div class="container-fluid for-poster">
-        </div>
+        <div class="container-fluid for-poster"></div>
     </div>
 
     <!-- Page 4 bottom day breakdown section-->
-     <div class="day-breakdown-section">
+    <div class="day-breakdown-section full-width-section">
         <h2 class="text-center">A</h2>
         <div class="container-fluid day-breakdown">
-            <div class="row breakdown-row-header">
+            <div class="row g-0 breakdown-row-header">
                 <div class="col-4 break-col-h">A Boat Trip</div>
                 <div class="col-4 break-col-h">A Drink</div>
                 <div class="col-4 break-col-h">Any Extras</div>
             </div>
-            <div class="row breakdown-row">
+            <div class="row g-0 breakdown-row">
                 <div class="col-4 break-col">Pic</div>
                 <div class="col-4 break-col">Pic</div>
                 <div class="col-4 break-col">Pic</div>
             </div>
-            <div class="row breakdown-row">
+            <div class="row g-0 breakdown-row">
                 <div class="col-4 break-col">Info</div>
                 <div class="col-4 break-col">Info</div>
                 <div class="col-4 break-col">Info</div>
+            </div>
         </div>
     </div>
 
     <!-- Page 4 bottom day carousel section-->
-     <div class="bottom-carousel-section">
+    <div class="bottom-carousel-section full-width-section">
         <div class="container-fluid bottom-carousel">
-            <div class="row breakdown-row-header">
+            <div class="row g-0 breakdown-row-header">
+                {% for img in carousel_imgs %}
                 <div class="col-3 carousel-col">
-                    <img src="{% static 'core/img/hero_carousel/left_1.jpg' %}" class="carousel-img" alt="Image 1">
+                    <img src="{% static 'core/img/hero_carousel/'|add:img %}" class="carousel-img" alt="Image">
                 </div>
-                <div class="col-3 carousel-col">
-                    <img src="{% static 'core/img/hero_carousel/left_2.jpg' %}" class="carousel-img" alt="Image 2">
-                </div>
-                <div class="col-3 carousel-col">
-                    <img src="{% static 'core/img/hero_carousel/left_3.jpg' %}" class="carousel-img" alt="Image 3">
-                </div>
-                <div class="col-3 carousel-col">
-                    <img src="{% static 'core/img/hero_carousel/left_4.jpg' %}" class="carousel-img" alt="Image 4">
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
-
-
 {% endblock content %}
 
 {% block extra_js %}
