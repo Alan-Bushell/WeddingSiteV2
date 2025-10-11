@@ -104,7 +104,7 @@
 
 /* Part 3 top */
 
-.hotel-in-section {
+.hotel-in-section, .for-poster-section {
     background-color: lightgrey;
     width: 100vw;
     position: relative;
@@ -227,4 +227,86 @@
     width: 100%;
     margin-left: 0;
     margin-right: 0;
+}
+
+/* For Section */
+
+.for-poster {
+    height: 92vh;
+    background-color: rgb(199, 34, 34);
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    box-sizing: border-box;
+}
+
+/* day breakdown section */
+
+.day-breakdown-section {
+    height: 90vh;
+    background-color: rgb(72, 122, 230);
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    box-sizing: border-box;
+}
+
+/* Section 4 bottom */
+
+.breakdown-row-header {
+    text-align: center;
+    height: 15vh;
+    border: solid 1px black;
+    align-items: center;
+}
+
+.breakdown-row {
+    height: 25vh;
+    border: solid 1px black;
+    text-align: center;
+}
+
+.break-col {
+    border: solid 1px black;
+    align-items: center;
+}
+
+.break-col-h {
+    border: solid 1px black;
+    align-items: center;
+}
+
+/* bottom carousel section */
+
+.bottom-carousel-section {
+    height: 20vh;
+    background-color: rgb(34, 199, 103);
+    width: 100vw;
+}
+
+.bottom-carousel{
+    height: 100%;
+}
+
+.carousel-col {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-img {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Ensures square images */
+    object-fit: cover;
+    border-radius: 8px; /* Optional: rounded corners */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08); /* Optional: subtle shadow */
+    max-width: 100%;
+    height: auto;
 }
