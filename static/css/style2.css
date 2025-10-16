@@ -197,6 +197,10 @@
     border: solid 1px black;
     align-items: center;
     height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center; 
 }
 
 /* Bottom carousel section */
@@ -223,4 +227,29 @@ body {
 .container-fluid {
     padding-left: 0 !important;
     padding-right: 0 !important;
+}
+
+/* Add the image fitting properties */
+.before-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.break-col img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.carousel-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    max-width: 100%;
 }
