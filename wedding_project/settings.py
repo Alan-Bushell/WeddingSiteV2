@@ -10,27 +10,20 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
-from pathlib import Path
-
-from dotenv import load_dotenv
-load_dotenv()
 import os
+from pathlib import Path
+from dotenv import load_dotenv
 import dj_database_url
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+load_dotenv()
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "dev-insecure-key")
+DEBUG = os.environ.get("DJANGO_DEBUG", "True") == "True"
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = [h for h in os.environ.get("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",") if h]
+CSRF_TRUSTED_ORIGINS = [o for o in os.environ.get("DJANGO_CSRF_TRUSTED_ORIGINS", "").split(",") if o]
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
@@ -55,11 +48,15 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     # Crispy Forms
     'crispy_forms',
-    'crispy_bootstrap5', # Make sure this matches your Bootstrap version
+    'crispy_bootstrap5',
 ]
 
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
+    "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -92,16 +89,21 @@ WSGI_APPLICATION = 'wedding_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-if os.environ.get('DJANGO_DEVELOPMENT') == 'True':
+# Dev: SQLite | Prod: Postgres via DATABASE_URL
+if os.environ.get("DJANGO_DEVELOPMENT", "True") == "True":
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
         }
     }
 else:
     DATABASES = {
-        'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
+        "default": dj_database_url.config(
+            env="DATABASE_URL",
+            conn_max_age=600,
+            ssl_require=True,
+        )
     }
 
 
@@ -150,25 +152,19 @@ CKEDITOR_UPLOAD_PATH = 'uploads/'
 CKEDITOR_BASEPATH = '/static/ckeditor/ckeditor/'
 
 
-STATIC_URL = 'static/'
+STATIC_URL = "static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
-# This is where Django will look for your custom static files during development.
-# It tells Django to also look in a folder named 'static' at the root of your project.
-STATICFILES_DIRS = [
-    BASE_DIR / 'static', # Looks for 'static' folder in your project root
-]
+STORAGES = {
+    "default": {"BACKEND": "django.core.files.storage.FileSystemStorage"},
+    "staticfiles": {"BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"},
+}
 
-# This is the directory where Django will collect all static files for deployment (production).
-# You'll run 'python manage.py collectstatic' later, and files will go here.
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+MEDIA_URL = "media/"
+MEDIA_ROOT = BASE_DIR / "media"
 
-
-# Media files (user-uploaded content, like your gallery images)
-# These are separate from static files.
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media' # This is where uploaded files will be stored
-
-
-# Crispy Forms settings
-CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
-CRISPY_TEMPLATE_PACK = "bootstrap5"
+# Security when behind Render’s proxy
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+USE_X_FORWARDED_HOST = True
+SESSION_COOKIE_SECURE = os.environ.get("DJANGO_DEVELOPMENT", "False") != "True"
+CSRF_COOKIE_SECURE = os.environ.get("DJANGO_DEVELOPMENT", "False") != "True"
