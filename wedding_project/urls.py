@@ -23,6 +23,6 @@ if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 # --- NEW: CUSTOM ERROR HANDLERS ---
-handler404 = core_views.custom_404
-handler500 = core_views.custom_500
+handler404 = 'core.views.custom_404'
+handler500 = 'core.views.custom_500'
 # ----------------------------------
