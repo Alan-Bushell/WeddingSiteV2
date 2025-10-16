@@ -1,6 +1,6 @@
 # accounts/forms.py
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm as BaseUserChangeForm
 from .models import CustomUser
 
 class CustomUserCreationForm(UserCreationForm):
@@ -10,26 +10,21 @@ class CustomUserCreationForm(UserCreationForm):
     """
     class Meta(UserCreationForm.Meta):
         model = CustomUser
-        fields = UserCreationForm.Meta.fields + ('phone_number',) # Add custom fields here
+        # keeps default UserCreationForm fields (e.g., username) + your custom field
+        fields = UserCreationForm.Meta.fields + ('phone_number',)
 
-class UserProfileForm(UserChangeForm): # Your existing form
+class UserProfileForm(BaseUserChangeForm):
     """
-    A form for updating existing CustomUser instances.
-    Note: password fields are excluded as they are handled separately.
+    Front-end profile form (optional). Excludes password field.
     """
-    password = None # Exclude password field from direct editing here
+    password = None
 
     class Meta:
         model = CustomUser
-        # Adjust fields: include first_name, last_name, and phone_number
-        # Consider if you want 'username' to be directly editable by the user.
-        # Often, username is not editable on a profile, while first/last/email are.
-        fields = ('first_name', 'last_name', 'email', 'phone_number',) # <--- MODIFIED FIELDS HERE
-        # You might want to remove 'username' or 'email' if you don't want users changing them
-        # For this example, we include them.
+        fields = ('first_name', 'last_name', 'email', 'phone_number',)
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        # Apply Bootstrap form-control class to all fields
-        for field_name, field in self.fields.items():
-            field.widget.attrs['class'] = 'form-control'
+# Admin change form: safe and complete
+class CustomUserChangeForm(BaseUserChangeForm):
+    class Meta(BaseUserChangeForm.Meta):
+        model = CustomUser
+        fields = "__all__"

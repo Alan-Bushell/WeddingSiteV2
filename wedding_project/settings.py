@@ -154,7 +154,7 @@ CKEDITOR_BASEPATH = '/static/ckeditor/ckeditor/'
 
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
-STATICFILES_DIRS = [BASE_DIR / "static"]  # add this so 'static/css/style2.css' is collected
+STATICFILES_DIRS = [BASE_DIR / "static"]  # make 'W26/static/**' collectable
 
 STORAGES = {
     "default": {"BACKEND": "django.core.files.storage.FileSystemStorage"},
