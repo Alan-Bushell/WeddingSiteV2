@@ -10,7 +10,7 @@ body {
 
 /* Navbar styling */
 .navbar {
-    background-color: rgb(187, 69, 167) !important; /* A nice shade of pink */
+    background-color: #ff00cc !important; /* A nice shade of pink */
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 

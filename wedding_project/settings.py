@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 import os
 from pathlib import Path
 from dotenv import load_dotenv
-import dj_database_url
 
 load_dotenv()
 
@@ -98,6 +97,7 @@ if os.environ.get("DJANGO_DEVELOPMENT", "True") == "True":
         }
     }
 else:
+    import dj_database_url
     DATABASES = {
         "default": dj_database_url.config(
             env="DATABASE_URL",
@@ -152,7 +152,7 @@ CKEDITOR_UPLOAD_PATH = 'uploads/'
 CKEDITOR_BASEPATH = '/static/ckeditor/ckeditor/'
 
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_DIRS = [BASE_DIR / "static"]  # make 'W26/static/**' collectable
 
@@ -161,7 +161,7 @@ STORAGES = {
     "staticfiles": {"BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"},
 }
 
-MEDIA_URL = "media/"
+MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
 # Security when behind Render’s proxy

@@ -1,255 +1,381 @@
-/* Utility classes */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Montserrat:wght@400;600;700&display=swap');
+
+/* Theme palette (Thailand wedding) */
+:root {
+    --magenta: #ff00cc;
+    --blue:#a9e1ff;
+    --teal: #00ffee;
+    --coral: #f46541;
+    --sand: #f6e8d5;
+    --ink: #2b2d42;
+    --white: #ffffff;
+    --light-gray: #f8f9fa;
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+}
+
+/* Base & Typography */
+body {
+    font-family: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    color: var(--ink);
+    background-color: var(--blue);
+    overflow-x: hidden; /* Prevents horizontal scroll */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Dancing Script", cursive;
+    color: var(--magenta);
+    font-weight: 700;
+}
+
+h1 { font-size: 5rem; }
+h2 { font-size: 3.5rem; }
+h3 { font-size: 2.5rem; }
+h4 { font-size: 2rem; color: var(--ink); font-family: "Montserrat"; font-weight: 600; } /* Overriding for card titles */
+h5 { font-size: 1.5rem; color: var(--ink); font-family: "Montserrat"; font-weight: 400; margin-bottom: 1rem; }
+
+p {
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+/* Utility Classes */
 .full-width-section {
     width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-    position: relative;
-    margin: 0;
-    left: 0;
-    right: 0;
 }
 
-.flex-center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.section-padding {
+    padding: 5rem 0;
 }
 
-/* Style for Hero Overlay Section */
-.hero-overlay-section {
-    height: 90vh;
-    background-color: blue;
-}
-
-
-.hero-overlay-image {
-    height: 20%;
-    width: 70%;
-    position: absolute;
-    bottom: 15vh;
-    right: 10vw;
-    z-index: 1;
-    opacity: 0.7;
-    background-color: red;
-    border-radius: 10px;
-}
-
-/* Calendar Section */
-.calendar-section {
-    height: 100vh;
-    background-color: antiquewhite;
-}
-
-.calendar-week-header-row,
-.calendar-days-row {
-    display: flex;
-    justify-content: space-between;
-}
-
-.calendar-week-header,
-.calendar-day {
-    flex: 1 1 0;
-    text-align: center;
-    padding: 0.5rem 0;
-    border: 1px solid #ddd;
-    background: #f8f9fa;
-}
-
-.calendar-week-header {
-    font-weight: bold;
-    background: #e9ecef;
-    border-bottom: none;
-}
-
-.calendar-days-row .calendar-day {
-    border-top: none;
-    height: 25vh;
-}
-
-.calendar-day-highlighted {
-    background: #bb45a7;
-    color: #fff;
-    font-size: 10px;
-}
-
-.calendar-day-center {
-    @extend .flex-center;
-    height: 100px;
+.text-center {
     text-align: center;
 }
 
-.cal-font {
-    @extend .flex-center;
-    flex-direction: column;
-    height: 100%;
-    font-size: 12px;
+.section-title {
     text-align: center;
+    margin-bottom: 3rem;
+}
+.section-title h2 {
+    margin-bottom: 0;
+}
+.section-title h3 {
+    margin-top: -1rem;
+    color: var(--teal);
 }
 
-.cal-icon {
-    margin-bottom: 0.2em;
-    @extend .flex-center;
-}
-
-.cal-font i {
-    font-size: 2em;
-    color: #bb45a7;
-}
-.calendar-day-highlighted .cal-font i {
-    color: #fff;
-}
-
-/* Hotel Section */
-.hotel-in-section,
-.for-poster-section {
-    background-color: lightgrey;
-}
-
-.hotel-in {
-    height: 80vh;
-}
-.hotel-in > .row-1,
-.hotel-in > .row-2,
-.hotel-in > .row-3,
-.hotel-in > .col-6,
-.hotel-in > .col-2 {
-    border: solid 1px black;
-}
-.hotel-in > .row-1 { height: 30vh; }
-.hotel-in > .row-2 { height: 15vh; }
-.hotel-in > .row-3 { height: 35vh; }
-
-/* Phuket Section */
-.phuket-divider-section {
-    height: 20vh;
-    background-color: rgb(109, 204, 207);
-}
-.phuket-div-image {
-    height: 20vh;
-    font-size: 64px;
-    letter-spacing: 20px;
-    text-align: center;
-    align-content: center;
-}
-
-/* Before Section */
-.before-section {
-    background: rgb(236, 219, 59);
-    height: 68vh;
-}
-.before-section-container {
+.img-fluid {
     width: 100%;
-    max-width: 100vw;
-    padding: 0;
-    height: 60vh;
-}
-.before-box {
-    border: 1px solid #ccc;
-    @extend .flex-center;
-}
-.before-pic { background: #fffbe6; height: 25vh; }
-.before-bangtao { background: #ffe066; height: 10vh; }
-.before-right-small { background: #e0f7fa; height: 15vh; }
-.before-right-tall { background: #b2ebf2; height: 30vh; }
-
-.before-row-equal {
-    display: flex;
-    align-items: stretch;
-}
-.cont-left, .cont-right {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-.cont-left > .row,
-.cont-right > .row {
-    flex: none;
-    width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-}
-
-/* For Section */
-.for-poster {
-    height: 92vh;
-    background-color: rgb(199, 34, 34);
-}
-
-/* Day breakdown section */
-.day-breakdown-section {
-    height: 90vh;
-    background-color: rgb(72, 122, 230);
-}
-
-.breakdown-row-header {
-    text-align: center;
-    height: 15vh;
-    border: solid 1px black;
-    align-items: center;
-}
-.breakdown-row {
-    height: 25vh;
-    border: solid 1px black;
-    text-align: center;
-}
-.break-col,
-.break-col-h {
-    border: solid 1px black;
-    align-items: center;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center; 
-}
-
-/* Bottom carousel section */
-.bottom-carousel-section {
-    height: 20vh;
-    background-color: rgb(34, 199, 103);
-}
-.bottom-carousel { height: 100%; }
-.carousel-col { @extend .flex-center; padding: 0; }
-.carousel-img {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    max-width: 100%;
     height: auto;
 }
 
-body {
-    overflow-x: hidden;
+.rounded-img {
+    border-radius: 8px;
+    box-shadow: var(--shadow);
 }
 
-.container-fluid {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-family: "Montserrat";
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+.btn-primary {
+    background-color: var(--magenta);
+    color: var(--white);
+}
+.btn-primary:hover {
+    background-color: #a23b93;
+    transform: translateY(-2px);
+}
+.btn-secondary {
+    background-color: var(--teal);
+    color: var(--white);
+}
+.btn-secondary:hover {
+    background-color: #22a39a;
+    transform: translateY(-2px);
 }
 
-/* Add the image fitting properties */
-.before-box img {
+/* Card Styling (for Schedule & Rooms) */
+.card {
+    border: none;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    background: var(--white);
+    height: 100%; /* Makes all cards in a row the same height */
+    transition: all 0.3s ease;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+.card-body {
+    padding: 1.5rem;
+}
+
+.room-card h5 {
+    font-family: "Montserrat";
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+}
+.room-price {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--teal);
+    margin-bottom: 0.5rem;
+}
+
+/* Part 1: Hero Section */
+.hero-section {
+    height: 90vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: center;
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://source.unsplash.com/random/1920x1080/?thailand,beach,wedding');
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+}
+.hero-content {
+    position: relative;
+    z-index: 2;
+    color: var(--white);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+.hero-content h1 {
+    color: var(--white);
+    font-size: 6rem;
+}
+.hero-content h2 {
+    color: var(--white);
+    font-size: 3rem;
+    margin-top: -1.5rem;
+}
+.hero-content h3 {
+    color: var(--white);
+    font-size: 2rem;
+    margin-top: 1rem;
+    font-family: "Montserrat";
+    font-weight: 400;
 }
 
-.break-col img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
+/* Part 2: Schedule Section */
+.schedule-section {
+    background-color: var(--sand);
 }
+.event-card {
+    text-align: center;
+    padding: 2rem 1rem;
+}
+.event-card .card-icon {
+    font-size: 3rem;
+    color: var(--magenta);
+    margin-bottom: 1rem;
+}
+.event-card h4 {
+    margin-bottom: 0.5rem;
+}
+.event-card h5 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--coral);
+}
+.event-card.highlighted-card {
+    background-color: var(--magenta);
+    color: var(--sand);
+}
+.event-card.highlighted-card h4,
+.event-card.highlighted-card h5 {
+    color: var(--sand);
+}
+.event-card.highlighted-card .card-icon {
+    color: var(--sand);
+}
+
+/* Part 3: Hotel Section */
+.hotel-section {
+    background-color: var(--light-gray);
+}
+
+/* Part 4: Phuket Divider */
+.phuket-divider-section {
+    height: 40vh;
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://source.unsplash.com/random/1920x1080/?phuket,aerial');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* This creates the parallax effect */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.phuket-divider-section h2 {
+    font-size: 6rem;
+    color: var(--white);
+    letter-spacing: 20px;
+    text-transform: uppercase;
+    /* Neon glow: white inner + magenta outer */
+    text-shadow:
+        0 0 3px #fff,
+        0 0 6px #fff,
+        0 0 10px #fff,
+        0 0 16px var(--magenta),
+        0 0 28px var(--magenta),
+        0 0 42px var(--magenta);
+    animation: neonPulse 2.4s ease-in-out infinite alternate;
+}
+
+@keyframes neonPulse {
+    0% {
+        text-shadow:
+            0 0 2px #fff,
+            0 0 4px #fff,
+            0 0 8px #fff,
+            0 0 12px var(--magenta),
+            0 0 20px var(--magenta),
+            0 0 30px var(--magenta);
+    }
+    100% {
+        text-shadow:
+            0 0 4px #fff,
+            0 0 8px #fff,
+            0 0 12px #fff,
+            0 0 22px var(--magenta),
+            0 0 36px var(--magenta),
+            0 0 52px var(--magenta);
+    }
+}
+
+/* Part 5: Explore Section */
+.explore-section {
+    background-color: var(--white);
+}
+
+/* Part 6: Gallery Section */
+.gallery-section {
+    background-color: var(--sand);
+}
+
+/* --- New Simple Carousel Styles --- */
+.simple-carousel-container {
+    overflow: visible; /* No horizontal scroll for our flex layout */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS (kept harmless) */
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: var(--teal) var(--sand); /* Firefox */
+}
+
+/* Scrollbar styling for Webkit browsers (Chrome, Safari) */
+.simple-carousel-container::-webkit-scrollbar {
+    height: 8px;
+}
+.simple-carousel-container::-webkit-scrollbar-track {
+    background: var(--sand);
+}
+.simple-carousel-container::-webkit-scrollbar-thumb {
+    background-color: var(--teal);
+    border-radius: 10px;
+}
+
+.simple-carousel {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping so any count 1..4 looks good */
+    justify-content: space-around; /* Even spacing regardless of item count */
+    gap: 1rem; /* Consistent gap between items */
+    padding-bottom: 0; /* No scrollbar padding needed */
+}
+
+.couple-item {
+    flex: 0 1 22%; /* Target ~4 per row, but allow shrink/grow */
+    min-width: 220px; /* Reasonable minimum for smaller desktops */
+}
+
+/* Anchor wraps the image; keep rounded corners and hide overflow for smooth zoom */
+.couple-item .img-wrap {
+    display: block;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    position: relative;
+    transition: box-shadow 0.3s ease;
+}
+.couple-item .img-wrap:hover { box-shadow: 0 8px 20px rgba(0,0,0,0.12); }
+
+/* Removed lightbox-style overlay; simple click opens in new tab */
 
 .carousel-img {
     width: 100%;
-    height: 100%;
+    height: 300px; /* Fixed height for all images */
     object-fit: cover;
-    object-position: center;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    max-width: 100%;
+    display: block;
+    transform-origin: center center;
+    transition: transform 0.32s ease-out;
+    will-change: transform;
 }
+
+.couple-item .img-wrap:hover .carousel-img { transform: scale(1.12); }
+
+
+/* Responsive Media Queries */
+@media (max-width: 768px) {
+    .simple-carousel {
+        flex-direction: column; /* Stack items vertically on mobile */
+        justify-content: flex-start;
+        gap: 0.75rem; /* Small margin between items on mobile */
+    }
+
+    .couple-item {
+        flex-basis: auto; /* Allow items to take full width */
+        width: 100%;
+    }
+
+    .section-padding {
+        padding: 3rem 0;
+    }
+    h1 { font-size: 3.5rem; }
+    h2 { font-size: 2.5rem; }
+    h3 { font-size: 2rem; }
+    
+    .hero-content h1 { font-size: 4rem; }
+    .hero-content h2 { font-size: 2rem; margin-top: -1rem; }
+    .hero-content h3 { font-size: 1.5rem; }
+
+    .phuket-divider-section h2 {
+        font-size: 3rem;
+        letter-spacing: 10px;
+    }
+
+    /* Fix for Bootstrap container-fluid if you use it */
+    .container-fluid {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+}
+
+/* Removed SimpleLightbox-specific styles */
+/* (Cleanup) Removed temporary debug visibility overrides */
