@@ -2,34 +2,45 @@
 
 /* Theme palette (Thailand wedding) */
 :root {
-    --magenta: #ff00cc;
-    --blue:#a9e1ff;
+    --pink: #ff00cc;
+    --pink50: #ff00cc8e;
+    --coral: #f70;
+    --coral50: #ff77008e;
+    --yellow: #ffec17;
+    --yellow50: #ffec178e;
+    --blue: #29a7ff;
+    --blue50: #29a7ff8e;
     --teal: #00ffee;
-    --coral: #f46541;
+    --teal50: #00ffee8e;
+    --green: #00d100;
+    --green50: #00d1008e;
+    
     --sand: #f6e8d5;
-    --ink: #2b2d42;
-    --white: #ffffff;
-    --light-gray: #f8f9fa;
+    --ink: #005252;
     --shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
 }
 
 /* Base & Typography */
 body {
-    font-family: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    font-family: "gala", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     color: var(--ink);
-    background-color: var(--blue);
+    background-color: var(--sand);
     overflow-x: hidden; /* Prevents horizontal scroll */
 }
 
-h1,
-h2,
-h3,
+
+h1, h2, h3 {
+    font-family: "alana-smooth", cursive;
+    color: var(--pink);
+}
+
 h4,
 h5,
 h6 {
     font-family: "Dancing Script", cursive;
-    color: var(--magenta);
-    font-weight: 700;
+    color: var(--pink);
+    font-weight: 300;
+    line-height: top;
 }
 
 h1 { font-size: 5rem; }
@@ -45,7 +56,9 @@ p {
 
 /* Utility Classes */
 .full-width-section {
-    width: 100%;
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .section-padding {
@@ -58,14 +71,15 @@ p {
 
 .section-title {
     text-align: center;
-    margin-bottom: 3rem;
 }
-.section-title h2 {
-    margin-bottom: 0;
-}
+
 .section-title h3 {
     margin-top: -1rem;
     color: var(--teal);
+}
+
+.on-card-row {
+    margin-bottom: 2em;
 }
 
 .img-fluid {
@@ -74,8 +88,8 @@ p {
 }
 
 .rounded-img {
-    border-radius: 8px;
-    box-shadow: var(--shadow);
+    border-radius: 25px;
+
 }
 
 .btn {
@@ -106,16 +120,31 @@ p {
 
 /* Card Styling (for Schedule & Rooms) */
 .card {
-    border: none;
-    border-radius: 8px;
+    border: 2px solid var(--ink);
+    border-radius: 25px;
     box-shadow: var(--shadow);
     background: var(--white);
     height: 100%; /* Makes all cards in a row the same height */
     transition: all 0.3s ease;
 }
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+
+/* Equal-height helper for card rows: make columns flex containers and cards stretch */
+.equal-cards > [class*='col-'] {
+    display: flex;
+}
+.equal-cards .card {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+}
+.equal-cards .card .card-body {
+    flex: 1 1 auto;
+}
+
+.title-card{
+    border: solid 2px var(--ink);
+    margin-bottom: 2em;
+    text-align: center;;
 }
 
 .card-img-top {
@@ -151,35 +180,27 @@ p {
     align-items: center;
     justify-content: center;
     text-align: center;
-}
-.hero-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://source.unsplash.com/random/1920x1080/?thailand,beach,wedding');
+    background-image: url('/media/gallery_images/bg-cover-photo.jpg');
     background-size: cover;
-    background-position: center;
-    z-index: 1;
+    background-position: bottom;
+    border-radius: 25px;
 }
-.hero-content {
+    
+
+.hero-section h1 {
     position: relative;
-    z-index: 2;
-    color: var(--white);
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-}
-.hero-content h1 {
-    color: var(--white);
+    color: var(--sand);
     font-size: 6rem;
+    font-weight: 300;
+    text-align: center;
 }
-.hero-content h2 {
-    color: var(--white);
+.hero-section h2 {
+    color: var(--coral);
     font-size: 3rem;
     margin-top: -1.5rem;
 }
-.hero-content h3 {
-    color: var(--white);
+.hero-section h3 {
+    color: var(--coral);
     font-size: 2rem;
     margin-top: 1rem;
     font-family: "Montserrat";
@@ -193,35 +214,78 @@ p {
 .event-card {
     text-align: center;
     padding: 2rem 1rem;
+    background-color: var(--coral50);
+}
+.schedule-section h2 {
+    font-size: 8rem;
 }
 .event-card .card-icon {
     font-size: 3rem;
-    color: var(--magenta);
+    color: var(--teal);
     margin-bottom: 1rem;
 }
-.event-card h4 {
-    margin-bottom: 0.5rem;
-}
-.event-card h5 {
-    font-size: 1rem;
+.event-card h3 {
+    font-family: "Montserrat";
     font-weight: 600;
-    color: var(--coral);
+    font-size: 2.5rem;
+    color: var(--teal);
+    
 }
+
+.event-card h4 {
+    text-shadow: 1px 1px var(--sand);
+}
+
 .event-card.highlighted-card {
-    background-color: var(--magenta);
-    color: var(--sand);
+    text-align: center;
+    padding: 2rem 1rem;
+    background-color: var(--teal);
+    
 }
-.event-card.highlighted-card h4,
-.event-card.highlighted-card h5 {
+
+.event-card.highlighted-card h3 {
+    
+    color: var(--pink);
+    
+}
+.event-card.highlighted-card h4{
     color: var(--sand);
+    text-shadow: 1px 1px var(--ink);
+}
+.event-card.highlighted-card h5 {
+    color: var(--ink);
 }
 .event-card.highlighted-card .card-icon {
+    color: var(--pink);
+}
+
+.event-pic-snorkel {
+    background-image: url('/media/gallery_images/event-snorkel.jpg');
+    background-size: cover;
+    background-position: bottom;
     color: var(--sand);
 }
 
+.event-pic-drink {
+    background-image: url('/media/gallery_images/event-card-drink.jpg');
+    background-size: cover;
+    background-position: center;
+    color: var(--ink);
+}
+
+
 /* Part 3: Hotel Section */
 .hotel-section {
-    background-color: var(--light-gray);
+    text-align: center;
+}
+
+.hotel-detail {
+    background-color: var(--yellow50);
+}
+
+.hotel-section h2 {
+    font-size: 8rem;
+    
 }
 
 /* Part 4: Phuket Divider */
@@ -272,22 +336,23 @@ p {
     }
 }
 
-/* Part 5: Explore Section */
-.explore-section {
-    background-color: var(--white);
+/* Part 5: Before Section */
+.before-section {
+    background-color: var(--sand);
+}
+.before-section h2 {
+    font-size: 8rem;
 }
 
 /* Part 6: Gallery Section */
-.gallery-section {
-    background-color: var(--sand);
-}
+
 
 /* --- New Simple Carousel Styles --- */
 .simple-carousel-container {
     overflow: visible; /* No horizontal scroll for our flex layout */
     -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS (kept harmless) */
     scrollbar-width: thin; /* Firefox */
-    scrollbar-color: var(--teal) var(--sand); /* Firefox */
+    scrollbar-color: var(--sand); /* Firefox */
 }
 
 /* Scrollbar styling for Webkit browsers (Chrome, Safari) */
@@ -298,16 +363,16 @@ p {
     background: var(--sand);
 }
 .simple-carousel-container::-webkit-scrollbar-thumb {
-    background-color: var(--teal);
     border-radius: 10px;
 }
 
 .simple-carousel {
     display: flex;
     flex-wrap: wrap; /* Allow wrapping so any count 1..4 looks good */
-    justify-content: space-around; /* Even spacing regardless of item count */
-    gap: 1rem; /* Consistent gap between items */
+    justify-content: center; /* Even spacing regardless of item count */
+    gap: 2px; /* Consistent gap between items */
     padding-bottom: 0; /* No scrollbar padding needed */
+    margin-top: 2rem;
 }
 
 .couple-item {

@@ -12,30 +12,33 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Montserrat:wght@300;404;500;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/1b022f26d4.js" crossorigin="anonymous"></script>
+    <!--Adobe fonts-->
+    <link rel="stylesheet" href="https://use.typekit.net/afa8lir.css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     {% block extra_css %}{% endblock %}
     {% block head_extra %}{% endblock %}
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(187, 69, 167);">
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark">
     <div class="container">
-        <a class="navbar-brand" href="{% url 'home' %}"><i class="fa-solid fa-heart"></i> A&M Thailand 26</a>
+        <a class="navbar-brand" href="{% url 'home' %}"><i class="fa-solid fa-heart"></i> A&M</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        <h2>Please join us...</h2>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'rsvp' %}">RSVP</a> {# Changed to 'rsvp_form' as per recent updates #}
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'gallery' %}">Gallery</a>
+                    <a class="nav-link" href="{% url 'gallery' %}">G</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'article_list' %}">Articles</a>
+                    <a class="nav-link" href="{% url 'article_list' %}">A</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'wedding_details' %}">Details</a>
+                    <a class="nav-link" href="{% url 'wedding_details' %}">D</a>
                 </li>
                 {# --------------------------------- #}
                 {% if user.is_authenticated %}
@@ -45,7 +48,7 @@
                     <form action="{% url 'logout' %}" method="post" class="nav-item">
                         {% csrf_token %}
                         <button type="submit" class="nav-link">
-                            Logout
+                            L
                         </button>
                     </form>
                 {% else %}
@@ -58,7 +61,7 @@
                 {% endif %}
                 {% if user.is_superuser %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
+                        <a class="nav-link" href="{% url 'admin:index' %}">Ad</a>
                     </li>
                 {% endif %}
                 {# --------------------------------- #}

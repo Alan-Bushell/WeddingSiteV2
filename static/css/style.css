@@ -10,12 +10,18 @@ body {
 
 /* Navbar styling */
 .navbar {
-    background-color: #ff00cc !important; /* A nice shade of pink */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: #f6e8d5 !important; 
+    width:100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.navbar h2 {
+    text-align: center;;
 }
 
 .navbar-brand, .navbar-nav .nav-link {
-    color: #ffffff !important; /* White text for contrast */
+    color: #00393a !important; /* White text for contrast */
     font-weight: 600;
     transition: color 0.3s ease;
 }
@@ -26,13 +32,14 @@ body {
 
 /* General container/card styling */
 .container {
-    padding-top: 30px; /* Add some space from the navbar */
-    padding-bottom: 30px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    
 }
 
 .card {
     border: none; /* Remove default Bootstrap card border */
-    border-radius: 15px; /* Softer rounded corners */
+    border-radius: 25px; /* Softer rounded corners */
     box-shadow: 0 8px 16px rgba(0,0,0,0.15); /* More prominent shadow */
 }
 
@@ -127,7 +134,7 @@ body {
 
 /* Ensures all images within the card have a consistent height and aspect ratio */
 .article-card .card-img-top {
-    height: 45%; /* Or your preferred height */
+    height: 25%; /* Or your preferred height */
     object-fit: cover;
     width: 100%;
 }

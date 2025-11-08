@@ -4,238 +4,496 @@
 {% block title %}Our Wedding{% endblock %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'css/style2.css' %}?v=3">
+<link rel="stylesheet" href="{% static 'css/style2.css' %}">
 {% endblock %}
 
 {% block content %}
 
-    <div class="hero-section full-width-section">
-        <div class="hero-image">
+<div class="hero-section full-width-section">
+    <h1>Alan & Maddie</h1>
+</div>
+
+<div class="simple-carousel-container">
+    <div class="simple-carousel">
+        {% for image in carousel_images %}
+        <div class="couple-item">
+            <div class="img-wrap">
+                <img src="{{ image.image.url }}" class="carousel-img" alt="{{ image.title|default:'Gallery image' }}">
             </div>
-        <div class="hero-content">
-            <h1>Alan & Maddie</h1>
-            <h2>October 31, 2026</h2>
-            <h3>Phuket, Thailand</h3>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% if not carousel_images %}
+<p class="text-center text-muted mt-3">
+    No public images tagged "couple" to show yet.
+    In Admin, edit a few Gallery Images and ensure:
+    <strong>Is public</strong> is checked and the <strong>"couple"</strong> tag is assigned.
+</p>
+{% endif %}
+
+<div class="schedule-section">
+    <div class="container">
+        <div class="section-title">
+            <h2>...on</h2>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-12 col-md-4">
+                <div class="title-card">
+                    <h3>30th October</h3>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="title-card highlighted-card">
+                    <h3>31st October</h3>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="title-card">
+                    <h3>1st November</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row on-card-row g-4">
+            <div class="col-12 col-md-4">
+                <div class="card event-card">
+                    <h4>FOR A</h4>
+                    <div class="card-icon"><i class="fa-solid fa-anchor"></i></div>
+                    <h3>Snorkel</h3>
+
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="card event-card highlighted-card">
+                    <h4>FOR A</h4>
+                    <div class="card-icon"><i class="fa-solid fa-heart"></i></div>
+                    <h3>Wedding</h3>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="card event-card">
+                    <h4>FOR A</h4>
+                    <div class="card-icon"><i class="fa-solid fa-martini-glass-citrus"></i></div>
+                    <h3>Drink</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row g-4">
+            <div class="col-12 col-md-4">
+                <div class="card event-pic-snorkel">
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="card event-card highlighted-card">
+                    <p>Weather permitting, there will be a yacht trip to the nearby islands the day before with
+                        snorkelling and snacks.</p>
+                    <p>A full wedding day schedule will be posted soon.</p>
+                    <p>The day after we are planning to have a few drinks, songs and maybe catch a match in the onsite
+                        Lighthouse pub.</p>
+                    <p>Everyone is welcome to all.</p>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="card event-pic-drink">
+                </div>
+            </div>
         </div>
     </div>
+</div>
 
-    <div class="schedule-section section-padding">
-        <div class="container">
-            <div class="section-title">
-                <h2>on...</h2>
+<div class="hotel-section">
+    <div class="container">
+        <div class="section-title">
+            <h2>...in</h2>
+        </div>
+        <h4 class="text-center mb-4">Cape Panwa Hotel</h4>
+        <div class="row g-4 align-items-center mb-5">
+            <div class="col-12 col-md-4">
+                <img src="{% static 'core/img/cape-panwa-house.jpg' %}" alt="Cape Panwa Hotel"
+                    class="img-fluid rounded-img">
+            </div>
+            <div class="card col-12 col-md-4">
+                <p>We've reserved a block of rooms at the beautiful Cape Panwa Hotel.</p>
+                <p><strong>Dates:</strong> October 30th - November 2nd, 2026</p>
+                <p>To book, please [Your booking instructions here, e.g., email the hotel and mention our names].</p>
+            </div>
+            <div class="col-12 col-md-4">
+                <img src="{% static 'core/img/cape-panwa-hotel.jpg' %}" alt="Cape Panwa Hotel"
+                    class="img-fluid rounded-img">
+            </div>
+        </div>
+
+        <h4 class="text-center mb-4">Room Options</h4>
+
+        <div class="row g-4 equal-cards">
+            <div class="col-12 col-md-4 d-flex">
+                <div class="card room-card h-100">
+                    <div class="card-body">
+                        <h5>Junior Suite</h5>
+                        <p class="room-price">125 Eur p/n</p>
+                        <p>Spacious suite with a sitting area and garden view.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 d-flex">
+                <div class="card room-card h-100">
+                    <div class="card-body">
+                        <h5>Junior Suite Seaview</h5>
+                        <p class="room-price">150 Eur p/n</p>
+                        <p>All the comforts of the Junior Suite, with a stunning ocean view.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 d-flex">
+                <div class="card room-card h-100">
+                    <div class="card-body">
+                        <h5>Family Suite</h5>
+                        <p class="room-price">245 Eur p/n</p>
+                        <p>A two-bedroom suite, perfect for families or friends sharing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4 equal-cards mt-3">
+            <div class="col-12 col-md-4 d-flex">
+                <div class="card room-card h-100">
+                    <div class="card-body">
+                        <h5>Cape Suite</h5>
+                        <p class="room-price">125 Eur p/n</p>
+                        <p>Spacious suite with a sitting area and garden view.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 d-flex">
+                <div class="card room-card h-100">
+                    <div class="card-body">
+                        <h5>Cape Suite Seaview/Signature/Corner</h5>
+                        <p class="room-price">150 Eur p/n</p>
+                        <p>All the comforts of the Junior Suite, with a stunning ocean view.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 d-flex">
+                <div class="card room-card h-100">
+                    <div class="card-body">
+                        <h5>Two Bedroom Pool Villa</h5>
+                        <p class="room-price">245 Eur p/n</p>
+                        <p>A two-bedroom suite, perfect for families or friends sharing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <h4 class="text-center my-4">Alternative Options</h4>
+            </div>
+        </div>
+
+        <div class="row g-4 equal-cards">
+            <div class="col-12 col-md-4 d-flex">
+                <div class="card room-card h-100">
+                    <img src="{% static 'core/img/kantary-bay.jpg' %}" alt="Kantary Bay Hotel" class="card-img-top">
+                    <div class="card-body">
+                        <h5>Kantary Bay Hotel</h5>
+                        <p class="room-price">125 Eur p/n</p>
+                        <p>.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 d-flex">
+                <div class="card room-card h-100">
+                    <img src="{% static 'core/img/junior-seaview.jpg' %}" alt="Junior Suite Seaview" class="card-img-top">
+                    <div class="card-body">
+                        <h5>Nearby</h5>
+                        <p class="room-price">150 Eur p/n</p>
+                        <p>All the comforts of the Junior Suite, with a stunning ocean view.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 d-flex">
+                <div class="card room-card h-100">
+                    <img src="{% static 'core/img/family-suite.jpg' %}" alt="Family Suite" class="card-img-top">
+                    <div class="card-body">
+                        <h5>Phuket</h5>
+                        <p class="room-price">245 Eur p/n</p>
+                        <p>A two-bedroom suite, perfect for families or friends sharing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="before-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>...before</h2>
+                </div>
+                <h4 class="text-center mb-4">Phuket</h4>
+                <div class="row g-4 align-items-center mb-5">
+                    <div class="col-12 col-md-4">
+                        <img src="{% static 'core/img/maddie-railay.jpg' %}" alt="Maddie at Railay Beach"
+                            class="img-fluid rounded-img">
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <p>For guests arriving early, we'll be based in the Bang Tao Beach area from <strong>October
+                                24th-30th</strong>.</p>
+                        <p>It's a beautiful long-stretch of beach with amazing restaurants and beach clubs. We're
+                            staying at the Arinara, but the Sunwing next door is also a great option if you'd like to
+                            stay nearby before we all move to Cape Panwa.</p>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <img src="{% static 'core/img/sea-boat.jpg' %}" alt="view of the sea from a longtail boat"
+                            class="img-fluid rounded-img">
+                    </div>
+                </div>
+
+                <h4 class="text-center mb-4">What to do</h4>
+                <!-- Row for activity cards -->
+                <div class="row g-4 equal-cards">
+                    <div class="col-12 col-md-4 d-flex">
+                        <div class="card room-card h-100">
+                            <div class="card-body">
+                                <h5>Elephants</h5>
+                                <a href="#" class="btn btn-primary mt-2">Visit Website</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4 d-flex">
+                        <div class="card room-card h-100">
+                            <div class="card-body">
+                                <h5>Boat Trips</h5>
+                                <a href="#" class="btn btn-primary mt-2">Visit Website</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4 d-flex">
+                        <div class="card room-card h-100">
+                            <div class="card-body">
+                                <h5>Entertainment</h5>
+                                <a href="#" class="btn btn-primary mt-2">Visit Website</a>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- /row What to do -->
+
+                <!-- Separate row for heading to avoid being inside previous .row -->
+                <div class="row">
+                    <div class="col-12">
+                        <h4 class="text-center mb-4">Hotels in Bang Tao</h4>
+                    </div>
+                </div>
+                <div class="row g-4 equal-cards">
+
+                    <div class="col-12 col-md-4 d-flex">
+                        <div class="card room-card h-100">
+                            <div class="card-body">
+                                <h5>Arinara Beach Resort</h5>
+                                <p class="room-price">Modern Resort (Our Pick!)</p>
+                                <p>This is where we'll be staying. A beautiful, modern resort located right on the
+                                    beach.</p>
+                                <a href="#" class="btn btn-primary mt-2">Visit Website</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-4 d-flex">
+                        <div class="card room-card h-100">
+                            <div class="card-body">
+                                <h5>Sunwing Bangtao Beach</h5>
+                                <p class="room-price">Family-Friendly</p>
+                                <p>Fantastic for families and has huge pools. It's right next door to the Arinara.</p>
+                                <a href="#" class="btn btn-primary mt-2">Visit Website</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-4 d-flex">
+                        <div class="card room-card h-100">
+                            <div class="card-body">
+                                <h5>Villas & Guesthouses</h5>
+                                <p class="room-price">Private & Boutique</p>
+                                <p>The area also has many private villas, Airbnbs, and smaller boutique hotels if you'd
+                                    prefer.</p>
+                                <a href="#" class="btn btn-primary mt-2">Check Airbnb</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="schedule-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>...prepared</h2>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-12 col-md-4">
+                        <div class="mini-card event-card">
+                            <h3>Travel</h3>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="mini-card event-card highlighted-card">
+                            <h3>Health</h3>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="mini-card event-card">
+                            <h3>Packing</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-4">
+                    <div class="col-12 col-md-4">
+                        <div class="card event-card">
+                            <p>Travel arrangements, including flights and transfers.</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="card event-card highlighted-card">
+                            <p>Health and safety measures, including insurance and vaccinations.</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="card event-card">
+                            <p>Packing list and essentials for the trip.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="explore-section">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>...then explore</h2>
+                    </div>
+                    <div class="phuket-divider-section full-width-section">
+                        <h2>Thailand</h2>
+                    </div>
+                    <div class="row g-4 align-items-center mb-5">
+                        <div class="col-12 col-md-4">
+                            <img src="{% static 'core/img/cape-panwa-hotel.jpg' %}" alt="Cape Panwa Hotel"
+                                class="img-fluid rounded-img">
+                        </div>
+                        <div class="card col-12 col-md-4">
+                            <p>We've reserved a block of rooms at the beautiful Cape Panwa Hotel.</p>
+                            <p><strong>Dates:</strong> October 30th - November 2nd, 2026</p>
+                            <p>To book, please [Your booking instructions here, e.g., email the hotel and mention our
+                                names].</p>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <img src="{% static 'core/img/cape-panwa-hotel.jpg' %}" alt="Cape Panwa Hotel"
+                                class="img-fluid rounded-img">
+                        </div>
+                    </div>
                 
-            </div>
             <div class="row g-4">
-                <div class="col-12 col-md-4">
-                    <div class="card event-card">
-                        <div class="card-icon"><i class="fa-solid fa-anchor"></i></div>
-                        <h5>October 30, 2026</h5>
-                        <h4>For a Snorkel</h4>
-                        <p>Join us for a pre-wedding boat trip to the islands! We'll explore the bays, snorkel with the fish, and enjoy lunch on the beach.</p>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4">
-                    <div class="card event-card highlighted-card">
-                        <div class="card-icon"><i class="fa-solid fa-heart"></i></div>
-                        <h5>October 31, 2026</h5>
-                        <h4>For a Wedding</h4>
-                        <p>The main event! Ceremony will be held on the hotel's private terrace overlooking the ocean at 3:30 PM, followed by cocktails, dinner, and a Spooky Rave.</p>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4">
-                    <div class="card event-card">
-                        <div class="card-icon"><i class="fa-solid fa-martini-glass-citrus"></i></div>
-                        <h5>November 1, 2026</h5>
-                        <h4>For a Drink</h4>
-                        <p>Let's recover together. Join us for a casual "farewell for now" brunch and a final drink (or coconut) in the hotel's Lighthouse Pub.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="hotel-section section-padding">
-        <div class="container">
-            <div class="section-title">
-                <h2>in...</h2>
-            </div>
-            
-            <div class="row g-4 align-items-center mb-5">
                 <div class="col-12 col-md-6">
-                    <h3>Cape Panwa Hotel</h3>
-                    <p>We've reserved a block of rooms at the beautiful Cape Panwa Hotel. This is where the ceremony and reception will take place.</p>
-                    <p><strong>Dates:</strong> October 30th - November 2nd, 2026</p>
-                    <p>To book, please [Your booking instructions here, e.g., email the hotel and mention our names].</p>
-                    <a href="#" class="btn btn-primary">Visit Hotel Website</a>
+                    <div class="card room-card">
+                        <div class="card-body">
+                            <h5>Chiang Mai</h5>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-12 col-md-6">
-                    <img src="{% static 'core/img/cape-panwa-hotel.jpg' %}" alt="Cape Panwa Hotel" class="img-fluid rounded-img">
-                    
-                </div>
-            </div>
-
-            <h4 class="text-center mb-4">Room Options</h4>
-            <div class="row g-4">
-                <div class="col-12 col-md-4">
                     <div class="card room-card">
-                        <img src="{% static 'core/img/junior-suite.jpg' %}" alt="Junior Suite" class="card-img-top">
                         <div class="card-body">
-                            <h5>Junior Suite</h5>
-                            <p class="room-price">125 Eur p/n</p>
-                            <p>Spacious suite with a sitting area and garden view.</p>
+                            <h5>Bangkok</h5>
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-4">
-                    <div class="card room-card">
-                        <img src="{% static 'core/img/junior-seaview.jpg' %}" alt="Junior Suite Seaview" class="card-img-top">
-                        <div class="card-body">
-                            <h5>Junior Suite Seaview</h5>
-                            <p class="room-price">150 Eur p/n</p>
-                            <p>All the comforts of the Junior Suite, with a stunning ocean view.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4">
-                    <div class="card room-card">
-                        <img src="{% static 'core/img/family-suite.jpg' %}" alt="Family Suite" class="card-img-top">
-                        <div class="card-body">
-                            <h5>Family Suite</h5>
-                            <p class="room-price">245 Eur p/n</p>
-                            <p>A two-bedroom suite, perfect for families or friends sharing.</p>
-                        </div>
-                    </div>
-                </div>
-                <h4 class="text-center mb-4">Alternative Options</h4>
-            <div class="row g-4">
-                <div class="col-12 col-md-4">
-                    <div class="card room-card">
-                        <img src="{% static 'core/img/junior-suite.jpg' %}" alt="Junior Suite" class="card-img-top">
-                        <div class="card-body">
-                            <h5>Kantary Bay Hotel</h5>
-                            <p class="room-price">125 Eur p/n</p>
-                            <p>.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4">
-                    <div class="card room-card">
-                        <img src="{% static 'core/img/junior-seaview.jpg' %}" alt="Junior Suite Seaview" class="card-img-top">
-                        <div class="card-body">
-                            <h5>Other</h5>
-                            <p class="room-price">150 Eur p/n</p>
-                            <p>All the comforts of the Junior Suite, with a stunning ocean view.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4">
-                    <div class="card room-card">
-                        <img src="{% static 'core/img/family-suite.jpg' %}" alt="Family Suite" class="card-img-top">
-                        <div class="card-body">
-                            <h5>Other</h5>
-                            <p class="room-price">245 Eur p/n</p>
-                            <p>A two-bedroom suite, perfect for families or friends sharing.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    
-
-    <div class="phuket-divider-section full-width-section">
-        <h2>Phuket</h2>
-    </div>
-
-    <div class="explore-section section-padding">
-        <div class="container">
-            <div class="section-title">
-                <h2>before...</h2>
-            </div>
-
-            <div class="row g-4 align-items-center mb-5">
+                <div class="row g-4">
                 <div class="col-12 col-md-6">
-                    <img src="{% static 'core/img/bangtao-beach.jpg' %}" alt="Bang Tao Beach" class="img-fluid rounded-img">
+                    <div class="card room-card">
+                        <div class="card-body">
+                            <h5>Krabi</h5>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-12 col-md-6">
-                    <h4>Sun, Sand, and Sights</h4>
-                    <p>For guests arriving early, we'll be based in the Bang Tao Beach area from <strong>October 24th-30th</strong>.</p>
-                    <p>It's a beautiful long-stretch of beach with amazing restaurants and beach clubs. We're staying at the Arinara, but the Sunwing next door is also a great option if you'd like to stay nearby before we all move to Cape Panwa.</p>
-                    <a href="#" class="btn btn-secondary">More About Bang Tao</a>
+                    <div class="card room-card">
+                        <div class="card-body">
+                            <h5>The Islands</h5>
+                        </div>
+                    </div>
+                </div>
+                <h4 class="text-center mb-4">Somewhere nearby</h4>
+                <div class="row g-4">
+                    <div class="col-12 col-md-4">
+                        <div class="card event-card">
+                            <h4>Cambodia</h4>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="card event-card highlighted-card">
+                            <h4>Vietnam</h4>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="card event-card">
+                            <h4>Elsewhere</h4>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <h4 class="text-center mb-4">Where to Stay in Bang Tao</h4>
+            <div class="rsvp-section">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>...if you can</h2>
+                    </div> 
             <div class="row g-4">
-                
-                <div class="col-12 col-md-4">
-                    <div class="card room-card">
-                        <img src="{% static 'core/img/arinara-hotel.jpg' %}" alt="Arinara Hotel" class="card-img-top">
-                        <div class="card-body">
-                            <h5>Arinara Beach Resort</h5>
-                            <p class="room-price">Modern Resort (Our Pick!)</p>
-                            <p>This is where we'll be staying. A beautiful, modern resort located right on the beach.</p>
-                            <a href="#" class="btn btn-primary mt-2">Visit Website</a>
+                    <div class="col-12 col-md-4">
+                        <div class="card event-card">
+                            <h4>Pic</h4>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-12 col-md-4">
-                    <div class="card room-card">
-                        <img src="{% static 'core/img/sunwing-aeriel.avif' %}" alt="Sunwing Hotel" class="card-img-top">
-                        <div class="card-body">
-                            <h5>Sunwing Bangtao Beach</h5>
-                            <p class="room-price">Family-Friendly</p>
-                            <p>Fantastic for families and has huge pools. It's right next door to the Arinara.</p>
-                            <a href="#" class="btn btn-primary mt-2">Visit Website</a>
+                    <div class="col-12 col-md-4">
+                        <div class="card event-card highlighted-card">
+                            <p>We understand it is far away</p>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-12 col-md-4">
-                    <div class="card room-card">
-                        <img src="{% static 'core/img/bang-tao-boat.jpg' %}" alt="Villas & Guesthouses" class="card-img-top">
-                        <div class="card-body">
-                            <h5>Villas & Guesthouses</h5>
-                            <p class="room-price">Private & Boutique</p>
-                            <p>The area also has many private villas, Airbnbs, and smaller boutique hotels if you'd prefer.</p>
-                            <a href="#" class="btn btn-primary mt-2">Check Airbnb</a>
+                    <div class="col-12 col-md-4">
+                        <div class="card event-card">
+                            <h4>Pic</h4>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <div class="gallery-section section-padding">
-        <div class="container">
-            <div class="section-title">
-            </div>
-            
+            <div class="gallery-section section-padding">
+                <div class="container">
+                    <div class="section-title">
+                    </div>
 
-            <!-- New Carousel Structure -->
-            <div class="simple-carousel-container">
-                <div class="simple-carousel">
-                    {% for image in carousel_images %}
-                    <div class="couple-item">
-                        <div class="img-wrap">
-                            <img src="{{ image.image.url }}" class="carousel-img" alt="{{ image.title|default:'Gallery image' }}">
+            <div>Any questions just send us an email on ...</div>
+
+                    <!-- New Carousel Structure -->
+                    <div class="simple-carousel-container">
+                        <div class="simple-carousel">
+                            {% for image in carousel_images %}
+                            <div class="couple-item">
+                                <div class="img-wrap">
+                                    <img src="{{ image.image.url }}" class="carousel-img"
+                                        alt="{{ image.title|default:'Gallery image' }}">
+                                </div>
+                            </div>
+                            {% endfor %}
                         </div>
                     </div>
-                    {% endfor %}
+                    {% if not carousel_images %}
+                    <p class="text-center text-muted mt-3">
+                        No public images tagged "couple" to show yet.
+                        In Admin, edit a few Gallery Images and ensure:
+                        <strong>Is public</strong> is checked and the <strong>"couple"</strong> tag is assigned.
+                    </p>
+                    {% endif %}
                 </div>
             </div>
-            {% if not carousel_images %}
-            <p class="text-center text-muted mt-3">
-                No public images tagged "couple" to show yet.
-                In Admin, edit a few Gallery Images and ensure:
-                <strong>Is public</strong> is checked and the <strong>"couple"</strong> tag is assigned.
-            </p>
-            {% endif %}
-        </div>
-    </div>
-{% endblock content %}
+            {% endblock content %}
 
-{% block extra_js %}{% endblock extra_js %}
+            {% block extra_js %}{% endblock extra_js %}
