@@ -13,16 +13,18 @@
     <h1>Alan & Maddie</h1>
 </div>
 
-<div class="simple-carousel-container">
-    <div class="simple-carousel">
+<div class="simple-carousel-container" data-slides-desktop="3" data-slides-mobile="3" data-autoplay="true" data-interval="4000" aria-label="Couple photos carousel">
+    <button class="carousel-nav prev" aria-label="Previous slide" type="button">&#10094;</button>
+    <div class="simple-carousel" role="list" aria-live="polite">
         {% for image in carousel_images %}
-        <div class="couple-item">
+        <div class="couple-item" role="listitem">
             <div class="img-wrap">
-                <img src="{{ image.image.url }}" class="carousel-img" alt="{{ image.title|default:'Gallery image' }}">
+                <img src="{{ image.image.url }}" class="carousel-img" alt="{{ image.title|default:'Gallery image' }}" loading="lazy">
             </div>
         </div>
         {% endfor %}
     </div>
+    <button class="carousel-nav next" aria-label="Next slide" type="button">&#10095;</button>
 </div>
 {% if not carousel_images %}
 <p class="text-center text-muted mt-3">
@@ -252,14 +254,22 @@
                 <h4 class="text-center mb-4">What to do</h4>
                 <!-- Row for activity cards -->
                 <div class="row g-4 equal-cards">
+
                     <div class="col-12 col-md-4 d-flex">
                         <div class="card room-card h-100">
-                            <div class="card-body">
-                                <h5>Elephants</h5>
-                                <a href="#" class="btn btn-primary mt-2">Visit Website</a>
+                            <div class="card-body activity-card-body">
+                                <div class="card-left">
+                                    <img src="{% static 'core/img/maddie-elephant.jpg' %}" alt="maddie feeding an elephant"
+                                        class="img-fluid rounded-img">
+                                </div>
+                                <div class="card-right my-3">
+                                    <h5>Elephants</h5>
+                                    <a href="#" class="btn btn-primary my-2">Visit Website</a>
+                                </div>
                             </div>
                         </div>
                     </div>
+
                     <div class="col-12 col-md-4 d-flex">
                         <div class="card room-card h-100">
                             <div class="card-body">
@@ -268,26 +278,83 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-12 col-md-4 d-flex">
                         <div class="card room-card h-100">
-                            <div class="card-body">
-                                <h5>Entertainment</h5>
-                                <a href="#" class="btn btn-primary mt-2">Visit Website</a>
+                            <div class="card-body activity-card-body">
+                                <div class="card-left">
+                                    <img src="{% static 'core/img/maddie-elephant.jpg' %}" alt="maddie feeding an elephant"
+                                        class="img-fluid rounded-img">
+                                </div>
+                                <div class="card-right my-3">
+                                    <h5>Elephants</h5>
+                                    <a href="#" class="btn btn-primary my-2">Visit Website</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div> <!-- /row What to do -->
 
+                <!-- Second row of what to do-->
+                <div class="row g-4 equal-cards my-4">
+                    <div class="col-12 col-md-4 d-flex">
+                        <div class="card room-card h-100">
+                            <div class="card-body activity-card-body">
+                                <div class="card-left">
+                                    <img src="{% static 'core/img/maddie-elephant.jpg' %}" alt="maddie feeding an elephant"
+                                        class="img-fluid rounded-img">
+                                </div>
+                                <div class="card-right my-3">
+                                    <h5>Elephants</h5>
+                                    <a href="#" class="btn btn-primary my-2">Visit Website</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-4 d-flex">
+                        <div class="card room-card h-100">
+                            <div class="card-body activity-card-body">
+                                <div class="card-left">
+                                    <img src="{% static 'core/img/maddie-elephant.jpg' %}" alt="maddie feeding an elephant"
+                                        class="img-fluid rounded-img">
+                                </div>
+                                <div class="card-right my-3">
+                                    <h5>Elephants</h5>
+                                    <a href="#" class="btn btn-primary my-2">Visit Website</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-4 d-flex">
+                        <div class="card room-card h-100">
+                            <div class="card-body activity-card-body">
+                                <div class="card-left">
+                                    <img src="{% static 'core/img/maddie-elephant.jpg' %}" alt="maddie feeding an elephant"
+                                        class="img-fluid rounded-img">
+                                </div>
+                                <div class="card-right my-3">
+                                    <h5>Elephants</h5>
+                                    <a href="#" class="btn btn-primary my-2">Visit Website</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- /row What to do -->
+
+
                 <!-- Separate row for heading to avoid being inside previous .row -->
                 <div class="row">
                     <div class="col-12">
-                        <h4 class="text-center mb-4">Hotels in Bang Tao</h4>
+                        <h4 class="text-center my-4">Hotels in Bang Tao</h4>
                     </div>
                 </div>
                 <div class="row g-4 equal-cards">
 
                     <div class="col-12 col-md-4 d-flex">
                         <div class="card room-card h-100">
+                            <img src="{% static 'core/img/family-suite.jpg' %}" alt="Family Suite" class="card-img-top">
                             <div class="card-body">
                                 <h5>Arinara Beach Resort</h5>
                                 <p class="room-price">Modern Resort (Our Pick!)</p>
@@ -298,8 +365,11 @@
                         </div>
                     </div>
 
+                    
+
                     <div class="col-12 col-md-4 d-flex">
                         <div class="card room-card h-100">
+                            <img src="{% static 'core/img/family-suite.jpg' %}" alt="Family Suite" class="card-img-top">
                             <div class="card-body">
                                 <h5>Sunwing Bangtao Beach</h5>
                                 <p class="room-price">Family-Friendly</p>
@@ -311,6 +381,7 @@
 
                     <div class="col-12 col-md-4 d-flex">
                         <div class="card room-card h-100">
+                            <img src="{% static 'core/img/family-suite.jpg' %}" alt="Family Suite" class="card-img-top">
                             <div class="card-body">
                                 <h5>Villas & Guesthouses</h5>
                                 <p class="room-price">Private & Boutique</p>
@@ -332,17 +403,17 @@
 
                 <div class="row g-4">
                     <div class="col-12 col-md-4">
-                        <div class="mini-card event-card">
+                        <div class="title-card">
                             <h3>Travel</h3>
                         </div>
                     </div>
                     <div class="col-12 col-md-4">
-                        <div class="mini-card event-card highlighted-card">
+                        <div class="title-card highlighted-card">
                             <h3>Health</h3>
                         </div>
                     </div>
                     <div class="col-12 col-md-4">
-                        <div class="mini-card event-card">
+                        <div class="title-card">
                             <h3>Packing</h3>
                         </div>
                     </div>
@@ -371,10 +442,12 @@
                     <div class="section-title">
                         <h2>...then explore</h2>
                     </div>
-                    <div class="phuket-divider-section full-width-section">
-                        <h2>Thailand</h2>
+                    <div class="thailand-overlay">
+                        <div class="phuket-divider-section full-width-section my-4">
+                            <h2>Thailand</h2>
+                        </div>
                     </div>
-                    <div class="row g-4 align-items-center mb-5">
+                    <div class="row g-4 align-items-center my-5">
                         <div class="col-12 col-md-4">
                             <img src="{% static 'core/img/cape-panwa-hotel.jpg' %}" alt="Cape Panwa Hotel"
                                 class="img-fluid rounded-img">
@@ -391,51 +464,54 @@
                         </div>
                     </div>
                 
-            <div class="row g-4">
-                <div class="col-12 col-md-6">
-                    <div class="card room-card">
-                        <div class="card-body">
-                            <h5>Chiang Mai</h5>
+                    <div class="row g-4">
+                        <div class="col-12 col-md-6">
+                            <div class="card room-card">
+                                <div class="card-body">
+                                    <h5>Chiang Mai</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="card room-card">
+                                <div class="card-body">
+                                    <h5>Bangkok</h5>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-12 col-md-6">
-                    <div class="card room-card">
-                        <div class="card-body">
-                            <h5>Bangkok</h5>
+                    <div class="row g-4 my-4">
+                        <div class="col-12 col-md-6">
+                            <div class="card room-card">
+                                <div class="card-body">
+                                    <h5>Krabi</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="card room-card">
+                                <div class="card-body">
+                                    <h5>The Islands</h5>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row g-4">
-                <div class="col-12 col-md-6">
-                    <div class="card room-card">
-                        <div class="card-body">
-                            <h5>Krabi</h5>
+                    <h4 class="text-center mb-4">Somewhere nearby</h4>
+                    <div class="row g-4">
+                        <div class="col-12 col-md-4">
+                            <div class="card event-card">
+                                <h4>Cambodia</h4>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6">
-                    <div class="card room-card">
-                        <div class="card-body">
-                            <h5>The Islands</h5>
+                        <div class="col-12 col-md-4">
+                            <div class="card event-card highlighted-card">
+                                <h4>Vietnam</h4>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <h4 class="text-center mb-4">Somewhere nearby</h4>
-                <div class="row g-4">
-                    <div class="col-12 col-md-4">
-                        <div class="card event-card">
-                            <h4>Cambodia</h4>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4">
-                        <div class="card event-card highlighted-card">
-                            <h4>Vietnam</h4>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4">
-                        <div class="card event-card">
-                            <h4>Elsewhere</h4>
+                        <div class="col-12 col-md-4">
+                            <div class="card event-card">
+                                <h4>Elsewhere</h4>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -473,17 +549,19 @@
             <div>Any questions just send us an email on ...</div>
 
                     <!-- New Carousel Structure -->
-                    <div class="simple-carousel-container">
-                        <div class="simple-carousel">
+                    <div class="simple-carousel-container" data-slides-desktop="3" data-slides-mobile="3" data-autoplay="true" data-interval="4000" aria-label="Couple photos carousel">
+                        <button class="carousel-nav prev" aria-label="Previous slide" type="button">&#10094;</button>
+                        <div class="simple-carousel" role="list" aria-live="polite">
                             {% for image in carousel_images %}
-                            <div class="couple-item">
+                            <div class="couple-item" role="listitem">
                                 <div class="img-wrap">
                                     <img src="{{ image.image.url }}" class="carousel-img"
-                                        alt="{{ image.title|default:'Gallery image' }}">
+                                        alt="{{ image.title|default:'Gallery image' }}" loading="lazy">
                                 </div>
                             </div>
                             {% endfor %}
                         </div>
+                        <button class="carousel-nav next" aria-label="Next slide" type="button">&#10095;</button>
                     </div>
                     {% if not carousel_images %}
                     <p class="text-center text-muted mt-3">
@@ -496,4 +574,6 @@
             </div>
             {% endblock content %}
 
-            {% block extra_js %}{% endblock extra_js %}
+            {% block extra_js %}
+            <script src="{% static 'js/simple_carousel.js' %}"></script>
+            {% endblock extra_js %}

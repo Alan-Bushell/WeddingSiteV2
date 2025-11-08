@@ -17,6 +17,8 @@
     
     --sand: #f6e8d5;
     --ink: #005252;
+    --white: #ffffff;
+    --magenta: #ff00cc; /* alias for neon/pink usage */
     --shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
 }
 
@@ -40,7 +42,7 @@ h6 {
     font-family: "Dancing Script", cursive;
     color: var(--pink);
     font-weight: 300;
-    line-height: top;
+    line-height: 1.1;
 }
 
 h1 { font-size: 5rem; }
@@ -290,18 +292,19 @@ p {
 
 /* Part 4: Phuket Divider */
 .phuket-divider-section {
-    height: 40vh;
-    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://source.unsplash.com/random/1920x1080/?phuket,aerial');
+    height: 200px;
+    background-image: url('/media/gallery_images/phi-phi-bg.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed; /* This creates the parallax effect */
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: rgba(0, 0, 0, .4) 0 0 0 1000000px inset;
 }
 .phuket-divider-section h2 {
     font-size: 6rem;
-    color: var(--white);
+    color: var(--pink);
     letter-spacing: 20px;
     text-transform: uppercase;
     /* Neon glow: white inner + magenta outer */
@@ -309,9 +312,9 @@ p {
         0 0 3px #fff,
         0 0 6px #fff,
         0 0 10px #fff,
-        0 0 16px var(--magenta),
-        0 0 28px var(--magenta),
-        0 0 42px var(--magenta);
+        0 0 16px var(--pink),
+        0 0 28px var(--pink),
+        0 0 42px var(--pink);
     animation: neonPulse 2.4s ease-in-out infinite alternate;
 }
 
@@ -321,18 +324,18 @@ p {
             0 0 2px #fff,
             0 0 4px #fff,
             0 0 8px #fff,
-            0 0 12px var(--magenta),
-            0 0 20px var(--magenta),
-            0 0 30px var(--magenta);
+            0 0 12px var(--pink),
+            0 0 20px var(--pink),
+            0 0 30px var(--pink);
     }
     100% {
         text-shadow:
             0 0 4px #fff,
             0 0 8px #fff,
             0 0 12px #fff,
-            0 0 22px var(--magenta),
-            0 0 36px var(--magenta),
-            0 0 52px var(--magenta);
+            0 0 22px var(--pink),
+            0 0 36px var(--pink),
+            0 0 52px var(--pink);
     }
 }
 
@@ -344,66 +347,94 @@ p {
     font-size: 8rem;
 }
 
+.card-left, .card-right{
+    width: 50%;
+    padding: 0;
+}
+
+.activity-card-body{
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+
 /* Part 6: Gallery Section */
 
 
 /* --- New Simple Carousel Styles --- */
 .simple-carousel-container {
-    overflow: visible; /* No horizontal scroll for our flex layout */
-    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS (kept harmless) */
-    scrollbar-width: thin; /* Firefox */
-    scrollbar-color: var(--sand); /* Firefox */
-}
-
-/* Scrollbar styling for Webkit browsers (Chrome, Safari) */
-.simple-carousel-container::-webkit-scrollbar {
-    height: 8px;
-}
-.simple-carousel-container::-webkit-scrollbar-track {
-    background: var(--sand);
-}
-.simple-carousel-container::-webkit-scrollbar-thumb {
-    border-radius: 10px;
+    position: relative;
+    margin-top: 2rem;
+    /* JS sets overflow hidden; keep base accessible baseline here */
 }
 
 .simple-carousel {
     display: flex;
-    flex-wrap: wrap; /* Allow wrapping so any count 1..4 looks good */
-    justify-content: center; /* Even spacing regardless of item count */
-    gap: 2px; /* Consistent gap between items */
-    padding-bottom: 0; /* No scrollbar padding needed */
-    margin-top: 2rem;
+    flex-direction: row;
+    gap: 0.75rem; /* JS reads this gap to align translate steps */
+    align-items: stretch;
+    user-select: none;
 }
 
 .couple-item {
-    flex: 0 1 22%; /* Target ~4 per row, but allow shrink/grow */
-    min-width: 220px; /* Reasonable minimum for smaller desktops */
+    flex: 0 0 auto;
 }
 
-/* Anchor wraps the image; keep rounded corners and hide overflow for smooth zoom */
 .couple-item .img-wrap {
     display: block;
-    border-radius: 8px;
+    border-radius: 12px;
     overflow: hidden;
     box-shadow: var(--shadow);
     position: relative;
+    background: var(--ink);
+    isolation: isolate;
     transition: box-shadow 0.3s ease;
 }
-.couple-item .img-wrap:hover { box-shadow: 0 8px 20px rgba(0,0,0,0.12); }
-
-/* Removed lightbox-style overlay; simple click opens in new tab */
+.couple-item .img-wrap:hover { box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
 
 .carousel-img {
     width: 100%;
-    height: 300px; /* Fixed height for all images */
+    height: 280px;
     object-fit: cover;
     display: block;
     transform-origin: center center;
-    transition: transform 0.32s ease-out;
+    transition: transform 0.35s ease-out;
     will-change: transform;
 }
 
-.couple-item .img-wrap:hover .carousel-img { transform: scale(1.12); }
+.couple-item .img-wrap:hover .carousel-img { transform: scale(1.08); }
+
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.4);
+    color: var(--white);
+    border: none;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    font-size: 1.6rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    transition: background 0.25s ease, transform 0.25s ease;
+    z-index: 10;
+}
+.carousel-nav:hover { background: rgba(0,0,0,0.6); transform: translateY(-50%) scale(1.05); }
+.carousel-nav.prev { left: 0.25rem; }
+.carousel-nav.next { right: 0.25rem; }
+.carousel-nav:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+
+@media (max-width: 768px) {
+    .simple-carousel { gap: 0.5rem; }
+    .carousel-img { height: 160px; }
+    .carousel-nav { width: 40px; height: 40px; font-size: 1.3rem; }
+}
 
 
 /* Responsive Media Queries */
@@ -439,6 +470,15 @@ p {
     .container-fluid {
         padding-left: 15px !important;
         padding-right: 15px !important;
+    }
+
+    .hero-section {
+        height: auto;
+        width: 100%;
+    }
+
+    .simple-carousel{
+        flex-direction: row;
     }
 }
 

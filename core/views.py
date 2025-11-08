@@ -14,13 +14,13 @@ def home_view(request):
         print(f"Error fetching latest articles: {e}")
         latest_articles = []
     
-    # Retrieve up to 4 public images tagged 'couple' (case-insensitive)
+    # Retrieve up to 20 public images tagged 'couple' (case-insensitive)
     try:
         carousel_images = list(
             GalleryImage.objects.filter(
                 is_public=True,
                 tags__slug__iexact='couple'
-            ).order_by('-uploaded_at')[:4]
+            ).order_by('-uploaded_at')[:20]
         )
     except Exception as e:
         print(f"Error fetching 'couple' carousel images: {e}")
@@ -51,13 +51,13 @@ def home_view2(request):
         print(f"Error fetching latest articles: {e}")
         latest_articles = []
     
-    # Retrieve up to 4 public images tagged 'couple' (case-insensitive)
+    # Retrieve up to 20 public images tagged 'couple' (case-insensitive)
     try:
         carousel_images = list(
             GalleryImage.objects.filter(
                 is_public=True,
                 tags__slug__iexact='couple'
-            ).order_by('-uploaded_at')[:4]
+            ).order_by('-uploaded_at')[:20]
         )
     except Exception as e:
         print(f"Error fetching 'couple' carousel images: {e}")
