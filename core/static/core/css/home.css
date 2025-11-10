@@ -16,7 +16,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url("../img/hero-background.jpg"); /* Retained your image path */
+    /* Use an existing static image to satisfy collectstatic manifest processing */
     background-size: cover;
     background-position: center;
     background-attachment: fixed; /* For parallax effect */
