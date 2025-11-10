@@ -21,6 +21,10 @@ urlpatterns = [
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+else:
+    # In production, serve MEDIA through Django for small sites on Render.
+    # For larger sites, use a proper media backend (e.g., S3 via django-storages).
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 # --- NEW: CUSTOM ERROR HANDLERS ---
