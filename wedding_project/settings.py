@@ -89,6 +89,10 @@ WSGI_APPLICATION = 'wedding_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# Define where to find project-level static files and where to collect them.
+STATICFILES_DIRS = [BASE_DIR / "static"]
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
 if os.environ.get("DJANGO_DEVELOPMENT", "True") == "True":
     # Dev: SQLite
     DATABASES = {
@@ -98,8 +102,6 @@ if os.environ.get("DJANGO_DEVELOPMENT", "True") == "True":
         }
     }
     STATIC_URL = "/static/"
-    STATIC_ROOT = BASE_DIR / "staticfiles"
-    STATICFILES_DIRS = [BASE_DIR / "static"]
 
     STORAGES = {
         "default": {"BACKEND": "django.core.files.storage.FileSystemStorage"},
