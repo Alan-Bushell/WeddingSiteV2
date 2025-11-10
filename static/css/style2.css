@@ -86,22 +86,20 @@ p {
 
 .img-fluid {
     width: 100%;
-    height: auto;
+    height: 100%
 }
 
 .rounded-img {
-    border-radius: 25px;
+    border-radius: 20px;
 
 }
 
 .btn {
     display: inline-block;
-    padding: 0.75rem 1.5rem;
-    border-radius: 50px;
     text-decoration: none;
-    font-family: "Montserrat";
     font-weight: 600;
     transition: all 0.3s ease;
+    letter-spacing: 2px;
 }
 .btn-primary {
     background-color: var(--magenta);
@@ -352,6 +350,10 @@ p {
     padding: 0;
 }
 
+.card-right{
+    margin-top: 10px;
+}
+
 .activity-card-body{
     padding: 0;
     display: flex;
@@ -445,6 +447,11 @@ p {
         gap: 0.75rem; /* Small margin between items on mobile */
     }
 
+    .event-pic-snorkel,
+    .event-pic-drink {
+        min-height: 200px; /* Ensures these have height on mobile */
+    }
+
     .couple-item {
         flex-basis: auto; /* Allow items to take full width */
         width: 100%;
@@ -461,9 +468,17 @@ p {
     .hero-content h2 { font-size: 2rem; margin-top: -1rem; }
     .hero-content h3 { font-size: 1.5rem; }
 
+    .phuket-divider-section {
+        height: 150px;
+    }
+
     .phuket-divider-section h2 {
-        font-size: 3rem;
-        letter-spacing: 10px;
+        font-size: 38px;
+        letter-spacing: 8px;
+    }
+
+    .card-right{
+        align-content: center;
     }
 
     /* Fix for Bootstrap container-fluid if you use it */
