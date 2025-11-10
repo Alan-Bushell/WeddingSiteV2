@@ -127,7 +127,6 @@ else:
     AWS_S3_OBJECT_PARAMETERS = {
         'CacheControl': 'max-age=86400',
     }
-    AWS_LOCATION = 'static'
 
     # Static and Media files storage
     STORAGES = {
