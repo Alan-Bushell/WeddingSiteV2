@@ -182,7 +182,7 @@ p {
     align-items: center;
     justify-content: center;
     text-align: center;
-    background-image: url('/media/gallery_images/bg-cover-photo.jpg');
+    background-image: url('../core/img/bg-cover-photo.jpg');
     background-size: cover;
     background-position: bottom;
     border-radius: 25px;
@@ -262,14 +262,14 @@ p {
 }
 
 .event-pic-snorkel {
-    background-image: url('/media/gallery_images/event-snorkel.jpg');
+    background-image: url('../core/img/event-snorkel.jpg');
     background-size: cover;
     background-position: bottom;
     color: var(--sand);
 }
 
 .event-pic-drink {
-    background-image: url('/media/gallery_images/event-card-drink.jpg');
+    background-image: url('../core/img/event-card-drink.jpg');
     background-size: cover;
     background-position: center;
     color: var(--ink);
@@ -293,7 +293,7 @@ p {
 /* Part 4: Phuket Divider */
 .phuket-divider-section {
     height: 200px;
-    background-image: url('/media/gallery_images/phi-phi-bg.jpg');
+    background-image: url('../core/img/phi-phi-bg.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed; /* This creates the parallax effect */
