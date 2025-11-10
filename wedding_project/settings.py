@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     # Third-party apps
     'ckeditor',
     'ckeditor_uploader',
+    'storages', # for django-storages
     # Crispy Forms
     'crispy_forms',
     'crispy_bootstrap5',
@@ -88,15 +89,27 @@ WSGI_APPLICATION = 'wedding_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-# Dev: SQLite | Prod: Postgres via DATABASE_URL
 if os.environ.get("DJANGO_DEVELOPMENT", "True") == "True":
+    # Dev: SQLite
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
             "NAME": BASE_DIR / "db.sqlite3",
         }
     }
+    STATIC_URL = "/static/"
+    STATIC_ROOT = BASE_DIR / "staticfiles"
+    STATICFILES_DIRS = [BASE_DIR / "static"]
+
+    STORAGES = {
+        "default": {"BACKEND": "django.core.files.storage.FileSystemStorage"},
+        "staticfiles": {"BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"},
+    }
+
+    MEDIA_URL = "/media/"
+    MEDIA_ROOT = BASE_DIR / "media"
 else:
+    # Production-specific settings
     import dj_database_url
     DATABASES = {
         "default": dj_database_url.config(
@@ -105,6 +118,26 @@ else:
             ssl_require=True,
         )
     }
+
+    # AWS S3 settings for static and media files
+    AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
+    AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
+    AWS_STORAGE_BUCKET_NAME = os.environ.get("AWS_STORAGE_BUCKET_NAME")
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+    AWS_S3_OBJECT_PARAMETERS = {
+        'CacheControl': 'max-age=86400',
+    }
+    AWS_LOCATION = 'static'
+
+    # Static and Media files storage
+    STORAGES = {
+        "default": {"BACKEND": "wedding_project.storages.MediaStorage"},
+        "staticfiles": {"BACKEND": "wedding_project.storages.StaticStorage"},
+    }
+    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
+
+
 
 
 # Password validation
@@ -151,21 +184,9 @@ LOGOUT_REDIRECT_URL = 'home'
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 CKEDITOR_BASEPATH = '/static/ckeditor/ckeditor/'
 
-
-STATIC_URL = "/static/"
-STATIC_ROOT = BASE_DIR / "staticfiles"
-STATICFILES_DIRS = [BASE_DIR / "static"]  # make 'W26/static/**' collectable
-
-STORAGES = {
-    "default": {"BACKEND": "django.core.files.storage.FileSystemStorage"},
-    "staticfiles": {"BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"},
-}
-
-MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / "media"
-
 # Security when behind Render’s proxy
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 USE_X_FORWARDED_HOST = True
 SESSION_COOKIE_SECURE = os.environ.get("DJANGO_DEVELOPMENT", "False") != "True"
 CSRF_COOKIE_SECURE = os.environ.get("DJANGO_DEVELOPMENT", "False") != "True"
+
