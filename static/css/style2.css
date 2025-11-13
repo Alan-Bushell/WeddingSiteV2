@@ -63,6 +63,13 @@ p {
     margin-left: auto;
 }
 
+.navbar-brand {
+    background-image: url('../core/img/logo.png');
+    background-size: cover;
+    width: 120px;
+    height: 120px;
+}
+
 .section-padding {
     padding: 5rem 0;
 }
@@ -92,6 +99,14 @@ p {
 .rounded-img {
     border-radius: 20px;
 
+}
+
+.box-headings {
+    width: 25%;
+    border: solid 3px var(--ink);
+    justify-self: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .btn {
@@ -136,6 +151,10 @@ p {
     display: flex;
     flex-direction: column;
     flex: 1 1 auto;
+}
+
+.equal-cards img{
+    border-radius: 22.5px;
 }
 .equal-cards .card .card-body {
     flex: 1 1 auto;
@@ -184,6 +203,16 @@ p {
     background-size: cover;
     background-position: bottom;
     border-radius: 25px;
+}
+
+.wedding-sign {
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    background-image: url('../core/img/weddingsign.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
     
 
@@ -447,6 +476,11 @@ p {
         gap: 0.75rem; /* Small margin between items on mobile */
     }
 
+    .navbar-brand {
+    width: 50px;
+    height: 50px;
+    }
+
     .event-pic-snorkel,
     .event-pic-drink {
         min-height: 200px; /* Ensures these have height on mobile */
@@ -488,7 +522,7 @@ p {
     }
 
     .hero-section {
-        height: auto;
+        height: 40vh;
         width: 100%;
     }
 
