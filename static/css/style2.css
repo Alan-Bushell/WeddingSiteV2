@@ -104,9 +104,9 @@ p {
 .box-headings {
     width: 25%;
     border: solid 3px var(--ink);
-    justify-self: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin: 20px auto; /* Replaces justify-self for reliable centering */
+    padding: 0 1rem; /* Add some horizontal padding */
+    text-align: center; /* Ensure text inside is centered */
 }
 
 .btn {
@@ -261,6 +261,15 @@ p {
     
 }
 
+.adult-icon {
+    font-size: 125%;
+}
+
+.child-icon {
+    font-size: 75%;
+    font-weight: 600;
+}
+
 .event-card h4 {
     text-shadow: 1px 1px var(--sand);
 }
@@ -327,7 +336,8 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: rgba(0, 0, 0, .4) 0 0 0 1000000px inset;
+    box-shadow: rgba(0, 0, 0, .4) 0 0 0 100000px inset;
+    animation: neonBorderPulse 2.4s ease-in-out infinite alternate;
 }
 .phuket-divider-section h2 {
     font-size: 6rem;
@@ -363,6 +373,25 @@ p {
             0 0 22px var(--pink),
             0 0 36px var(--pink),
             0 0 52px var(--pink);
+    }
+}
+
+@keyframes neonBorderPulse {
+    0% {
+        box-shadow:
+            rgba(0, 0, 0, .4) 0 0 0 100000px inset,
+            0 0 5px #fff,
+            0 0 10px #fff,
+            0 0 20px var(--pink),
+            0 0 35px var(--pink);
+    }
+    100% {
+        box-shadow:
+            rgba(0, 0, 0, .4) 0 0 0 100000px inset,
+            0 0 10px #fff,
+            0 0 20px #fff,
+            0 0 35px var(--pink),
+            0 0 50px var(--pink);
     }
 }
 
@@ -528,6 +557,14 @@ p {
 
     .simple-carousel{
         flex-direction: row;
+    }
+
+    .box-headings {
+        width: auto; /* Let width be determined by content */
+        display: inline-block; /* Make the container only as wide as its content */
+        margin-left: auto;
+        margin-right: auto;
+        display: block; /* Center the inline-block */
     }
 }
 

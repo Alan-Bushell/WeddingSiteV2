@@ -1,16 +1,65 @@
 /* C:\Users\abush\OneDrive\Documents\W26\static\css\style.css */
 
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Montserrat:wght@400;600;700&display=swap');
+
+/* Theme palette (Thailand wedding) */
+:root {
+    --pink: #ff00cc;
+    --pink50: #ff00cc8e;
+    --coral: #f70;
+    --coral50: #ff77008e;
+    --yellow: #ffec17;
+    --yellow50: #ffec178e;
+    --blue: #29a7ff;
+    --blue50: #29a7ff8e;
+    --teal: #00ffee;
+    --teal50: #00ffee8e;
+    --green: #00d100;
+    --green50: #00d1008e;
+    
+    --sand: #f6e8d5;
+    --ink: #005252;
+    --white: #ffffff;
+    --magenta: #ff00cc; /* alias for neon/pink usage */
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+}
+
 /* Global body styling */
 body {
-    font-family: 'Open Sans', sans-serif; /* A common, clean font */
-    background-color: #f4f2ef; /* A very light, warm off-white */
-    color: #333; /* Soft black text */
+    font-family: "gala", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    color: var(--ink);
+    background-color: var(--sand);
     line-height: 1.6;
+}
+
+/* Typography */
+h1, h2, h3 {
+    font-family: "alana-smooth", cursive;
+    color: var(--pink);
+}
+
+h4,
+h5,
+h6 {
+    font-family: "Dancing Script", cursive;
+    color: var(--pink);
+    font-weight: 300;
+    line-height: 1.1;
+}
+
+h1 { font-size: 5rem; }
+h2 { font-size: 3.5rem; }
+h3 { font-size: 2.5rem; }
+/* Note: h4 and h5 are overridden in style2.css for homepage-specific cards */
+
+p {
+    line-height: 1.6;
+    margin-bottom: 1rem;
 }
 
 /* Navbar styling */
 .navbar {
-    background-color: #f6e8d5 !important; 
+    background-color: var(--sand) !important; 
     width:100%;
     margin-right: auto;
     margin-left: auto;
@@ -20,14 +69,23 @@ body {
     text-align: center;;
 }
 
-.navbar-brand, .navbar-nav .nav-link {
-    color: #00393a !important; /* White text for contrast */
+.navbar-brand {
+    background-image: url('../core/img/logo.png');
+    background-size: cover;
+    width: 120px;
+    height: 120px;
+    /* Override text-based styles */
+    color: transparent !important;
+}
+
+.navbar-nav .nav-link {
+    color: var(--ink) !important;
     font-weight: 600;
     transition: color 0.3s ease;
 }
 
 .navbar-brand:hover, .navbar-nav .nav-link:hover {
-    color: #e0e0e0 !important; /* Lighter white on hover */
+    color: var(--pink) !important;
 }
 
 /* General container/card styling */
