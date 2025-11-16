@@ -160,6 +160,13 @@ p {
     flex: 1 1 auto;
 }
 
+/* Override for date titles to use Dancing Script */
+.title-card h3 {
+    font-family: "Gala";
+    color: var(--ink);
+    font-size: 2.8rem; /* Adjusted for better fit */
+}
+
 .title-card{
     border: solid 2px var(--ink);
     margin-bottom: 2em;
@@ -184,6 +191,7 @@ p {
     color: var(--ink);
     margin-bottom: 0.5rem;
 }
+
 .room-price {
     font-size: 1.1rem;
     font-weight: 600;
@@ -239,6 +247,10 @@ p {
 /* Part 2: Schedule Section */
 .schedule-section {
     background-color: var(--sand);
+    background-image: url('../core/img/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 .event-card {
     text-align: center;
@@ -403,20 +415,48 @@ p {
     font-size: 8rem;
 }
 
-.card-left, .card-right{
-    width: 50%;
-    padding: 0;
+/* New Activity Card Styles */
+.activity-card {
+    overflow: hidden; /* Ensures the image corners are rounded if the card is rounded */
+    height: 300px; /* Set a fixed height for all activity cards */
+    display: flex; /* Make the card a flex container */
 }
 
-.card-right{
-    margin-top: 10px;
-}
-
-.activity-card-body{
-    padding: 0;
+.activity-card .card-body {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* This will center the content horizontally as well */
+    height: 100%;
 }
+
+.activity-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Preserve aspect while filling card */
+    border-radius: 0; /* Remove any previous border-radius */
+}
+
+/* Mobile tweaks for activity cards */
+@media (max-width: 767.98px) {
+    .activity-card {
+        height: clamp(200px, 48vw, 280px); /* slightly shorter to reduce perceived zoom */
+    }
+    .activity-card-img {
+        height: 100%; /* fill the column height to avoid whitespace under image */
+        object-position: center; /* keep subject centered */
+        object-fit: fill;
+    }
+    .activity-card .card-body {
+        padding: 0.5rem; /* slightly tighter padding on mobile */
+    }
+}
+
+/* Utilities to adjust image focal point when using object-fit: cover */
+.object-pos-center-top { object-position: 50% 30%; }
+.object-pos-top { object-position: 50% 20%; }
+.object-pos-center-right { object-position: 80% 50%; }
+.object-pos-center-left { object-position: 20% 50%; }
 
 
 /* Part 6: Gallery Section */
@@ -531,6 +571,28 @@ p {
     .hero-content h2 { font-size: 2rem; margin-top: -1rem; }
     .hero-content h3 { font-size: 1.5rem; }
 
+    .hotel-section h2 {
+        font-size: 5rem;
+    }
+
+    .schedule-section h2 {
+        font-size: 5rem;
+    }
+
+    .before-section h2 {
+        font-size: 5rem;
+    }
+
+    .rsvp-section h2 {
+        font-size: 5rem;
+    }
+
+    .event-card h3 {
+        font-size: 1.5rem;
+    }
+
+
+
     .phuket-divider-section {
         height: 150px;
     }
@@ -570,3 +632,65 @@ p {
 
 /* Removed SimpleLightbox-specific styles */
 /* (Cleanup) Removed temporary debug visibility overrides */
+
+.prepared-card {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    color: var(--white);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 250px; /* Ensure a consistent height */
+}
+
+.prepared-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4); /* Dark overlay */
+    border-radius: 22.5px; /* Match card's border-radius */
+    z-index: 1;
+}
+
+.prepared-card > * {
+    position: relative;
+    z-index: 2;
+}
+
+.prepared-card-travel {
+    background-image: url('../core/img/travel-card-bg.jpg');
+}
+
+.prepared-card-health {
+    background-image: url('../core/img/health-card-bg.jpg');
+}
+
+.prepared-card-packing {
+    background-image: url('../core/img/packing-card-bg.jpg');
+}
+
+/* --- Explore cards (Chiang Mai, Bangkok, Krabi, The Islands) --- */
+.explore-card .explore-photos .explore-img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3; /* consistent shape across all places */
+    object-fit: cover;
+    border-radius: 12px; /* curved corners */
+    display: block;
+}
+
+/* Generic explore-img usage (outside .explore-card .explore-photos) */
+.explore-img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+}

@@ -5,9 +5,12 @@ from django.conf import settings
 class RSVP(models.Model):
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
         related_name='rsvp_submission'
     )
+    email = models.EmailField(max_length=254, help_text="Your email address.", null=True, blank=True)
     is_attending = models.BooleanField(default=True, verbose_name="Will you be attending?")
     number_of_guests = models.PositiveIntegerField(
         default=1,
@@ -27,7 +30,9 @@ class RSVP(models.Model):
         verbose_name_plural = "RSVPs"
 
     def __str__(self):
-        return f"RSVP by {self.user.username} - Attending: {self.is_attending}"
+        if self.user:
+            return f"RSVP by {self.user.username} - Attending: {self.is_attending}"
+        return f"RSVP by {self.email} - Attending: {self.is_attending}"
 
 class Guest(models.Model):
     # ... (this model stays the same)

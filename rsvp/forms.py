@@ -6,7 +6,7 @@ from .models import RSVP, Guest
 class RSVPForm(forms.ModelForm):
     class Meta:
         model = RSVP
-        fields = ['is_attending', 'number_of_guests', 'notes']
+        fields = ['email', 'is_attending', 'number_of_guests', 'notes']
         widgets = {
             'notes': forms.Textarea(attrs={'rows': 3}),
         }

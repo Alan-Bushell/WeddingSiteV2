@@ -59,7 +59,11 @@ p {
 
 /* Navbar styling */
 .navbar {
-    background-color: var(--sand) !important; 
+    background-color: var(--sand) !important;
+    background-image: url('../core/img/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     width:100%;
     margin-right: auto;
     margin-left: auto;
@@ -88,12 +92,11 @@ p {
     color: var(--pink) !important;
 }
 
-/* General container/card styling */
-.container {
-    padding-top: 15px;
-    padding-bottom: 15px;
-    
+.rsvp-img img {
+    width: 40px;
+    height: 40px;
 }
+
 
 .card {
     border: none; /* Remove default Bootstrap card border */

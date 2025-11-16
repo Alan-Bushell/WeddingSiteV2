@@ -8,14 +8,6 @@
 {% endblock %}
 
 {% block content %}
-
-<!--Todo -->
-<!--what to do in a box, then two in a row-->
-<!--Prepared - 3 titles to look like date titles-->
-<!-- on mobile, cape panwa, phuket - title block text photo photo-->
-<!--reformat title card, title card in the prepared section-->
-
-
 <div class="hero-section full-width-section">
     <div class="wedding-sign"></div>
 </div>
@@ -246,6 +238,7 @@
                         <p><i class="fa-regular fa-user adult-icon"></i> <i class="fa-regular fa-user adult-icon"></i> + <i class="fa-regular fa-user child-icon"></i></p>
                         <p class="room-price">150 Eur p/n</p>
                         <p>All the comforts of the Junior Suite, with a stunning ocean view.</p>
+                        <a href="https://www.capepanwa.com/junior-suite-sea-view/" class="btn btn-primary mt-2" target="_blank">Visit Website</a>
                     </div>
                 </div>
             </div>
@@ -256,6 +249,7 @@
                         <p><i class="fa-regular fa-user adult-icon"></i> <i class="fa-regular fa-user adult-icon"></i> <i class="fa-regular fa-user adult-icon"></i> <i class="fa-regular fa-user adult-icon"></i> + <i class="fa-regular fa-user child-icon"></i> <i class="fa-regular fa-user child-icon"></i></p>
                         <p class="room-price">245 Eur p/n</p>
                         <p>A two-bedroom suite, perfect for families or friends sharing.</p>
+                        <a href="https://www.capepanwa.com/family-suite/" class="btn btn-primary mt-2" target="_blank">Visit Website</a>
                     </div>
                 </div>
             </div>
@@ -269,6 +263,7 @@
                         <p><i class="fa-regular fa-user adult-icon"></i> <i class="fa-regular fa-user adult-icon"></i> + <i class="fa-regular fa-user child-icon"></i></p>
                         <p class="room-price">125 Eur p/n</p>
                         <p>Spacious suite with a sitting area and garden view.</p>
+                        <a href="https://www.capepanwa.com/cape-suite/" class="btn btn-primary mt-2" target="_blank">Visit Website</a>
                     </div>
                 </div>
             </div>
@@ -279,6 +274,7 @@
                         <p><i class="fa-regular fa-user adult-icon"></i> <i class="fa-regular fa-user adult-icon"></i> + <i class="fa-regular fa-user child-icon"></i></p>
                         <p class="room-price">150 Eur p/n</p>
                         <p>All the comforts of the Junior Suite, with a stunning ocean view.</p>
+                        <a href="https://www.capepanwa.com/cape-suite-sea-view/" class="btn btn-primary mt-2" target="_blank">Visit Website</a>
                     </div>
                 </div>
             </div>
@@ -289,6 +285,7 @@
                          <p><i class="fa-regular fa-user adult-icon"></i> <i class="fa-regular fa-user adult-icon"></i> <i class="fa-regular fa-user adult-icon"></i> <i class="fa-regular fa-user adult-icon"></i></p>
                         <p class="room-price">245 Eur p/n</p>
                         <p>A two-bedroom suite, perfect for families or friends sharing.</p>
+                        <a href="https://www.capepanwa.com/panwa-two-bedroom-pool-villa/" class="btn btn-primary mt-2" target="_blank">Visit Website</a>
                     </div>
                 </div>
             </div>
@@ -392,91 +389,78 @@
                 </div>
 
                 <h4 class="box-headings">What to do</h4>
-                <!-- Row for activity cards -->
-                <div class="row g-4 equal-cards">
-
-                    <div class="col-12 col-md-4 d-flex">
-                        <div class="card room-card h-100">
-                            <div class="card-body activity-card-body">
-                                <div class="card-left">
-                                    <img src="{% static 'core/img/maddie-elephant.jpg' %}" alt="maddie feeding an elephant"
-                                        class="img-fluid rounded-img">
+                <!-- Row for all activity cards -->
+                <div class="row g-4">
+                    <!-- Card 1: Elephants (Image Left) -->
+                    <div class="col-12 col-md-6 d-flex">
+                        <div class="card activity-card w-100">
+                            <div class="row g-0 h-100 align-items-stretch">
+                                <div class="col-6 h-100">
+                                    <img src="{% static 'core/img/maddie-elephant.jpg' %}" alt="Maddie feeding an elephant" class="activity-card-img object-pos-top">
                                 </div>
-                                <div class="card-right my-3">
-                                    <h5>Elephants</h5>
-                                    <a href="#" class="btn btn-primary my-2">Visit Website</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-4 d-flex">
-                        <div class="card room-card h-100">
-                            <div class="card-body">
-                                <h5>Boat Trips</h5>
-                                <a href="#" class="btn btn-primary mt-2">Visit Website</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-4 d-flex">
-                        <div class="card room-card h-100">
-                            <div class="card-body activity-card-body">
-                                <div class="card-left">
-                                    <img src="{% static 'core/img/maddie-elephant.jpg' %}" alt="maddie feeding an elephant"
-                                        class="img-fluid rounded-img">
-                                </div>
-                                <div class="card-right my-3">
-                                    <h5>Elephants</h5>
-                                    <a href="#" class="btn btn-primary my-2">Visit Website</a>
+                                <div class="col-6 h-100 d-flex align-items-center">
+                                    <div class="card-body text-center">
+                                        <h5>Elephants</h5>
+                                        <p>Visit a sanctuary.</p>
+                                        <a href="#" class="btn btn-primary mt-2">Learn More</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div> <!-- /row What to do -->
+
+                    <!-- Card 2: Boat Trips (Image Right) -->
+                    <div class="col-12 col-md-6 d-flex">
+                        <div class="card activity-card w-100">
+                            <div class="row g-0 h-100 align-items-stretch">
+                                <div class="col-6 h-100 d-flex align-items-center">
+                                    <div class="card-body text-center">
+                                        <h5>Boat Trips</h5>
+                                        <p>Explore the islands.</p>
+                                        <a href="#" class="btn btn-primary mt-2">Learn More</a>
+                                    </div>
+                                </div>
+                                <div class="col-6 h-100">
+                                    <img src="{% static 'core/img/sea-boat.jpg' %}" alt="Longtail boat at sea" class="activity-card-img object-pos-center-right">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- Second row of what to do-->
-                <div class="row g-4 equal-cards my-4">
-                    <div class="col-12 col-md-4 d-flex">
-                        <div class="card room-card h-100">
-                            <div class="card-body activity-card-body">
-                                <div class="card-left">
-                                    <img src="{% static 'core/img/maddie-elephant.jpg' %}" alt="maddie feeding an elephant"
-                                        class="img-fluid rounded-img">
+                <div class="row g-4 mt-4">
+                    <!-- Card 3: Temples (Image Left) -->
+                    <div class="col-12 col-md-6 d-flex">
+                        <div class="card activity-card w-100">
+                            <div class="row g-0 h-100 align-items-stretch">
+                                <div class="col-6 h-100">
+                                    <img src="{% static 'core/img/temple.jpg' %}" alt="Big Buddha temple" class="activity-card-img">
                                 </div>
-                                <div class="card-right my-3">
-                                    <h5>Elephants</h5>
-                                    <a href="#" class="btn btn-primary my-2">Visit Website</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-4 d-flex">
-                        <div class="card room-card h-100">
-                            <div class="card-body activity-card-body">
-                                <div class="card-left">
-                                    <img src="{% static 'core/img/maddie-elephant.jpg' %}" alt="maddie feeding an elephant"
-                                        class="img-fluid rounded-img">
-                                </div>
-                                <div class="card-right my-3">
-                                    <h5>Elephants</h5>
-                                    <a href="#" class="btn btn-primary my-2">Visit Website</a>
+                                <div class="col-6 h-100 d-flex align-items-center">
+                                    <div class="card-body text-center">
+                                        <h5>Temples</h5>
+                                        <p>Visit Big Buddha.</p>
+                                        <a href="#" class="btn btn-primary mt-2">Learn More</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-12 col-md-4 d-flex">
-                        <div class="card room-card h-100">
-                            <div class="card-body activity-card-body">
-                                <div class="card-left">
-                                    <img src="{% static 'core/img/maddie-elephant.jpg' %}" alt="maddie feeding an elephant"
-                                        class="img-fluid rounded-img">
+                    <!-- Card 4: Markets (Image Right) -->
+                    <div class="col-12 col-md-6 d-flex">
+                        <div class="card activity-card w-100">
+                            <div class="row g-0 h-100 align-items-stretch">
+                                <div class="col-6 h-100 d-flex align-items-center">
+                                    <div class="card-body text-center">
+                                        <h5>Markets</h5>
+                                        <p>Explore local markets.</p>
+                                        <a href="#" class="btn btn-primary mt-2">Learn More</a>
+                                    </div>
                                 </div>
-                                <div class="card-right my-3">
-                                    <h5>Elephants</h5>
-                                    <a href="#" class="btn btn-primary my-2">Visit Website</a>
+                                <div class="col-6 h-100">
+                                    <img src="{% static 'core/img/markets.jpg' %}" alt="Thai market stall" class="activity-card-img">
                                 </div>
                             </div>
                         </div>
@@ -493,7 +477,7 @@
 
                     <div class="col-12 col-md-4 d-flex">
                         <div class="card room-card h-100">
-                            <img src="{% static 'core/img/family-suite.jpg' %}" alt="Family Suite" class="card-img-top">
+                            <img src="{% static 'core/img/arinara-hotel.jpg' %}" alt="arinara hotel" class="card-img-top">
                             <div class="card-body">
                                 <h5>Arinara Beach Resort</h5>
                                 <p class="room-price">Modern Resort (Our Pick!)</p>
@@ -508,7 +492,7 @@
 
                     <div class="col-12 col-md-4 d-flex">
                         <div class="card room-card h-100">
-                            <img src="{% static 'core/img/family-suite.jpg' %}" alt="Family Suite" class="card-img-top">
+                            <img src="{% static 'core/img/sunwing-aeriel.avif' %}" alt="Family Suite" class="card-img-top">
                             <div class="card-body">
                                 <h5>Sunwing Bangtao Beach</h5>
                                 <p class="room-price">Family-Friendly</p>
@@ -520,13 +504,12 @@
 
                     <div class="col-12 col-md-4 d-flex">
                         <div class="card room-card h-100">
-                            <img src="{% static 'core/img/family-suite.jpg' %}" alt="Family Suite" class="card-img-top">
+                            <img src="{% static 'core/img/bangtao-beach.jpg' %}" alt="Family Suite" class="card-img-top">
                             <div class="card-body">
-                                <h5>Villas & Guesthouses</h5>
-                                <p class="room-price">Private & Boutique</p>
-                                <p>The area also has many private villas, Airbnbs, and smaller boutique hotels if you'd
-                                    prefer.</p>
-                                <a href="#" class="btn btn-primary mt-2">Check Airbnb</a>
+                                <h5>Others</h5>
+                                <p class="room-price">Variede</p>
+                                <p>Booking.com has thousands of different places to choose from to suit all budgets.</p>
+                                <a href="#" class="btn btn-primary mt-2">Check Booking.com</a>
                             </div>
                         </div>
                     </div>
@@ -539,38 +522,26 @@
                 <div class="section-title">
                     <h2>...prepared</h2>
                 </div>
-
                 <div class="row g-4">
-                    <div class="col-12 col-md-4">
-                        <div class="title-card">
+                    <div class="col-12 col-md-4 d-flex">
+                        <div class="card prepared-card prepared-card-travel h-100 w-100">
                             <h3>Travel</h3>
+                            <p>Check visa requirements and book flights.</p>
+                            <a href="#" class="btn btn-secondary mt-2">Visa Info</a>
                         </div>
                     </div>
-                    <div class="col-12 col-md-4">
-                        <div class="title-card highlighted-card">
+                    <div class="col-12 col-md-4 d-flex">
+                        <div class="card prepared-card prepared-card-health h-100 w-100">
                             <h3>Health</h3>
+                            <p>Consult your doctor about vaccinations.</p>
+                             <a href="#" class="btn btn-secondary mt-2">Health Advice</a>
                         </div>
                     </div>
-                    <div class="col-12 col-md-4">
-                        <div class="title-card">
+                    <div class="col-12 col-md-4 d-flex">
+                        <div class="card prepared-card prepared-card-packing h-100 w-100">
                             <h3>Packing</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="row g-4">
-                    <div class="col-12 col-md-4">
-                        <div class="card event-card">
-                            <p>Travel arrangements, including flights and transfers.</p>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4">
-                        <div class="card event-card highlighted-card">
-                            <p>Health and safety measures, including insurance and vaccinations.</p>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4">
-                        <div class="card event-card">
-                            <p>Packing list and essentials for the trip.</p>
+                            <p>Pack light clothes, swimwear, and sun protection.</p>
+                             <a href="#" class="btn btn-secondary mt-2">Packing List</a>
                         </div>
                     </div>
                 </div>
@@ -604,52 +575,128 @@
                     </div>
                 
                     <div class="row g-4">
-                        <div class="col-12 col-md-6">
-                            <div class="card room-card">
+                        <div class="col-12 col-md-6 d-flex">
+                            <div class="card explore-card w-100">
                                 <div class="card-body">
                                     <h5>Chiang Mai</h5>
+                                    <div class="row g-2 explore-photos">
+                                        <div class="col-6">
+                                            <img src="{% static 'core/img/maddie-elephant.jpg' %}" alt="Chiang Mai elephant sanctuary" class="img-fluid explore-img">
+                                        </div>
+                                        <div class="col-6">
+                                            <img src="{% static 'core/img/temple.jpg' %}" alt="Chiang Mai temple" class="img-fluid explore-img">
+                                        </div>
+                                    </div>
+                                    <p class="mt-2 small text-muted">Mountain temples, night markets and elephant sanctuaries with a relaxed, cool climate.</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-md-6">
-                            <div class="card room-card">
+                        <div class="col-12 col-md-6 d-flex">
+                            <div class="card explore-card w-100">
                                 <div class="card-body">
                                     <h5>Bangkok</h5>
+                                    <div class="row g-2 explore-photos">
+                                        <div class="col-6">
+                                            <img src="{% static 'core/img/markets.jpg' %}" alt="Bangkok markets" class="img-fluid explore-img">
+                                        </div>
+                                        <div class="col-6">
+                                            <img src="{% static 'core/img/alanview.jpg' %}" alt="Bangkok river view" class="img-fluid explore-img">
+                                        </div>
+                                    </div>
+                                    <p class="mt-2 small text-muted">Vibrant street food, ornate temples and lively markets—perfect for a quick city break.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row g-4 my-4">
-                        <div class="col-12 col-md-6">
-                            <div class="card room-card">
+                        <div class="col-12 col-md-6 d-flex">
+                            <div class="card explore-card w-100">
                                 <div class="card-body">
                                     <h5>Krabi</h5>
+                                    <div class="row g-2 explore-photos">
+                                        <div class="col-6">
+                                            <img src="{% static 'core/img/maddie-railay.jpg' %}" alt="Krabi Railay Beach" class="img-fluid explore-img">
+                                        </div>
+                                        <div class="col-6">
+                                            <img src="{% static 'core/img/alanview.jpg' %}" alt="Krabi longtail view" class="img-fluid explore-img">
+                                        </div>
+                                    </div>
+                                    <p class="mt-2 small text-muted">Limestone cliffs, turquoise bays and island-hopping from Railay to Phi Phi.</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-md-6">
-                            <div class="card room-card">
+                        <div class="col-12 col-md-6 d-flex">
+                            <div class="card explore-card w-100">
                                 <div class="card-body">
                                     <h5>The Islands</h5>
+                                    <div class="row g-2 explore-photos">
+                                        <div class="col-6">
+                                            <img src="{% static 'core/img/sea-boat.jpg' %}" alt="Island longtail boat" class="img-fluid explore-img">
+                                        </div>
+                                        <div class="col-6">
+                                            <img src="{% static 'core/img/phi-phi-bg.jpg' %}" alt="Tropical islands" class="img-fluid explore-img">
+                                        </div>
+                                    </div>
+                                    <p class="mt-2 small text-muted">Think palm-fringed beaches, snorkeling reefs and lazy days on the water.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <h4 class="box-headings">Or</h4>
                     <div class="row g-4">
-                        <div class="col-12 col-md-4">
-                            <div class="card event-card">
-                                <h4>Cambodia</h4>
+                        <!-- Cambodia Card -->
+                        <div class="col-12 col-md-4 d-flex">
+                            <div class="card event-card w-100">
+                                <div class="card-body p-3">
+                                    <h4 class="mb-2">Cambodia</h4>
+                                    <div class="row g-2 mb-2">
+                                        <div class="col-6">
+                                            <img src="{% static 'core/img/temple.jpg' %}" alt="Angkor temple style inspiration" class="explore-img">
+                                        </div>
+                                        <div class="col-6">
+                                            <img src="{% static 'core/img/markets.jpg' %}" alt="Local market scene" class="explore-img">
+                                        </div>
+                                    </div>
+                                    <p class="small mb-2">Fly to Siem Reap for ancient temple complexes like Angkor Wat and sunrise silhouettes; combine with Phnom Penh for history and riverside dining.</p>
+                                    <p class="small mb-0"><i class="fa-solid fa-plane-departure me-1"></i> ~1h 15m flight from Bangkok</p>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-12 col-md-4">
-                            <div class="card event-card highlighted-card">
-                                <h4>On the way</h4>
+                        <!-- On the Way Card -->
+                        <div class="col-12 col-md-4 d-flex">
+                            <div class="card event-card highlighted-card w-100">
+                                <div class="card-body p-3">
+                                    <h4 class="mb-3">On the way</h4>
+                                    <div class="row g-2">
+                                        <div class="col-6">
+                                            <img src="{% static 'core/img/sea-boat.jpg' %}" alt="Placeholder for Dubai skyline" class="explore-img mb-2">
+                                            <h6 class="text-uppercase small mb-1 text-center">Dubai</h6>
+                                            <p class="small text-center">Futuristic architecture, desert tours and global cuisine.</p>
+                                        </div>
+                                        <div class="col-6">
+                                            <img src="{% static 'core/img/alanview.jpg' %}" alt="Placeholder for Doha waterfront" class="explore-img mb-2">
+                                            <h6 class="text-uppercase small mb-1 text-center">Qatar</h6>
+                                            <p class="small text-center">Museums, Corniche walks and souks on a compact city break.</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-12 col-md-4">
-                            <div class="card event-card">
-                                <h4>Elsewhere</h4>
+                        <!-- Elsewhere Card -->
+                        <div class="col-12 col-md-4 d-flex">
+                            <div class="card event-card w-100">
+                                <div class="card-body p-3">
+                                    <h4 class="mb-2">Elsewhere</h4>
+                                    <div class="row g-2 mb-2">
+                                        <div class="col-6">
+                                            <img src="{% static 'core/img/maddie-railay.jpg' %}" alt="Scenic beach jumping-off point" class="explore-img">
+                                        </div>
+                                        <div class="col-6">
+                                            <img src="{% static 'core/img/phi-phi-bg.jpg' %}" alt="Tropical island background" class="explore-img">
+                                        </div>
+                                    </div>
+                                    <p class="small mb-0">From Thailand you can reach Laos, Vietnam, Malaysia, Singapore, Bali and more with short regional flights—ideal for extending your adventure.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -661,20 +708,12 @@
                     <div class="section-title">
                         <h2>...if you can</h2>
                     </div> 
-            <div class="row g-4">
-                    <div class="col-12 col-md-4">
-                        <div class="card event-card">
-                            <h4>Pic</h4>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4">
+            <div class="row g-4 justify-content-center">
+                    <div class="col-12 col-md-8 text-center">
                         <div class="card event-card highlighted-card">
-                            <p>We understand it is far away</p>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4">
-                        <div class="card event-card">
-                            <h4>Pic</h4>
+                            <p>We know Thailand is a long way to travel, and we completely understand that not everyone will be able to make it. Your presence would mean the world to us, but your love and support from afar are just as cherished.</p>
+                            <p>Please let us know if you can join us by visiting our RSVP page.</p>
+                            <a href="{% url 'rsvp' %}" class="btn btn-primary mt-3">RSVP Now</a>
                         </div>
                     </div>
                 </div>
@@ -682,10 +721,9 @@
 
             <div class="gallery-section section-padding">
                 <div class="container">
-                    <div class="section-title">
+                    <div class="text-center mb-5">
+                        <p>Any questions? Just send us an email at <a href="mailto:flyingbushells@gmail.com">flyingbushells@gmail.com</a></p>
                     </div>
-
-            <div>Any questions just send us an email on ...</div>
 
                     <!-- New Carousel Structure -->
                     <div class="simple-carousel-container" data-slides-desktop="3" data-slides-mobile="3" data-autoplay="true" data-interval="4000" aria-label="Couple photos carousel">
