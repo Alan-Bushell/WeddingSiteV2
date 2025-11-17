@@ -48,12 +48,13 @@ h6 {
 h1 { font-size: 5rem; }
 h2 { font-size: 3.5rem; }
 h3 { font-size: 2.5rem; }
-h4 { font-size: 2rem; color: var(--ink); font-family: "Montserrat"; font-weight: 600; } /* Overriding for card titles */
+h4 { font-size: 2rem; color: var(--ink); font-weight: 600; } /* Overriding for card titles */
 h5 { font-size: 1.5rem; color: var(--ink); font-family: "Montserrat"; font-weight: 400; margin-bottom: 1rem; }
 
 p {
     line-height: 1.6;
     margin-bottom: 1rem;
+    letter-spacing: 2px;
 }
 
 /* Utility Classes */
@@ -162,9 +163,8 @@ p {
 
 /* Override for date titles to use Dancing Script */
 .title-card h3 {
-    font-family: "Gala";
     color: var(--ink);
-    font-size: 2.8rem; /* Adjusted for better fit */
+    margin: 0;
 }
 
 .title-card{
@@ -182,6 +182,7 @@ p {
 }
 .card-body {
     padding: 1.5rem;
+    border-radius: 20px;
 }
 
 .room-card h5 {
@@ -349,7 +350,6 @@ p {
     align-items: center;
     justify-content: center;
     box-shadow: rgba(0, 0, 0, .4) 0 0 0 100000px inset;
-    animation: neonBorderPulse 2.4s ease-in-out infinite alternate;
 }
 .phuket-divider-section h2 {
     font-size: 6rem;
@@ -364,47 +364,6 @@ p {
         0 0 16px var(--pink),
         0 0 28px var(--pink),
         0 0 42px var(--pink);
-    animation: neonPulse 2.4s ease-in-out infinite alternate;
-}
-
-@keyframes neonPulse {
-    0% {
-        text-shadow:
-            0 0 2px #fff,
-            0 0 4px #fff,
-            0 0 8px #fff,
-            0 0 12px var(--pink),
-            0 0 20px var(--pink),
-            0 0 30px var(--pink);
-    }
-    100% {
-        text-shadow:
-            0 0 4px #fff,
-            0 0 8px #fff,
-            0 0 12px #fff,
-            0 0 22px var(--pink),
-            0 0 36px var(--pink),
-            0 0 52px var(--pink);
-    }
-}
-
-@keyframes neonBorderPulse {
-    0% {
-        box-shadow:
-            rgba(0, 0, 0, .4) 0 0 0 100000px inset,
-            0 0 5px #fff,
-            0 0 10px #fff,
-            0 0 20px var(--pink),
-            0 0 35px var(--pink);
-    }
-    100% {
-        box-shadow:
-            rgba(0, 0, 0, .4) 0 0 0 100000px inset,
-            0 0 10px #fff,
-            0 0 20px #fff,
-            0 0 35px var(--pink),
-            0 0 50px var(--pink);
-    }
 }
 
 /* Part 5: Before Section */
@@ -413,6 +372,30 @@ p {
 }
 .before-section h2 {
     font-size: 8rem;
+}
+
+.junior-room {
+    background-image: url('../core/img/rooms/junior-suite-garden.jpg');
+    background-size: cover;
+    background-position: center;
+    color: var(--white);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+}
+
+.junior-seaview {
+    background-image: url('../core/img/rooms/junior-seaview.jpg');
+    background-size: cover;
+    background-position: center;
+    color: var(--white);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+}
+
+.family-suite {
+    background-image: url('../core/img/rooms/family-suite.jpg');
+    background-size: cover;
+    background-position: center;
+    color: var(--white);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
 }
 
 /* New Activity Card Styles */
@@ -436,6 +419,7 @@ p {
     object-fit: cover; /* Preserve aspect while filling card */
     border-radius: 0; /* Remove any previous border-radius */
 }
+
 
 /* Mobile tweaks for activity cards */
 @media (max-width: 767.98px) {
