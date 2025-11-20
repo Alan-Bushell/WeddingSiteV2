@@ -81,6 +81,7 @@ p {
 
 .section-title {
     text-align: center;
+    background-color: var(--sand);
 }
 
 .section-title h3 {
@@ -189,7 +190,7 @@ p {
     font-family: "Montserrat";
     font-weight: 600;
     font-size: 1.25rem;
-    color: var(--ink);
+    color: white;
     margin-bottom: 0.5rem;
 }
 
@@ -198,6 +199,12 @@ p {
     font-weight: 600;
     color: var(--teal);
     margin-bottom: 0.5rem;
+}
+
+/* Alternative Options & Bang Tao hotel headings color */
+.alt-headings,
+.bangtao-heading {
+    color: var(--coral) !important;
 }
 
 /* Part 1: Hero Section */
@@ -367,8 +374,15 @@ p {
 }
 
 /* Part 5: Before Section */
-.before-section {
-    background-color: var(--sand);
+.before-section { /* let global background show; only heading chip gets sand */
+    background: transparent;
+}
+.before-section .section-title { background: transparent; }
+.before-section .section-title h2 { 
+    display:inline-block; 
+    background-color: var(--sand); 
+    padding:0 .75rem; 
+    border-radius:8px; 
 }
 .before-section h2 {
     font-size: 8rem;
@@ -397,6 +411,31 @@ p {
     color: var(--white);
     text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
 }
+
+.cape-suite-seaview {
+    background-image: url('../core/img/rooms/cape-suite-seaview.jpg');
+    background-size: cover;
+    background-position: center;
+    color: var(--white);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+}
+
+.signature-suite {
+    background-image: url('../core/img/rooms/corner-suite.jpg');
+    background-size: cover;
+    background-position: center;
+    color: var(--white);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+}
+
+.two-bed-villa {
+    background-image: url('../core/img/rooms/two-bed-villa.jpg');
+    background-size: cover;
+    background-position: center;
+    color: var(--white);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+}
+
 
 /* New Activity Card Styles */
 .activity-card {
@@ -659,6 +698,9 @@ p {
 .prepared-card-packing {
     background-image: url('../core/img/packing-card-bg.jpg');
 }
+
+/* Temporarily hide entire prepared section until content is finalized */
+.prepared-section { display: none !important; }
 
 /* --- Explore cards (Chiang Mai, Bangkok, Krabi, The Islands) --- */
 .explore-card .explore-photos .explore-img {

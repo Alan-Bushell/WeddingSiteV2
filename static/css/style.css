@@ -28,8 +28,18 @@
 body {
     font-family: "gala", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     color: var(--ink);
-    background-color: var(--sand);
+    /* Global background image */
+    background: var(--sand) url('../core/img/background.jpg') center / cover no-repeat fixed;
     line-height: 1.6;
+}
+
+/* Ensure section title areas sit on sand background (masking global image) */
+.section-title { background: transparent !important; }
+.section-title h2, .section-title h3, .section-title h4 {
+    display:inline-block;
+    background-color: var(--sand);
+    padding:0 .75rem;
+    border-radius:8px;
 }
 
 /* Typography */
@@ -52,6 +62,9 @@ h2 { font-size: 3.5rem; }
 h3 { font-size: 2.5rem; }
 /* Note: h4 and h5 are overridden in style2.css for homepage-specific cards */
 
+/* Alt heading variant */
+.alt-heading { color: var(--coral) !important; }
+
 p {
     line-height: 1.6;
     margin-bottom: 1rem;
@@ -60,17 +73,34 @@ p {
 /* Navbar styling */
 .navbar {
     background-color: var(--sand) !important;
-    background-image: url('../core/img/background.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     width:100%;
     margin-right: auto;
     margin-left: auto;
 }
+/* Slightly tighter navbar on desktop to reduce overall height */
+@media (min-width: 992px) { /* Bootstrap lg breakpoint */
+    .navbar { padding-top: 0.25rem !important; padding-bottom: 0.25rem !important; }
+    .navbar-brand { width: 100px; height: 100px; }
+}
 
 .navbar h2 {
     text-align: center;;
+}
+
+/* New 3-column flex layout for navbar */
+.nav-layout { display:flex; align-items:center; width:100%; }
+/* Three-column proportions: Left 25%, Center 50%, Right 25% */
+.nav-third { display:flex; align-items:center; min-height:100%; }
+.nav-third.left, .nav-third.right { flex:0 0 25%; max-width:25%; }
+.nav-third.center { flex:0 0 50%; max-width:50%; justify-content:center; }
+.nav-third.left { justify-content:flex-start; }
+.nav-third.right { justify-content:flex-end; gap:1rem; }
+.nav-third.center h2 { width:100%; text-align:center; }
+.nav-third.right .rsvp-img img { height:60px; width:auto; }
+
+@media (max-width: 767.98px) {
+    .nav-third.right .rsvp-img img { height:50px; }
+    .admin-links { display:none !important; }
 }
 
 .navbar-brand {
@@ -224,5 +254,14 @@ p {
         padding-top: 0 !important;
         padding-bottom: 0 !important;
     }
+}
+
+/* Responsive navbar consistency (shared across all pages) */
+@media (max-width: 767.98px) {
+    .navbar-brand { width: 50px; height: 50px; }
+    /* Make navbar heading more prominent on mobile */
+    .navbar h2 { font-size: clamp(2rem, 6vw, 2.6rem); line-height: 1.1; }
+    .nav-link.rsvp-img img { height: 50px; width: auto; }
+    .navbar .nav-link img[alt='RSVP'] { height: 50px; width: auto; }
 }
 
