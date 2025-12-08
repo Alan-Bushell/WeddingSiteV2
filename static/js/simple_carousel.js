@@ -58,7 +58,8 @@
         const maxThirty = Math.floor(containerWidth * 0.30);
         slideWidth = Math.max(110, maxThirty);
       } else {
-        slideWidth = Math.max(1, Math.round(containerWidth / slidesToShow));
+        const desktopScale = 0.385; // match CSS intended width proportion
+        slideWidth = Math.max(1, Math.round((containerWidth / slidesToShow) * desktopScale));
       }
       items.forEach((el) => {
         el.style.flex = `0 0 ${slideWidth}px`;

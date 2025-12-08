@@ -1,3 +1,39 @@
+.before-section .what-title {
+    background-color: var(--sand);
+    color: var(--ink);
+    font-family: "decoy", cursive;
+    border-radius: 10px;
+}
+.hotel-section .bangtao-title {
+    background-color: var(--sand);
+    color: var(--ink);
+    font-family: "decoy", cursive;
+    border-radius: 10px;
+}
+.before-section .phuket-title {
+    background-color: var(--sand);
+    color: var(--ink);
+    font-family: "decoy", cursive;
+    border-radius: 10px;
+}
+.before-section .phuket-info-card {
+    background-color: var(--sand) !important;
+}
+.before-section .phuket-info-card .card-body {
+    color: var(--ink);
+}
+.hotel-section .alt-title {
+    background-color: var(--sand);
+    color: var(--ink);
+    font-family: "decoy", cursive;
+    border-radius: 10px;
+}
+.hotel-section .room-title {
+    background-color: var(--sand);
+    color: var(--ink);
+    font-family: "decoy", cursive;
+    border-radius: 10px;
+}
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Montserrat:wght@400;600;700&display=swap');
 
 /* Theme palette (Thailand wedding) */
@@ -14,6 +50,7 @@
     --teal50: #00ffee8e;
     --green: #00d100;
     --green50: #00d1008e;
+    --cyan: #22a39a; /* softer cyan used in hover states */
     
     --sand: #f6e8d5;
     --ink: #005252;
@@ -166,12 +203,17 @@ p {
 .title-card h3 {
     color: var(--ink);
     margin: 0;
+    font-family: "decoy", cursive;
+    font-size: 2rem; /* further reduce for balance */
+    line-height: 1.1;
 }
 
 .title-card{
     border: solid 2px var(--ink);
     margin-bottom: 2em;
     text-align: center;;
+    background-color: var(--sand);
+    padding: 0.5rem 0.75rem; /* ensure text isn't at the edges */
 }
 
 .card-img-top {
@@ -263,7 +305,6 @@ p {
 .event-card {
     text-align: center;
     padding: 2rem 1rem;
-    background-color: var(--coral50);
 }
 .schedule-section h2 {
     font-size: 8rem;
@@ -280,6 +321,13 @@ p {
     color: var(--teal);
     
 }
+/* Use Alana font for specific event titles only */
+.snorkel-card h3,
+.drink-card h3,
+.event-card.highlighted-card h3 {
+    font-family: "alana-smooth", cursive;
+    font-size: 60px;
+}
 
 .adult-icon {
     font-size: 125%;
@@ -292,13 +340,12 @@ p {
 
 .event-card h4 {
     text-shadow: 1px 1px var(--sand);
+    font-family: "gala", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
 .event-card.highlighted-card {
     text-align: center;
     padding: 2rem 1rem;
-    background-color: var(--teal);
-    
 }
 
 .event-card.highlighted-card h3 {
@@ -307,8 +354,8 @@ p {
     
 }
 .event-card.highlighted-card h4{
-    color: var(--sand);
-    text-shadow: 1px 1px var(--ink);
+    color: var(--pink);
+    text-shadow: 1px 1px var(--sand);
 }
 .event-card.highlighted-card h5 {
     color: var(--ink);
@@ -316,6 +363,28 @@ p {
 .event-card.highlighted-card .card-icon {
     color: var(--pink);
 }
+
+/* Specific ink text for the weather permitting note */
+.weather-note p {
+    color: var(--ink);
+}
+
+/* Make specific schedule squares and date titles use sand background */
+.schedule-section .event-card,
+.schedule-section .event-card.highlighted-card,
+.schedule-section .title-card {
+    background-color: var(--sand) !important;
+}
+/* Rounded borders for the three date tiles */
+.schedule-section .title-card { border-radius: 10px; }
+
+/* Border color utilities for schedule items */
+.border-pink { border-color: var(--pink) !important; border-width: 2px; border-style: solid; }
+.border-coral { border-color: var(--coral) !important; border-width: 2px; border-style: solid; }
+.border-yellow { border-color: var(--yellow) !important; border-width: 2px; border-style: solid; }
+.border-blue { border-color: var(--blue) !important; border-width: 2px; border-style: solid; }
+.border-teal { border-color: var(--teal) !important; border-width: 2px; border-style: solid; }
+.border-green { border-color: var(--green) !important; border-width: 2px; border-style: solid; }
 
 .event-pic-snorkel {
     background-image: url('../core/img/event-snorkel.jpg');
@@ -331,10 +400,37 @@ p {
     color: var(--ink);
 }
 
+/* Themed colors for specific schedule cards */
+.snorkel-card h3,
+.snorkel-card h4,
+.snorkel-card .card-icon {
+    color: var(--cyan) !important;
+}
+
+.drink-card h3,
+.drink-card h4,
+.drink-card .card-icon {
+    color: var(--coral) !important;
+}
+
 
 /* Part 3: Hotel Section */
 .hotel-section {
     text-align: center;
+}
+
+/* Cape Panwa title and info card styling */
+.hotel-section .hotel-title {
+    background-color: var(--sand);
+    color: var(--ink);
+    font-family: "decoy", cursive;
+    border-radius: 10px;
+}
+.hotel-section .hotel-info-card {
+    background-color: var(--sand) !important;
+}
+.hotel-section .hotel-info-card .card-body {
+    color: var(--ink);
 }
 
 .hotel-detail {
@@ -557,6 +653,22 @@ p {
     .simple-carousel { gap: 0.5rem; }
     .carousel-img { height: 160px; }
     .carousel-nav { width: 40px; height: 40px; font-size: 1.3rem; }
+}
+
+/* Desktop: halve carousel item width and image height */
+@media (min-width: 769px) {
+    /* Width is now controlled by JS; keep layout clean */
+    .simple-carousel-container[data-slides-desktop="3"] .couple-item { width: auto; }
+    /* Make items square on desktop using aspect-ratio */
+    .couple-item .img-wrap {
+        height: auto;
+        aspect-ratio: 1 / 1;
+    }
+    .carousel-img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
 }
 
 

@@ -96,10 +96,10 @@ p {
 .nav-third.left { justify-content:flex-start; }
 .nav-third.right { justify-content:flex-end; gap:1rem; }
 .nav-third.center h2 { width:100%; text-align:center; }
-.nav-third.right .rsvp-img img { height:60px; width:auto; }
+.nav-third.right .rsvp-img img { height:90px; width:90px; }
 
 @media (max-width: 767.98px) {
-    .nav-third.right .rsvp-img img { height:50px; }
+    .nav-third.right .rsvp-img img { height:50px; width:50px; }
     .admin-links { display:none !important; }
 }
 
@@ -123,8 +123,8 @@ p {
 }
 
 .rsvp-img img {
-    width: 40px;
-    height: 40px;
+    width: 90px;
+    height: 90px;
 }
 
 
@@ -261,7 +261,7 @@ p {
     .navbar-brand { width: 50px; height: 50px; }
     /* Make navbar heading more prominent on mobile */
     .navbar h2 { font-size: clamp(2rem, 6vw, 2.6rem); line-height: 1.1; }
-    .nav-link.rsvp-img img { height: 50px; width: auto; }
-    .navbar .nav-link img[alt='RSVP'] { height: 50px; width: auto; }
+    .nav-link.rsvp-img img { height: 50px; width: 50px; }
+    .navbar .nav-link img[alt='RSVP'] { height: 50px; width: 50px; }
 }
 
