@@ -86,6 +86,46 @@
     {# Bootstrap JS (optional, but needed for navbar toggle, etc.) #}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     {% block scripts %}{% endblock %}
-    {% block extra_js %}{% endblock %}
+        {% block extra_js %}{% endblock %}
+        <script>
+        (function(){
+            const navbar = document.querySelector('nav.navbar');
+            if(!navbar) return;
+            const getHeadings = () => Array.from(document.querySelectorAll('.section-title h2'));
+            const threshold = 120; // px from top where navbar should show (linger longer)
+            const lowerBound = 60; // hide sooner after passing the title
+            let lastState = null;
+
+            const onScroll = () => {
+                const headings = getHeadings();
+                const top = 0; // viewport top
+                // Always show at very top of page
+                if (window.scrollY <= 100) {
+                    if (lastState !== 'show') {
+                        navbar.classList.remove('hidden');
+                        lastState = 'show';
+                    }
+                    return;
+                }
+                const show = headings.some(h => {
+                    const rect = h.getBoundingClientRect();
+                    return rect.top >= lowerBound && rect.top <= threshold;
+                });
+                const desired = show ? 'show' : 'hide';
+                if (desired !== lastState) {
+                    if (show) {
+                        navbar.classList.remove('hidden');
+                    } else {
+                        navbar.classList.add('hidden');
+                    }
+                    lastState = desired;
+                }
+            };
+            // Initial state
+            onScroll();
+            window.addEventListener('scroll', onScroll, { passive: true });
+            window.addEventListener('resize', onScroll);
+        })();
+        </script>
 </body>
 </html>

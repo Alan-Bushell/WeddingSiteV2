@@ -72,10 +72,11 @@ p {
 
 /* Navbar styling */
 .navbar {
-    background-color: var(--sand) !important;
     width:100%;
     margin-right: auto;
     margin-left: auto;
+    background: transparent !important;
+    transition: opacity 200ms ease-in-out;
 }
 /* Slightly tighter navbar on desktop to reduce overall height */
 @media (min-width: 992px) { /* Bootstrap lg breakpoint */
@@ -264,4 +265,7 @@ p {
     .nav-link.rsvp-img img { height: 50px; width: 50px; }
     .navbar .nav-link img[alt='RSVP'] { height: 50px; width: 50px; }
 }
+
+/* Hidden state toggled by JS when away from section titles */
+.navbar.hidden { opacity: 0; pointer-events: none; }
 

@@ -1,20 +1,49 @@
-.before-section .what-title {
-    background-color: var(--sand);
+.explore-card .card-body p {
     color: var(--ink);
-    font-family: "decoy", cursive;
-    border-radius: 10px;
+}
+/* Explore cards: set place names and all text to ink, use Decoy for titles */
+.explore-card .card-body,
+.explore-card .card-body p,
+.explore-card .card-body h6,
+.explore-card .card-body .small {
+    color: var(--ink) !important;
+}
+.explore-card h5 {
+    color: var(--ink) !important;
+    font-family: "decoy", cursive !important;
+    text-align: center;
+}
+.explore-section .or-title {
+    background-color: var(--sand) !important;
+    color: var(--ink) !important;
+    font-family: "decoy", cursive !important;
+    border-radius: 10px !important;
+}
+.before-section .what-title {
+    background-color: var(--sand) !important;
+    color: var(--ink) !important;
+    font-family: "decoy", cursive !important;
+    border-radius: 10px !important;
 }
 .hotel-section .bangtao-title {
-    background-color: var(--sand);
-    color: var(--ink);
-    font-family: "decoy", cursive;
-    border-radius: 10px;
+    background-color: var(--sand) !important;
+    color: var(--ink) !important;
+    font-family: "decoy", "Montserrat", sans-serif !important;
+    border-radius: 10px !important;
+}
+
+/* Increase specificity to override global h4 defaults */
+h4.box-headings.bangtao-title {
+    font-family: "decoy", "Montserrat", sans-serif !important;
+    border-radius: 10px !important;
+    display: block; /* keep centered via margin: auto on .box-headings */
+    background-color: var(--sand) !important;
 }
 .before-section .phuket-title {
-    background-color: var(--sand);
-    color: var(--ink);
-    font-family: "decoy", cursive;
-    border-radius: 10px;
+    background-color: var(--sand) !important;
+    color: var(--ink) !important;
+    font-family: "decoy", cursive !important;
+    border-radius: 10px !important;
 }
 .before-section .phuket-info-card {
     background-color: var(--sand) !important;
@@ -23,16 +52,18 @@
     color: var(--ink);
 }
 .hotel-section .alt-title {
-    background-color: var(--sand);
-    color: var(--ink);
-    font-family: "decoy", cursive;
-    border-radius: 10px;
+    background-color: var(--sand) !important;
+    color: var(--ink) !important;
+    font-family: "decoy", cursive !important;
+    border-radius: 10px !important;
+    padding: 0.25rem 0.5rem; /* prevent letters touching border */
 }
 .hotel-section .room-title {
-    background-color: var(--sand);
-    color: var(--ink);
-    font-family: "decoy", cursive;
-    border-radius: 10px;
+    background-color: var(--sand) !important;
+    color: var(--ink) !important;
+    font-family: "decoy", cursive !important;
+    border-radius: 10px !important;
+    padding: 0.25rem 0.5rem; /* prevent letters touching border */
 }
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Montserrat:wght@400;600;700&display=swap');
 
@@ -84,6 +115,43 @@ h6 {
 
 h1 { font-size: 5rem; }
 h2 { font-size: 3.5rem; }
+/* Standardize section title sizes: ...on, ...in, ...before, ...then explore, ...if you can */
+.schedule-section .section-title h2,
+.hotel-section .section-title h2,
+.before-section .section-title h2,
+.explore-section .section-title h2,
+.rsvp-section .section-title h2 {
+    font-size: 4.5rem; /* match current ...on */
+    margin: 20px 0; /* add space above/below for navbar visibility */
+    width: 100%; /* ensure full-width title element */
+}
+
+/* Make these sections full-width and reduce vertical padding */
+.schedule-section,
+.hotel-section,
+.before-section,
+.explore-section,
+.rsvp-section {
+    width: 100%;
+    padding-top: 1.5rem; /* reduced from default */
+    padding-bottom: 1.5rem;
+}
+
+/* Tighten .section-title spacing to reduce overall height */
+.section-title {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+/* Round borders for Hotels in Bang Tao cards */
+.before-section .room-card {
+    border-radius: 10px;
+    overflow: hidden; /* ensure inner image corners follow radius */
+}
+.before-section .room-card .card-img-top {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
 h3 { font-size: 2.5rem; }
 h4 { font-size: 2rem; color: var(--ink); font-weight: 600; } /* Overriding for card titles */
 h5 { font-size: 1.5rem; color: var(--ink); font-family: "Montserrat"; font-weight: 400; margin-bottom: 1rem; }
@@ -92,6 +160,7 @@ p {
     line-height: 1.6;
     margin-bottom: 1rem;
     letter-spacing: 2px;
+    color: var(--ink) !important;
 }
 
 /* Utility Classes */
@@ -120,6 +189,7 @@ p {
     text-align: center;
     background-color: var(--sand);
 }
+.section-title h2 { background-color: transparent !important; }
 
 .section-title h3 {
     margin-top: -1rem;
@@ -154,21 +224,45 @@ p {
     font-weight: 600;
     transition: all 0.3s ease;
     letter-spacing: 2px;
+    padding: 0.6rem 1rem;
+    border-radius: 12px;
 }
 .btn-primary {
-    background-color: var(--magenta);
-    color: var(--white);
+    background-color: var(--pink) !important;
+    color: var(--white) !important;
+    border-color: var(--pink) !important;
+}
+.btn-secondary {
+    background-color: var(--pink) !important;
+    color: var(--white) !important;
+    border-color: var(--pink) !important;
+}
+
+/* Ensure consistent button colors across key sections */
+.hotel-section .btn,
+.before-section .btn,
+.explore-section .btn,
+.prepared-section .btn,
+.rsvp-section .btn {
+    background-color: var(--pink) !important;
+    color: var(--white) !important;
+    border-color: var(--pink) !important;
+}
+
+/* Ensure anchor-buttons always render white text, even inside cards overriding link color */
+a.btn { color: var(--white) !important; }
+
+/* Optional hover/focus for clarity and consistency */
+.btn:hover,
+.btn:focus {
+    filter: brightness(0.95);
 }
 .btn-primary:hover {
     background-color: #a23b93;
     transform: translateY(-2px);
 }
-.btn-secondary {
-    background-color: var(--teal);
-    color: var(--white);
-}
 .btn-secondary:hover {
-    background-color: #22a39a;
+    filter: brightness(0.95);
     transform: translateY(-2px);
 }
 
@@ -177,7 +271,7 @@ p {
     border: 2px solid var(--ink);
     border-radius: 25px;
     box-shadow: var(--shadow);
-    background: var(--white);
+    background: var(--sand);
     height: 100%; /* Makes all cards in a row the same height */
     transition: all 0.3s ease;
 }
@@ -235,12 +329,30 @@ p {
     color: white;
     margin-bottom: 0.5rem;
 }
+/* Limit white paragraph text to Room Options only (not Alternative Options) */
+.room-card.junior-room p,
+.room-card.junior-seaview p,
+.room-card.family-suite p,
+.room-card.cape-suite-seaview p,
+.room-card.signature-suite p,
+.room-card.two-bed-villa p {
+    color: var(--white) !important;
+}
 
 .room-price {
     font-size: 1.1rem;
     font-weight: 600;
-    color: var(--teal);
+    color: var(--ink) !important; /* default for Alternative Options */
     margin-bottom: 0.5rem;
+}
+/* Teal price only for the six Cape Panwa Room Options cards */
+.room-card.junior-room .room-price,
+.room-card.junior-seaview .room-price,
+.room-card.family-suite .room-price,
+.room-card.cape-suite-seaview .room-price,
+.room-card.signature-suite .room-price,
+.room-card.two-bed-villa .room-price {
+    color: var(--teal) !important;
 }
 
 /* Alternative Options & Bang Tao hotel headings color */
@@ -296,8 +408,7 @@ p {
 
 /* Part 2: Schedule Section */
 .schedule-section {
-    background-color: var(--sand);
-    background-image: url('../core/img/background.jpg');
+
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -421,10 +532,10 @@ p {
 
 /* Cape Panwa title and info card styling */
 .hotel-section .hotel-title {
-    background-color: var(--sand);
-    color: var(--ink);
-    font-family: "decoy", cursive;
-    border-radius: 10px;
+    background-color: var(--sand) !important;
+    color: var(--ink) !important;
+    font-family: "decoy", cursive !important;
+    border-radius: 10px !important;
 }
 .hotel-section .hotel-info-card {
     background-color: var(--sand) !important;
@@ -457,6 +568,7 @@ p {
 .phuket-divider-section h2 {
     font-size: 6rem;
     color: var(--pink);
+    font-family: "decoy", cursive !important;
     letter-spacing: 20px;
     text-transform: uppercase;
     /* Neon glow: white inner + magenta outer */
@@ -790,7 +902,7 @@ p {
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.4); /* Dark overlay */
-    border-radius: 22.5px; /* Match card's border-radius */
+    border-radius: 10px; /* Match card's border-radius */
     z-index: 1;
 }
 
@@ -812,7 +924,40 @@ p {
 }
 
 /* Temporarily hide entire prepared section until content is finalized */
-.prepared-section { display: none !important; }
+.prepared-section { display: block; }
+
+/* Prepared section styling to match site cards */
+.prepared-section .section-title h2 {
+    font-size: 3.5rem;
+    margin-bottom: 20px; /* extra space below for navbar visibility */
+    width: 100%;
+}
+.prepared-section {
+    width: 100%;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+.prepared-section .prepared-card {
+    background-color: var(--sand) !important;
+    color: var(--ink) !important;
+    border: 2px solid var(--coral);
+    border-radius: 12px;
+    text-align: center;
+}
+.prepared-section .prepared-card h3,
+.prepared-section .prepared-card p,
+.prepared-section .prepared-card a {
+    color: var(--ink) !important;
+}
+.prepared-section .prepared-card a.btn { color: var(--white) !important; }
+.prepared-section .prepared-card .btn-secondary {
+    border-color: var(--pink);
+}
+
+/* Distinct borders per prepared card for visual rhythm */
+.prepared-card-travel { border-color: var(--teal) !important; }
+.prepared-card-health { border-color: var(--yellow) !important; }
+.prepared-card-packing { border-color: var(--green) !important; }
 
 /* --- Explore cards (Chiang Mai, Bangkok, Krabi, The Islands) --- */
 .explore-card .explore-photos .explore-img {
