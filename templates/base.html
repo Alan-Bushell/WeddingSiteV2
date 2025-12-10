@@ -92,15 +92,25 @@
             const navbar = document.querySelector('nav.navbar');
             if(!navbar) return;
             const getHeadings = () => Array.from(document.querySelectorAll('.section-title h2'));
-            const threshold = 120; // px from top where navbar should show (linger longer)
-            const lowerBound = 60; // hide sooner after passing the title
+
+            const computeThresholds = () => {
+                const isMobile = window.matchMedia('(min-width: 320px) and (max-width: 430px)').matches;
+                const vh = window.innerHeight || 800;
+                return {
+                    threshold: isMobile ? Math.round(Math.min(260, Math.max(120, vh * 0.22))) : 200,
+                    lowerBound: isMobile ? -10 : -40,
+                    topVisible: isMobile ? 60 : 100
+                };
+            };
+
+            let { threshold, lowerBound, topVisible } = computeThresholds();
             let lastState = null;
 
             const onScroll = () => {
+                // Recompute on each scroll to react to orientation/viewport changes
+                ({ threshold, lowerBound, topVisible } = computeThresholds());
                 const headings = getHeadings();
-                const top = 0; // viewport top
-                // Always show at very top of page
-                if (window.scrollY <= 100) {
+                if (window.scrollY <= topVisible) {
                     if (lastState !== 'show') {
                         navbar.classList.remove('hidden');
                         lastState = 'show';
@@ -121,7 +131,6 @@
                     lastState = desired;
                 }
             };
-            // Initial state
             onScroll();
             window.addEventListener('scroll', onScroll, { passive: true });
             window.addEventListener('resize', onScroll);

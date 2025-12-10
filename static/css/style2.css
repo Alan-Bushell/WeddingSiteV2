@@ -50,6 +50,7 @@ h4.box-headings.bangtao-title {
 }
 .before-section .phuket-info-card .card-body {
     color: var(--ink);
+    text-align: center;
 }
 .hotel-section .alt-title {
     background-color: var(--sand) !important;
@@ -154,7 +155,7 @@ h2 { font-size: 3.5rem; }
 }
 h3 { font-size: 2.5rem; }
 h4 { font-size: 2rem; color: var(--ink); font-weight: 600; } /* Overriding for card titles */
-h5 { font-size: 1.5rem; color: var(--ink); font-family: "Montserrat"; font-weight: 400; margin-bottom: 1rem; }
+h5 { font-size: 1.5rem; color: var(--ink); font-family: "gala", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin-bottom: 1rem; }
 
 p {
     line-height: 1.6;
@@ -207,8 +208,38 @@ p {
 
 .rounded-img {
     border-radius: 20px;
-
 }
+
+/* Mobile-specific polish for phones 320-430px */
+@media (min-width: 320px) and (max-width: 430px) {
+    /* Make carousel items square on mobile */
+    
+    .simple-carousel .img-wrap { position: relative; width: 100%; aspect-ratio: 1 / 1; overflow: hidden; }
+    .simple-carousel .carousel-img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* Date title cards sizing (30th Oct, 31st Oct, 1st Nov) */
+    .schedule-section .title-card h3 { font-size: clamp(0.95rem, 5vw, 1.3rem); }
+
+    /* Unify mobile event title sizes (Wedding / Snorkel / Drink) */
+    .d-md-none .card.event-card h3 { font-size: 2rem; }
+    /* Ensure Snorkel/Drink match Wedding size on mobile */
+    .d-md-none .event-card.highlighted-card h3,
+    .d-md-none .snorkel-card h3,
+    .d-md-none .drink-card h3 { font-size: 42px !important; }
+
+    /* What to do: prevent stretching and improve fit */
+    .activity-card { min-height: 260px; }
+    .activity-card .card-body { padding: 0 !important; }
+    .activity-card h5 { font-size: 1.1rem; }
+    .activity-card .card-body p { font-size: 0.8rem; }
+    .activity-card-img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* Reduce letter-spacing for small mobile for readability */
+    p { letter-spacing: 0.5px; }
+    .btn { letter-spacing: 1px; }
+    .room-card h5 { letter-spacing: 0.5px; }
+}
+
 
 .box-headings {
     width: 25%;
@@ -216,6 +247,22 @@ p {
     margin: 20px auto; /* Replaces justify-self for reliable centering */
     padding: 0 1rem; /* Add some horizontal padding */
     text-align: center; /* Ensure text inside is centered */
+}
+
+/* Specific sizing for Bang Tao title chip: fit content across all resolutions */
+.box-headings.bangtao-title.border-pink {
+    width: fit-content;
+    display: block;
+    padding: 5px;
+    margin: 20px auto; /* add top/bottom space while centered */
+}
+
+/* Alternative Options title chip: match Bang Tao behavior */
+.box-headings.alt-title.border-pink {
+    width: fit-content;
+    display: block;
+    padding: 5px;
+    margin: 20px auto;
 }
 
 .btn {
@@ -227,6 +274,17 @@ p {
     padding: 0.6rem 1rem;
     border-radius: 12px;
 }
+
+/* Show pointer cursor for all clickable elements */
+a,
+a[href],
+button,
+.btn,
+.card a,
+.navbar a,
+.activity-card a,
+.room-card a,
+.simple-carousel .carousel-img[data-clickable="true"] { cursor: pointer; }
 .btn-primary {
     background-color: var(--pink) !important;
     color: var(--white) !important;
@@ -323,11 +381,12 @@ a.btn { color: var(--white) !important; }
 }
 
 .room-card h5 {
-    font-family: "Montserrat";
+    font-family: "gala", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;;
     font-weight: 600;
     font-size: 1.25rem;
     color: white;
     margin-bottom: 0.5rem;
+    letter-spacing: 2px;
 }
 /* Limit white paragraph text to Room Options only (not Alternative Options) */
 .room-card.junior-room p,
@@ -359,6 +418,7 @@ a.btn { color: var(--white) !important; }
 .alt-headings,
 .bangtao-heading {
     color: var(--coral) !important;
+    font-family: "gala", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
 /* Part 1: Hero Section */
@@ -402,7 +462,7 @@ a.btn { color: var(--white) !important; }
     color: var(--coral);
     font-size: 2rem;
     margin-top: 1rem;
-    font-family: "Montserrat";
+    font-family: "gala", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;;
     font-weight: 400;
 }
 
@@ -426,7 +486,7 @@ a.btn { color: var(--white) !important; }
     margin-bottom: 1rem;
 }
 .event-card h3 {
-    font-family: "Montserrat";
+    font-family: "gala", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;;
     font-weight: 600;
     font-size: 2.5rem;
     color: var(--teal);
@@ -566,7 +626,7 @@ a.btn { color: var(--white) !important; }
     box-shadow: rgba(0, 0, 0, .4) 0 0 0 100000px inset;
 }
 .phuket-divider-section h2 {
-    font-size: 6rem;
+    font-size: 5rem;
     color: var(--pink);
     font-family: "decoy", cursive !important;
     letter-spacing: 20px;
@@ -663,24 +723,22 @@ a.btn { color: var(--white) !important; }
 .activity-card-img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Preserve aspect while filling card */
+    object-fit: contain; /* Show full image without cropping */
+    background-color: var(--sand);
     border-radius: 0; /* Remove any previous border-radius */
 }
 
 
-/* Mobile tweaks for activity cards */
-@media (max-width: 767.98px) {
+/* Mobile tweaks for activity cards on phones 320-430px */
+@media (min-width: 320px) and (max-width: 430px) {
     .activity-card {
-        height: clamp(200px, 48vw, 280px); /* slightly shorter to reduce perceived zoom */
+        height: clamp(240px, 56vw, 320px); /* slightly taller to fit text without overflow */
     }
     .activity-card-img {
-        height: 100%; /* fill the column height to avoid whitespace under image */
-        object-position: center; /* keep subject centered */
-        object-fit: fill;
+        height: 100%; /* fill the column height */
+        object-fit: cover; /* fill and allow focal cropping */
     }
-    .activity-card .card-body {
-        padding: 0.5rem; /* slightly tighter padding on mobile */
-    }
+    .activity-card .card-body { padding: 0 !important; }
 }
 
 /* Utilities to adjust image focal point when using object-fit: cover */
@@ -787,7 +845,7 @@ a.btn { color: var(--white) !important; }
 /* Responsive Media Queries */
 @media (max-width: 768px) {
     .simple-carousel {
-        flex-direction: column; /* Stack items vertically on mobile */
+        flex-direction: column; /* Default stack on generic small screens */
         justify-content: flex-start;
         gap: 0.75rem; /* Small margin between items on mobile */
     }
@@ -846,7 +904,7 @@ a.btn { color: var(--white) !important; }
 
     .phuket-divider-section h2 {
         font-size: 38px;
-        letter-spacing: 8px;
+        letter-spacing: 4px;
     }
 
     .card-right{
@@ -894,18 +952,6 @@ a.btn { color: var(--white) !important; }
     min-height: 250px; /* Ensure a consistent height */
 }
 
-.prepared-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.4); /* Dark overlay */
-    border-radius: 10px; /* Match card's border-radius */
-    z-index: 1;
-}
-
 .prepared-card > * {
     position: relative;
     z-index: 2;
@@ -938,7 +984,6 @@ a.btn { color: var(--white) !important; }
     padding-bottom: 1.5rem;
 }
 .prepared-section .prepared-card {
-    background-color: var(--sand) !important;
     color: var(--ink) !important;
     border: 2px solid var(--coral);
     border-radius: 12px;
@@ -948,6 +993,16 @@ a.btn { color: var(--white) !important; }
 .prepared-section .prepared-card p,
 .prepared-section .prepared-card a {
     color: var(--ink) !important;
+}
+.prepared-section .prepared-card h3 {
+    font-family: "gala", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* Use Decoy font for specific prepared card titles */
+.prepared-card-travel h3,
+.prepared-card-health h3,
+.prepared-card-packing h3 {
+    font-family: "decoy", cursive !important;
 }
 .prepared-section .prepared-card a.btn { color: var(--white) !important; }
 .prepared-section .prepared-card .btn-secondary {
@@ -976,4 +1031,49 @@ a.btn { color: var(--white) !important; }
     object-fit: cover;
     border-radius: 12px;
     display: block;
+}
+
+/* Force 3-up square carousel on phones 320-430px */
+@media (min-width: 320px) and (max-width: 430px) {
+    .simple-carousel { flex-direction: row; gap: 0.6rem; }
+    /* Two gaps per row => total gap width 1.2rem */
+    .simple-carousel .couple-item { flex: 0 0 calc((100% - 1.2rem) / 3); }
+    .simple-carousel .img-wrap { aspect-ratio: 1 / 1; }
+    .simple-carousel .carousel-img { width: 100%; height: 100%; object-fit: cover; }
+}
+
+/* Tablet-specific tweaks for 768px to 992px */
+@media (min-width: 768px) and (max-width: 992px) {
+    /* Increase event titles on tablet */
+    .event-card h3 { font-size: 3rem; }
+
+    /* Reduce font size for weather note card between Snorkel and Drink */
+    .card.event-card.highlighted-card.h-100.border-coral.weather-note,
+    .event-card.weather-note,
+    .weather-note { font-size: 0.7rem; }
+
+    /* Remove letter-spacing on centered card bodies in this section */
+    .card-body.d-flex.flex-column.justify-content-center { letter-spacing: 0; }
+    .card-body.d-flex.flex-column.justify-content-center { font-size: 0.7rem; }
+
+    /* Reduce font size for centered stacked card bodies */
+    .card-body.d-flex.flex-column.text-center { font-size: 0.6rem; }
+
+    /* Make carousel images square on tablet */
+    .simple-carousel .img-wrap { position: relative; width: 100%; aspect-ratio: 1 / 1; overflow: hidden; }
+    .simple-carousel .carousel-img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* What to do cards: match mobile/desktop layout on tablet */
+    .activity-card .card-body { padding: 0 !important; }
+    .activity-card-img { height: 100%; object-fit: cover; }
+    .activity-card .card-body p { font-size: 15px; }
+}
+
+/* Desktop tweaks: ensure What to do images fill card height */
+@media (min-width: 993px) {
+    .activity-card-img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
 }

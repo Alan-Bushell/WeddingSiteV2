@@ -85,7 +85,7 @@ p {
 }
 
 .navbar h2 {
-    text-align: center;;
+    text-align: center;
 }
 
 /* New 3-column flex layout for navbar */
@@ -97,6 +97,7 @@ p {
 .nav-third.left { justify-content:flex-start; }
 .nav-third.right { justify-content:flex-end; gap:1rem; }
 .nav-third.center h2 { width:100%; text-align:center; }
+.nav-third.center h2 { transform: translateY(-20px); }
 .nav-third.right .rsvp-img img { height:90px; width:90px; }
 
 @media (max-width: 767.98px) {
@@ -264,6 +265,13 @@ p {
     .navbar h2 { font-size: clamp(2rem, 6vw, 2.6rem); line-height: 1.1; }
     .nav-link.rsvp-img img { height: 50px; width: 50px; }
     .navbar .nav-link img[alt='RSVP'] { height: 50px; width: 50px; }
+}
+
+/* Narrow-phone specific overrides (320px - 430px) */
+@media (min-width: 320px) and (max-width: 430px) {
+    .navbar h2 { line-height: normal; }
+    /* Hide center heading on mobile range */
+    .nav-third.center h2 { display: block !important; transform: none !important; }
 }
 
 /* Hidden state toggled by JS when away from section titles */

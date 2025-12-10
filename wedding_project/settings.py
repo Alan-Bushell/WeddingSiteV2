@@ -185,7 +185,8 @@ LOGOUT_REDIRECT_URL = 'home'
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 CKEDITOR_UPLOAD_PATH = 'uploads/'
-CKEDITOR_BASEPATH = '/static/ckeditor/ckeditor/'
+# Ensure CKEditor static base path matches current STATIC_URL (works in dev and S3-backed prod)
+CKEDITOR_BASEPATH = STATIC_URL + 'ckeditor/ckeditor/'
 
 # Security when behind Render’s proxy
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
