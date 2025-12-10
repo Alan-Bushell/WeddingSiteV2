@@ -1,3 +1,37 @@
+/* Decorative SVG edge accents */
+.edge-decor { position: absolute; opacity: 0.8; pointer-events: none; z-index: 1; }
+.edge-top-left { top: -12px; left: -12px; }
+.edge-top-right { top: -12px; right: -12px; }
+.flip-x { transform: scaleX(-1); }
+.edge-bottom-left { bottom: -12px; left: -12px; }
+.edge-bottom-right { bottom: -12px; right: -12px; }
+
+/* Wedding pearls cluster positions */
+/* Decorative pearl/shell cluster removed */
+
+@media (min-width: 280px) and (max-width: 430px) {
+    /* cluster removed */
+}
+@media (min-width: 768px) and (max-width: 992px) {
+    /* cluster removed */
+}
+@media (min-width: 993px) {
+    /* cluster removed */
+}
+
+/* Size scaling per breakpoint */
+@media (min-width: 280px) and (max-width: 430px) {
+    .edge-decor { width: clamp(36px, 12vw, 64px); height: auto; }
+}
+@media (min-width: 768px) and (max-width: 992px) {
+    .edge-decor { width: clamp(48px, 10vw, 96px); height: auto; }
+}
+@media (min-width: 993px) {
+    .edge-decor { width: clamp(64px, 8vw, 140px); height: auto; }
+}
+
+/* Ensure sections can host absolute decorations */
+.decor-host { position: relative; }
 .explore-card .card-body p {
     color: var(--ink);
 }
@@ -211,7 +245,7 @@ p {
 }
 
 /* Mobile-specific polish for phones 320-430px */
-@media (min-width: 320px) and (max-width: 430px) {
+@media (min-width: 280px) and (max-width: 430px) {
     /* Make carousel items square on mobile */
     
     .simple-carousel .img-wrap { position: relative; width: 100%; aspect-ratio: 1 / 1; overflow: hidden; }
@@ -730,7 +764,7 @@ a.btn { color: var(--white) !important; }
 
 
 /* Mobile tweaks for activity cards on phones 320-430px */
-@media (min-width: 320px) and (max-width: 430px) {
+@media (min-width: 280px) and (max-width: 430px) {
     .activity-card {
         height: clamp(240px, 56vw, 320px); /* slightly taller to fit text without overflow */
     }
@@ -943,7 +977,6 @@ a.btn { color: var(--white) !important; }
     background-size: cover;
     background-position: center;
     color: var(--white);
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
     padding: 2rem 1rem;
     display: flex;
     flex-direction: column;
@@ -989,7 +1022,7 @@ a.btn { color: var(--white) !important; }
     border-radius: 12px;
     text-align: center;
 }
-.prepared-section .prepared-card h3,
+.prepared-section,
 .prepared-section .prepared-card p,
 .prepared-section .prepared-card a {
     color: var(--ink) !important;
@@ -1034,7 +1067,7 @@ a.btn { color: var(--white) !important; }
 }
 
 /* Force 3-up square carousel on phones 320-430px */
-@media (min-width: 320px) and (max-width: 430px) {
+@media (min-width: 280px) and (max-width: 430px) {
     .simple-carousel { flex-direction: row; gap: 0.6rem; }
     /* Two gaps per row => total gap width 1.2rem */
     .simple-carousel .couple-item { flex: 0 0 calc((100% - 1.2rem) / 3); }

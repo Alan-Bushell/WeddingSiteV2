@@ -137,8 +137,19 @@ p {
 }
 
 .card-title {
-    color: #7a52a3; /* Use the brand color for titles */
-    font-weight: 700;
+    color: var(--pink); /* Default card title color */
+    font-family: decoy cursive, cursive;
+    font-size: 42px;
+}
+
+/* Article Detail overrides */
+.article-detail .card-title.text-center.mb-4 {
+    color: var(--pink) !important;
+}
+.article-detail .card-text,
+.article-detail p,
+.article-detail span {
+    color: var(--ink) !important;
 }
 
 /* Buttons */
@@ -268,7 +279,7 @@ p {
 }
 
 /* Narrow-phone specific overrides (320px - 430px) */
-@media (min-width: 320px) and (max-width: 430px) {
+@media (min-width: 280px) and (max-width: 430px) {
     .navbar h2 { line-height: normal; }
     /* Hide center heading on mobile range */
     .nav-third.center h2 { display: block !important; transform: none !important; }

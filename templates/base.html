@@ -94,7 +94,7 @@
             const getHeadings = () => Array.from(document.querySelectorAll('.section-title h2'));
 
             const computeThresholds = () => {
-                const isMobile = window.matchMedia('(min-width: 320px) and (max-width: 430px)').matches;
+                const isMobile = window.matchMedia('(min-width: 280px) and (max-width: 430px)').matches;
                 const vh = window.innerHeight || 800;
                 return {
                     threshold: isMobile ? Math.round(Math.min(260, Math.max(120, vh * 0.22))) : 200,
