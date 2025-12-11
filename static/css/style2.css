@@ -500,6 +500,130 @@ a.btn { color: var(--white) !important; }
     font-weight: 400;
 }
 
+.decor-champagne {
+    position:absolute;
+    width: 60%;
+    height: auto;
+    pointer-events: none;
+    top: -20%;
+    right: -25%;
+}
+
+.decor-champagne-mob {
+    position:absolute;
+    width: 50%;
+    height: auto;
+    pointer-events: none;
+    top: -5%;
+    right: -15%;
+}
+
+.decor-shell {
+    position:absolute;
+    width: 50%;
+    height: auto;
+    pointer-events: none;
+    bottom: -20%;
+    left: -15%;
+}
+
+.decor-shell-mob {
+    position:absolute;
+    width: 35%;
+    height: auto;
+    pointer-events: none;
+    bottom: -10%;
+    left:-5%;
+}
+
+.decor-pearl {
+    position:absolute;
+    width: 2.5%;
+    height: auto;
+    pointer-events: none;
+    left:30%;
+    
+    
+}
+.decor-pearl-mob {
+    position:absolute;
+    width: 5.5%;
+    height: auto;
+    pointer-events: none;
+    left:15%;  
+}
+
+.decor-frangipani {
+    position:absolute;
+    width: 130%;
+    height: auto;
+    pointer-events: none;
+    top:15%;
+    right:-55%;
+}
+
+.decor-leaf {
+    position:absolute;
+    width: 50%;
+    height: auto;
+    pointer-events: none;
+    bottom: -20%;
+    right: -20%;
+}
+
+.decor-leaf-mob {
+    position:absolute;
+    width: 50%;
+    height: auto;
+    pointer-events: none;
+    bottom: -15%;
+    left: -30%;
+}
+
+.decor-flower {
+    position:absolute;
+    width: 50%;
+    height: auto;
+    pointer-events: none;
+    top: -20%;
+    left: -25%;
+    
+}
+
+.decor-flower-mob {
+    position:absolute;
+    width: 50%;
+    height: auto;
+    pointer-events: none;
+    top: -10%;
+    left: -25%;
+    
+}
+
+.decor-coconut {
+    position:absolute;
+    width: 60%;
+    height: auto;
+    pointer-events: none;
+    bottom: -20%;
+    left: -25%;
+    
+}
+
+.decor-coconut-mob {
+    position:absolute;
+    width: 80%;
+    height: auto;
+    pointer-events: none;
+    bottom: -15%;
+    left: -30%;
+    
+}
+
+
+
+
+
 /* Part 2: Schedule Section */
 .schedule-section {
 
@@ -661,7 +785,7 @@ a.btn { color: var(--white) !important; }
 }
 .phuket-divider-section h2 {
     font-size: 5rem;
-    color: var(--pink);
+    color: var(--coral);
     font-family: "decoy", cursive !important;
     letter-spacing: 20px;
     text-transform: uppercase;
@@ -670,9 +794,9 @@ a.btn { color: var(--white) !important; }
         0 0 3px #fff,
         0 0 6px #fff,
         0 0 10px #fff,
-        0 0 16px var(--pink),
-        0 0 28px var(--pink),
-        0 0 42px var(--pink);
+        0 0 16px var(--coral),
+        0 0 28px var(--coral),
+        0 0 42px var(--coral);
 }
 
 /* Part 5: Before Section */

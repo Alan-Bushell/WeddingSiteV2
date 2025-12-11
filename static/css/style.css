@@ -279,7 +279,7 @@ p {
 }
 
 /* Narrow-phone specific overrides (320px - 430px) */
-@media (min-width: 280px) and (max-width: 430px) {
+@media (min-width: px) and (max-width: 430px) {
     .navbar h2 { line-height: normal; }
     /* Hide center heading on mobile range */
     .nav-third.center h2 { display: block !important; transform: none !important; }
