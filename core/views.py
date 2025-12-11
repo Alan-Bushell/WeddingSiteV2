@@ -20,7 +20,7 @@ def home_view(request):
             GalleryImage.objects.filter(
                 is_public=True,
                 tags__slug__iexact='couple'
-            ).order_by('-uploaded_at')[:20]
+            ).order_by('-uploaded_at')[:]
         )
     except Exception as e:
         print(f"Error fetching 'couple' carousel images: {e}")
@@ -57,7 +57,7 @@ def home_view2(request):
             GalleryImage.objects.filter(
                 is_public=True,
                 tags__slug__iexact='couple'
-            ).order_by('-uploaded_at')[:20]
+            ).order_by('-uploaded_at')[:]
         )
     except Exception as e:
         print(f"Error fetching 'couple' carousel images: {e}")

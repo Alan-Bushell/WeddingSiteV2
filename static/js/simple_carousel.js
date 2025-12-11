@@ -11,7 +11,7 @@
     const nextBtn = container.querySelector('.carousel-nav.next');
 
     const autoplay = container.dataset.autoplay === 'true';
-    const interval = parseInt(container.dataset.interval || '4000', 10);
+    const interval = parseInt(container.dataset.interval || '3000', 10);
     const mobileBreakpoint = 768;
 
     let slidesDesktop = parseInt(container.dataset.slidesDesktop || '3', 10);
