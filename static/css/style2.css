@@ -253,7 +253,7 @@ p {
 }
 
 /* Mobile-specific polish for phones 320-430px */
-@media (min-width: 280px) and (max-width: 430px) {
+@media (min-width: 260px) and (max-width: 430px) {
     /* Make carousel items square on mobile */
     
     .simple-carousel .img-wrap { position: relative; width: 100%; aspect-ratio: 1 / 1; overflow: hidden; }
@@ -267,7 +267,7 @@ p {
     /* Ensure Snorkel/Drink match Wedding size on mobile */
     .d-md-none .event-card.highlighted-card h3,
     .d-md-none .snorkel-card h3,
-    .d-md-none .drink-card h3 { font-size: 42px !important; }
+    .d-md-none .drink-card h3 { font-size: 40px; }
 
     /* What to do: prevent stretching and improve fit */
     .activity-card { min-height: 260px; }
@@ -896,7 +896,7 @@ a.btn { color: var(--white) !important; }
 
 
 /* Mobile tweaks for activity cards on phones 320-430px */
-@media (min-width: 280px) and (max-width: 430px) {
+@media (min-width: 260px) and (max-width: 430px) {
     .activity-card {
         height: clamp(240px, 56vw, 320px); /* slightly taller to fit text without overflow */
     }
@@ -1188,12 +1188,18 @@ a.btn { color: var(--white) !important; }
 }
 
 /* Force 3-up square carousel on phones 320-430px */
-@media (min-width: 280px) and (max-width: 430px) {
+@media (min-width: 260px) and (max-width: 430px) {
     .simple-carousel { flex-direction: row; gap: 0.6rem; }
     /* Two gaps per row => total gap width 1.2rem */
     .simple-carousel .couple-item { flex: 0 0 calc((100% - 1.2rem) / 3); }
     .simple-carousel .img-wrap { aspect-ratio: 1 / 1; }
     .simple-carousel .carousel-img { width: 100%; height: 100%; object-fit: cover; }
+}
+
+@media (min-width: 431px) and (max-width: 768px) {
+    .d-md-none .card.event-card h3 {
+        font-size: 3rem;
+    }
 }
 
 /* Tablet-specific tweaks for 768px to 992px */
