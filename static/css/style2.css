@@ -905,6 +905,10 @@ a.btn { color: var(--white) !important; }
         object-fit: cover; /* fill and allow focal cropping */
     }
     .activity-card .card-body { padding: 0 !important; }
+
+    /* Reduce font sizes to prevent overflow on all mobile devices */
+    .activity-card h5 { font-size: 1rem; }
+    .activity-card .card-body p { font-size: 0.75rem; line-height: 1.2; }
 }
 
 /* Utilities to adjust image focal point when using object-fit: cover */
