@@ -895,8 +895,8 @@ a.btn { color: var(--white) !important; }
 }
 
 
-/* Mobile tweaks for activity cards on phones 320-430px */
-@media (min-width: 260px) and (max-width: 430px) {
+/* Mobile tweaks for activity cards on phones (covering larger devices like Pixel Pro) */
+@media (max-width: 767px) {
     .activity-card {
         height: clamp(240px, 56vw, 320px); /* slightly taller to fit text without overflow */
     }
