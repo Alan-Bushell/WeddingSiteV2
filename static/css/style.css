@@ -158,8 +158,8 @@ p {
     max-width: 100%;
     height: auto;
     display: block;
-    margin: 2rem auto !important; /* center large images and add vertical spacing */
-    border: 4px solid var(--pink);
+    margin: 1rem auto !important; /* center large images and add vertical spacing */
+    border: 2px solid var(--pink);
     border-radius: 12px;
 }
 .article-detail .card-text iframe,
@@ -180,7 +180,7 @@ p {
 @media (max-width: 768px) {
     .article-detail .card-text img,
     .article-detail .card-text figure img {
-        max-width: calc(100% - 2rem); /* Ensure horizontal spacing */
+        max-width: calc(100% - 1rem); /* Ensure horizontal spacing */
         margin: 2rem auto !important; /* Center and add vertical spacing, override inline styles */
         display: block !important; /* Ensure block display to respect margins */
     }
