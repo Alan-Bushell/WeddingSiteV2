@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Montserrat:wght@400;600;700&display=swap');
+
+
 /* Decorative SVG edge accents */
 .edge-decor { position: absolute; opacity: 0.8; pointer-events: none; z-index: 1; }
 .edge-top-left { top: -12px; left: -12px; }
@@ -100,7 +103,6 @@ h4.box-headings.bangtao-title {
     border-radius: 10px !important;
     padding: 0.25rem 0.5rem; /* prevent letters touching border */
 }
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Montserrat:wght@400;600;700&display=swap');
 
 /* Theme palette (Thailand wedding) */
 :root {
@@ -1119,18 +1121,6 @@ a.btn { color: var(--white) !important; }
 .prepared-card > * {
     position: relative;
     z-index: 2;
-}
-
-.prepared-card-travel {
-    background-image: url('../core/img/travel-card-bg.jpg');
-}
-
-.prepared-card-health {
-    background-image: url('../core/img/health-card-bg.jpg');
-}
-
-.prepared-card-packing {
-    background-image: url('../core/img/packing-card-bg.jpg');
 }
 
 /* Temporarily hide entire prepared section until content is finalized */
