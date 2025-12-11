@@ -82,6 +82,7 @@ p {
 @media (min-width: 992px) { /* Bootstrap lg breakpoint */
     .navbar { padding-top: 0.25rem !important; padding-bottom: 0.25rem !important; }
     .navbar-brand { width: 100px; height: 100px; }
+    .nav-third.center h2 { transform: translateY(-20px); }
 }
 
 .navbar h2 {
@@ -97,7 +98,6 @@ p {
 .nav-third.left { justify-content:flex-start; }
 .nav-third.right { justify-content:flex-end; gap:1rem; }
 .nav-third.center h2 { width:100%; text-align:center; }
-.nav-third.center h2 { transform: translateY(-20px); }
 .nav-third.right .rsvp-img img { height:90px; width:90px; }
 
 @media (max-width: 767.98px) {
@@ -138,7 +138,7 @@ p {
 
 .card-title {
     color: var(--pink); /* Default card title color */
-    font-family: decoy cursive, cursive;
+    font-family: decoy cursive;
     font-size: 42px;
 }
 
@@ -152,14 +152,48 @@ p {
     color: var(--ink) !important;
 }
 
+/* Responsive media inside WYSIWYG content (article detail) */
+.article-detail .card-text img,
+.article-detail .card-text figure img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 2rem auto !important; /* center large images and add vertical spacing */
+    border: 4px solid var(--pink);
+    border-radius: 12px;
+}
+.article-detail .card-text iframe,
+.article-detail .card-text video {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.article-detail .card-text table {
+    width: 100%;
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Mobile spacing so adjacent images don't touch */
+@media (max-width: 768px) {
+    .article-detail .card-text img,
+    .article-detail .card-text figure img {
+        max-width: calc(100% - 2rem); /* Ensure horizontal spacing */
+        margin: 2rem auto !important; /* Center and add vertical spacing, override inline styles */
+        display: block !important; /* Ensure block display to respect margins */
+    }
+}
+
 /* Buttons */
 .btn-primary {
-    background-color: rgb(187, 69, 167);
-    border-color: rgb(187, 69, 167);
+    background-color: var(--pink);
+    border-color: var(--pink);
 }
 .btn-primary:hover {
-    background-color: rgb(187, 69, 167); /* Darker plum on hover */
-    border-color: rgb(187, 69, 167);
+    background-color: var(--pink50);
+    border-color: var(--pink50);
 }
 
 .btn-success {
@@ -251,6 +285,14 @@ p {
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-family: gala;
+    color: var(--ink);
+    letter-spacing: 2px;
+}
+
+.card-text img {
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 /* Gallery-specific styles */
@@ -276,6 +318,14 @@ p {
     .navbar h2 { font-size: clamp(2rem, 6vw, 2.6rem); line-height: 1.1; }
     .nav-link.rsvp-img img { height: 50px; width: 50px; }
     .navbar .nav-link img[alt='RSVP'] { height: 50px; width: 50px; }
+    /* Constrain SVG images on mobile */
+    img[src$=".svg"],
+    img[src*="/svg/"] {
+        max-width: 40vw;
+        height: auto;
+    }
+    /* Constrain inline SVGs if present */
+    svg { max-width: 40vw; height: auto; }
 }
 
 /* Narrow-phone specific overrides (320px - 430px) */
